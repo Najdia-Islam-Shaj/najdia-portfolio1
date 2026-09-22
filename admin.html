@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Najdia Islam</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-wrap{max-width:1100px;margin:0 auto;padding:28px 18px 60px}
+        #login-section,.admin-panel{background:#fff;border-radius:18px;padding:28px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+        #login-section{max-width:520px;margin:60px auto}
+        .admin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+        .admin-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.05)}
+        .admin-card h2{margin-top:0;color:#182848}
+        .admin-form{display:none;margin-top:14px;padding-top:14px;border-top:1px solid #e5e7eb}
+        .admin-form.open{display:block}
+        .admin-form input,.admin-form textarea,.admin-form select,#login-form input{width:100%;padding:11px 12px;margin:0 0 10px;border:1px solid #d1d5db;border-radius:10px;font:inherit;box-sizing:border-box}
+        .admin-form textarea{min-height:90px;resize:vertical}
+        .admin-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+        .admin-btn{border:0;border-radius:10px;padding:9px 13px;background:#182848;color:#fff;cursor:pointer;font-weight:600}
+        .admin-btn:hover{background:#0284c7}
+        .admin-btn.secondary{background:#e5e7eb;color:#111827}
+        .admin-btn.danger{background:#b91c1c}
+        .admin-list-item{padding:14px 0;border-top:1px solid #e5e7eb}
+        .admin-list-item:first-child{border-top:0}
+        .muted{color:#6b7280;font-size:.92rem}
+        .status-pill{display:inline-block;padding:4px 9px;border-radius:999px;background:#e0f2fe;color:#0369a1;font-size:.78rem;font-weight:700;margin-top:7px}.published-pill{background:#dcfce7;color:#166534}.hidden-pill{background:#fee2e2;color:#991b1b}
+        .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
+        .topbar h1{margin:0}
+        .file-help{font-size:.82rem;color:#6b7280;display:block;margin:-4px 0 10px}
+        @media (max-width:850px){.admin-grid{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}}
+    </style>
+</head>
+<body>
+<div class="admin-wrap">
+
+<section id="login-section">
+    <h1>Admin Login</h1>
+    <p class="muted">Sign in with the admin account configured in Supabase.</p>
+    <form id="login-form">
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button class="admin-btn" type="submit">Login</button>
+    </form>
+    <p id="login-message" class="muted"></p>
+</section>
+
+<section id="admin-section" class="admin-panel" style="display:none;">
+    <div class="topbar">
+        <div>
+            <h1>Najdia Portfolio CMS</h1>
+            <p class="muted">Manage content, images, and publish visibility from Supabase.</p>
+        </div>
+        <button id="logout-btn" class="admin-btn secondary">Logout</button>
+    </div>
+
+    <div class="admin-grid">
+
+        <div class="admin-card">
+            <h2>Posts / Journal</h2>
+            <button id="new-post-btn" class="admin-btn">New Post</button>
+            <div id="posts-list"></div>
+            <div id="post-form" class="admin-form">
+                <h3>Add / Edit Post</h3>
+                <input type="text" id="post-title" placeholder="Title">
+                <input type="text" id="post-slug" placeholder="Slug (unique)">
+                <textarea id="post-summary" placeholder="Summary"></textarea>
+                <textarea id="post-body" placeholder="Body"></textarea>
+                <input type="date" id="post-date">
+                <input type="text" id="post-tags" placeholder="Tags (comma separated)">
+                <input type="url" id="post-image" placeholder="Image URL">
+                <input type="file" id="post-image-file" accept="image/*">
+                <span class="file-help">Choose an image to upload to Supabase Storage, or use a URL.</span>
+                <select id="post-status"><option value="draft">Draft</option><option value="published">Published</option><option value="archived">Archived</option></select>
+                <div class="admin-actions"><button id="save-post-btn" class="admin-btn">Save Post</button></div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>Learning</h2>
+            <button id="new-learning-btn" class="admin-btn">New Learning</button>
+            <div id="learning-list"></div>
+            <div id="learning-form" class="admin-form">
+                <h3>Add / Edit Learning</h3>
+                <input type="text" id="learning-title" placeholder="Title">
+                <textarea id="learning-note" placeholder="Note"></textarea>
+                <input type="text" id="learning-category" placeholder="Category">
+                <input type="date" id="learning-date">
+                <input type="text" id="learning-status" placeholder="Display Status (e.g. Currently Learning)">
+                <select id="learning-visibility"><option value="published">Published</option><option value="hidden">Unpublished</option></select>
+                <div class="admin-actions"><button id="save-learning-btn" class="admin-btn">Save Learning</button></div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>Research</h2>
+            <button id="new-research-btn" class="admin-btn">New Research</button>
+            <div id="research-list"></div>
+            <div id="research-form" class="admin-form">
+                <h3>Add / Edit Research</h3>
+                <input type="text" id="research-interest" placeholder="Interest">
+                <textarea id="research-question" placeholder="Question"></textarea>
+                <input type="text" id="research-paper-title" placeholder="Paper Title">
+                <input type="url" id="research-paper-link" placeholder="Paper Link">
+                <textarea id="research-notes" placeholder="Notes"></textarea>
+                <input type="text" id="research-status" placeholder="Status">
+                <select id="research-visibility"><option value="published">Published</option><option value="hidden">Unpublished</option></select>
+                <div class="admin-actions"><button id="save-research-btn" class="admin-btn">Save Research</button></div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>Goals / Future</h2>
+            <button id="new-goal-btn" class="admin-btn">New Goal</button>
+            <div id="goals-list"></div>
+            <div id="goal-form" class="admin-form">
+                <h3>Add / Edit Goal</h3>
+                <input type="text" id="goal-title" placeholder="Title">
+                <textarea id="goal-description" placeholder="Description"></textarea>
+                <input type="date" id="goal-target-date">
+                <input type="text" id="goal-status" placeholder="Status">
+                <select id="goal-visibility"><option value="published">Published</option><option value="hidden">Unpublished</option></select>
+                <div class="admin-actions"><button id="save-goal-btn" class="admin-btn">Save Goal</button></div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>Projects</h2>
+            <button id="new-project-btn" class="admin-btn">New Project</button>
+            <div id="projects-list"></div>
+            <div id="project-form" class="admin-form">
+                <h3>Add / Edit Project</h3>
+                <input type="text" id="project-title" placeholder="Title">
+                <textarea id="project-description" placeholder="Description"></textarea>
+                <input type="date" id="project-start-date">
+                <input type="date" id="project-end-date">
+                <textarea id="project-tech-used" placeholder="Technologies (comma separated)"></textarea>
+                <textarea id="project-images" placeholder="Image URLs (comma separated)"></textarea>
+                <input type="file" id="project-image-file" accept="image/*" multiple>
+                <span class="file-help">You can upload one or more project images.</span>
+                <textarea id="project-challenges" placeholder="Challenges"></textarea>
+                <textarea id="project-outcome" placeholder="Outcome"></textarea>
+                <textarea id="project-related" placeholder="Related (comma separated)"></textarea>
+                <select id="project-status"><option value="idea">Idea</option><option value="planned">Planned</option><option value="in_progress">In Progress</option><option value="completed">Completed</option><option value="paused">Paused</option><option value="archived">Archived</option></select>
+                <select id="project-visibility"><option value="published">Published</option><option value="hidden">Unpublished</option></select>
+                <div class="admin-actions"><button id="save-project-btn" class="admin-btn">Save Project</button></div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>Timeline</h2>
+            <button id="new-timeline-btn" class="admin-btn">New Timeline Entry</button>
+            <div id="timeline-list"></div>
+            <div id="timeline-form" class="admin-form">
+                <h3>Add / Edit Timeline</h3>
+                <input type="date" id="timeline-date">
+                <input type="text" id="timeline-title" placeholder="Title">
+                <textarea id="timeline-description" placeholder="Description"></textarea>
+                <input type="text" id="timeline-type" placeholder="Type">
+                <select id="timeline-visibility"><option value="published">Published</option><option value="hidden">Unpublished</option></select>
+                <div class="admin-actions"><button id="save-timeline-btn" class="admin-btn">Save Timeline</button></div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>Currently</h2>
+            <div id="currently-form">
+                <input type="text" id="currently-learning" placeholder="Currently Learning">
+                <input type="text" id="currently-building" placeholder="Currently Building">
+                <input type="text" id="currently-thinking" placeholder="Currently Thinking">
+                <select id="currently-visibility"><option value="published">Published</option><option value="hidden">Unpublished</option></select>
+                <div class="admin-actions">
+                    <button id="save-currently-btn" class="admin-btn">Save Currently</button>
+                    <button id="edit-currently-btn" class="admin-btn secondary">Edit Currently</button>
+                    <button id="toggle-currently-btn" class="admin-btn secondary">Publish / Unpublish Currently</button>
+                    <button id="delete-currently-btn" class="admin-btn danger">Delete Currently</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>Achievements</h2>
+            <button id="new-achievement-btn" class="admin-btn">New Achievement</button>
+            <div id="achievements-list"></div>
+            <div id="achievement-form" class="admin-form">
+                <h3>Add / Edit Achievement</h3>
+                <input type="text" id="achievement-title" placeholder="Title">
+                <textarea id="achievement-description" placeholder="Description"></textarea>
+                <input type="number" id="achievement-year" placeholder="Year">
+                <select id="achievement-status"><option value="active">Published</option><option value="hidden">Unpublished</option></select>
+                <div class="admin-actions"><button id="save-achievement-btn" class="admin-btn">Save Achievement</button></div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>Certificates</h2>
+            <button id="new-certificate-btn" class="admin-btn">New Certificate</button>
+            <div id="certificates-list"></div>
+            <div id="certificate-form" class="admin-form">
+                <h3>Add / Edit Certificate</h3>
+                <input type="text" id="certificate-title" placeholder="Title">
+                <textarea id="certificate-description" placeholder="Description"></textarea>
+                <input type="number" id="certificate-year" placeholder="Year">
+                <input type="url" id="certificate-image" placeholder="Image URL">
+                <input type="file" id="certificate-image-file" accept="image/*">
+                <select id="certificate-status"><option value="active">Published</option><option value="hidden">Unpublished</option></select>
+                <div class="admin-actions"><button id="save-certificate-btn" class="admin-btn">Save Certificate</button></div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>Home</h2>
+            <div id="home-cms">
+                <input type="text" id="home-small-title" placeholder="Small Title">
+                <input type="text" id="home-name" placeholder="Name">
+                <input type="text" id="home-headline" placeholder="Headline">
+                <textarea id="home-hero-text" placeholder="Hero Text"></textarea>
+                <input type="text" id="home-button-text" placeholder="Button Text">
+                <input type="text" id="home-button-link" placeholder="Button Link">
+                <select id="home-status"><option value="active">Published</option><option value="hidden">Unpublished</option></select>
+                <div class="admin-actions"><button id="save-home-btn" class="admin-btn">Save Home</button><button id="toggle-home-btn" class="admin-btn secondary">Publish / Unpublish Home</button></div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>About</h2>
+            <div id="about-cms">
+                <input type="text" id="about-section-title" placeholder="Section Title">
+                <input type="text" id="about-heading" placeholder="Heading">
+                <textarea id="about-paragraph1" placeholder="Paragraph 1"></textarea>
+                <textarea id="about-paragraph2" placeholder="Paragraph 2"></textarea>
+                <textarea id="about-paragraph3" placeholder="Paragraph 3"></textarea>
+                <input type="text" id="about-department" placeholder="Department">
+                <input type="text" id="about-university" placeholder="University">
+                <input type="text" id="about-interests" placeholder="Interests">
+                <input type="url" id="about-photo" placeholder="Photo URL">
+                <input type="file" id="about-photo-file" accept="image/*">
+                <input type="text" id="about-tagline" placeholder="Tagline">
+                <select id="about-status"><option value="active">Published</option><option value="hidden">Unpublished</option></select>
+                <div class="admin-actions"><button id="save-about-btn" class="admin-btn">Save About</button><button id="toggle-about-btn" class="admin-btn secondary">Publish / Unpublish About</button></div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>Education</h2>
+            <button id="new-education-btn" class="admin-btn">New Education</button>
+            <div id="education-list"></div>
+            <div id="education-form" class="admin-form">
+                <input type="text" id="education-degree" placeholder="Degree">
+                <input type="text" id="education-university" placeholder="University">
+                <input type="text" id="education-session" placeholder="Session">
+                <select id="education-status"><option value="active">Published</option><option value="hidden">Unpublished</option></select>
+                <select id="education-visibility"><option value="published">Published</option><option value="hidden">Unpublished</option></select>
+                <div class="admin-actions"><button id="save-education-btn" class="admin-btn">Save Education</button></div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>Skills</h2>
+            <button id="new-skill-btn" class="admin-btn">New Skill</button>
+            <div id="skills-list"></div>
+            <div id="skill-form" class="admin-form">
+                <input type="text" id="skill-name" placeholder="Skill Name">
+                <input type="number" id="skill-percentage" min="0" max="100" placeholder="Percentage">
+                <input type="text" id="skill-class" placeholder="CSS Class">
+                <select id="skill-status"><option value="active">Published</option><option value="hidden">Unpublished</option></select>
+                <select id="skill-visibility"><option value="published">Published</option><option value="hidden">Unpublished</option></select>
+                <div class="admin-actions"><button id="save-skill-btn" class="admin-btn">Save Skill</button></div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2>Contact</h2>
+            <button id="new-contact-btn" class="admin-btn">New Contact</button>
+            <div id="contact-list"></div>
+            <div id="contact-form" class="admin-form">
+                <input type="text" id="contact-icon" placeholder="Icon">
+                <input type="text" id="contact-title" placeholder="Title">
+                <input type="text" id="contact-description" placeholder="Description">
+                <input type="text" id="contact-link-text" placeholder="Link Text">
+                <input type="url" id="contact-link-url" placeholder="Link URL">
+                <input type="number" id="contact-sort-order" placeholder="Sort Order">
+                <select id="contact-status"><option value="active">Published</option><option value="hidden">Unpublished</option></select>
+                <select id="contact-visibility"><option value="published">Published</option><option value="hidden">Unpublished</option></select>
+                <div class="admin-actions"><button id="save-contact-btn" class="admin-btn">Save Contact</button></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<script>
+(function(){
+    const $ = id => document.getElementById(id);
+    const form = id => $(id).classList.add('open');
+    const close = id => $(id).classList.remove('open');
+    const val = id => $(id).value.trim();
+    const set = (id,v='') => { $(id).value = v ?? ''; };
+    const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+    const arr = v => Array.isArray(v) ? v.filter(Boolean) : [];
+    const csv = v => v ? v.split(',').map(x=>x.trim()).filter(Boolean) : [];
+    const join = v => Array.isArray(v) ? v.join(', ') : (v || '');
+    const setBtn = (button, text) => { button.disabled=false; button.textContent=text; };
+    let editing = {
+        post:null, learning:null, research:null, goal:null, project:null, timeline:null,
+        achievement:null, certificate:null, education:null, skill:null, contact:null
+    };
+    let currentlyId = null;
+    let started = false;
+
+    function showMessage(msg, isError=false){
+        $('login-message').textContent = msg;
+        $('login-message').style.color = isError ? '#b91c1c' : '#0369a1';
+    }
+
+    async function uploadPortfolioImage(file, folder){
+        if(!file) return null;
+        if(!file.type || !file.type.startsWith('image/')) throw new Error('Please select an image file.');
+        const ext = (file.name.split('.').pop() || 'jpg').toLowerCase().replace(/[^a-z0-9]/g,'');
+        const path = folder + '/' + crypto.randomUUID() + '.' + (ext || 'jpg');
+        const {error} = await supabaseClient.storage.from('portfolio-images').upload(path, file, {contentType:file.type, upsert:false});
+        if(error) throw new Error('Image upload failed: ' + error.message);
+        return supabaseClient.storage.from('portfolio-images').getPublicUrl(path).data.publicUrl;
+    }
+
+    async function uploadMany(inputId, folder){
+        const files = Array.from($(inputId).files || []);
+        const urls = [];
+        for(const file of files) urls.push(await uploadPortfolioImage(file, folder));
+        return urls;
+    }
+
+    async function requireSession(){
+        const {data} = await supabaseClient.auth.getSession();
+        if(!data.session) return null;
+        const {data: adminRow, error} = await supabaseClient.from('admins').select('user_id').eq('user_id',data.session.user.id).maybeSingle();
+        if(error || !adminRow) return null;
+        return data.session;
+    }
+
+    function openAdmin(){ $('login-section').style.display='none'; $('admin-section').style.display='block'; }
+    function openLogin(){ $('admin-section').style.display='none'; $('login-section').style.display='block'; }
+
+    async function loadPosts(){
+        const {data,error}=await supabaseClient.from('posts').select('*').order('created_at',{ascending:false});
+        if(error){console.error(error);return;}
+        $('posts-list').innerHTML = arr(data).map(p=>`<div class="admin-list-item"><h3>${esc(p.title)}</h3><p>${esc(p.summary||'')}</p><p class="muted">Status: ${esc(p.status||'')}</p><div class="admin-actions"><button class="admin-btn" onclick="editPost('${p.id}')">Edit</button><button class="admin-btn secondary" onclick="togglePostPublish('${p.id}','${esc(p.status||'draft')}')">${p.status==='published'?'Unpublish':'Publish'}</button><button class="admin-btn secondary" onclick="archivePost('${p.id}')">Archive</button><button class="admin-btn danger" onclick="deletePost('${p.id}')">Delete</button></div></div>`).join('');
+    }
+
+    $('new-post-btn').onclick=()=>{ editing.post=null; set('post-title');set('post-slug');set('post-summary');set('post-body');set('post-date');set('post-tags');set('post-image');$('post-image-file').value='';set('post-status','draft');form('post-form'); };
+    $('save-post-btn').onclick=async()=>{
+        const b=$('save-post-btn'); b.disabled=true; b.textContent='Saving...';
+        try{
+            let image=val('post-image');
+            const file=$('post-image-file').files[0];
+            if(file) image=await uploadPortfolioImage(file,'posts');
+            const payload={title:val('post-title'),slug:val('post-slug'),summary:val('post-summary'),body:val('post-body'),date:$('post-date').value||null,tags:csv(val('post-tags')),image,status:$('post-status').value};
+            const q=editing.post ? supabaseClient.from('posts').update(payload).eq('id',editing.post) : supabaseClient.from('posts').insert(payload);
+            const {error}=await q; if(error) throw error;
+            editing.post=null; close('post-form'); await loadPosts(); alert('Post saved successfully!');
+        }catch(e){alert('Error saving post: '+e.message)}finally{setBtn(b,'Save Post');}
+    };
+    window.editPost=async id=>{const {data,error}=await supabaseClient.from('posts').select('*').eq('id',id).single();if(error)return alert(error.message);editing.post=id;set('post-title',data.title);set('post-slug',data.slug);set('post-summary',data.summary);set('post-body',data.body);set('post-date',data.date);set('post-tags',join(data.tags));set('post-image',data.image);$('post-image-file').value='';set('post-status',data.status||'draft');form('post-form');};
+    window.togglePostPublish=async(id,status)=>{const {error}=await supabaseClient.from('posts').update({status:status==='published'?'draft':'published'}).eq('id',id);if(error)alert(error.message);else loadPosts();};
+    window.archivePost=async id=>{const {error}=await supabaseClient.from('posts').update({status:'archived'}).eq('id',id);if(error)alert(error.message);else loadPosts();};
+    window.deletePost=async id=>{if(!confirm('Delete this post?'))return;const {error}=await supabaseClient.from('posts').delete().eq('id',id);if(error)alert(error.message);else loadPosts();};
+
+    function visibilityBadge(v){ return `<span class="status-pill ${v==='hidden'?'hidden-pill':'published-pill'}">${v==='hidden'?'Unpublished':'Published'}</span>`; }
+    function publishButton(fn,id,v){ return `<button class="admin-btn secondary" onclick="${fn}('${id}','${v||'published'}')">${v==='hidden'?'Publish':'Unpublish'}</button>`; }
+
+    async function loadLearning(){
+        const {data,error}=await supabaseClient.from('learning').select('*').order('created_at',{ascending:false});
+        if(error){console.error(error);return;}
+        $('learning-list').innerHTML=arr(data).map(x=>`<div class="admin-list-item"><h3>${esc(x.title)}</h3><p>${esc(x.note||'')}</p><p class="muted">${esc(x.category||'')} · ${esc(x.status||'')}</p><div class="admin-actions"><button class="admin-btn" onclick="editLearning('${x.id}')">Edit</button>${publishButton('toggleLearning',x.id,x.visibility||'published')}<button class="admin-btn danger" onclick="deleteLearning('${x.id}')">Delete</button></div>${visibilityBadge(x.visibility||'published')}</div>`).join('');
+    }
+    $('new-learning-btn').onclick=()=>{editing.learning=null;['learning-title','learning-note','learning-category','learning-date','learning-status'].forEach(id=>set(id));set('learning-visibility','published');form('learning-form');};
+    $('save-learning-btn').onclick=async()=>{const payload={title:val('learning-title'),note:val('learning-note'),category:val('learning-category'),date:$('learning-date').value||null,status:val('learning-status'),visibility:$('learning-visibility').value};const {error}=editing.learning?await supabaseClient.from('learning').update(payload).eq('id',editing.learning):await supabaseClient.from('learning').insert(payload);if(error)return alert(error.message);editing.learning=null;close('learning-form');await loadLearning();};
+    window.editLearning=async id=>{const {data,error}=await supabaseClient.from('learning').select('*').eq('id',id).single();if(error)return alert(error.message);editing.learning=id;set('learning-title',data.title);set('learning-note',data.note);set('learning-category',data.category);set('learning-date',data.date);set('learning-status',data.status);set('learning-visibility',data.visibility||'published');form('learning-form');};
+    window.toggleLearning=async(id,v)=>{const {error}=await supabaseClient.from('learning').update({visibility:v==='published'?'hidden':'published'}).eq('id',id);if(error)alert(error.message);else loadLearning();};
+    window.deleteLearning=async id=>{if(!confirm('Delete this learning entry?'))return;const {error}=await supabaseClient.from('learning').delete().eq('id',id);if(error)alert(error.message);else loadLearning();};
+
+    async function loadResearch(){
+        const {data,error}=await supabaseClient.from('research').select('*').order('created_at',{ascending:false});
+        if(error){console.error(error);return;}
+        $('research-list').innerHTML=arr(data).map(x=>`<div class="admin-list-item"><h3>${esc(x.interest)}</h3><p>${esc(x.question||'')}</p><p class="muted">${esc(x.paper_title||'')} · ${esc(x.status||'')}</p><div class="admin-actions"><button class="admin-btn" onclick="editResearch('${x.id}')">Edit</button>${publishButton('toggleResearch',x.id,x.visibility||'published')}<button class="admin-btn danger" onclick="deleteResearch('${x.id}')">Delete</button></div>${visibilityBadge(x.visibility||'published')}</div>`).join('');
+    }
+    $('new-research-btn').onclick=()=>{editing.research=null;['research-interest','research-question','research-paper-title','research-paper-link','research-notes','research-status'].forEach(id=>set(id));set('research-visibility','published');form('research-form');};
+    $('save-research-btn').onclick=async()=>{const payload={interest:val('research-interest'),question:val('research-question'),paper_title:val('research-paper-title'),paper_link:val('research-paper-link'),notes:val('research-notes'),status:val('research-status'),visibility:$('research-visibility').value};const {error}=editing.research?await supabaseClient.from('research').update(payload).eq('id',editing.research):await supabaseClient.from('research').insert(payload);if(error)return alert(error.message);editing.research=null;close('research-form');await loadResearch();};
+    window.editResearch=async id=>{const {data,error}=await supabaseClient.from('research').select('*').eq('id',id).single();if(error)return alert(error.message);editing.research=id;set('research-interest',data.interest);set('research-question',data.question);set('research-paper-title',data.paper_title);set('research-paper-link',data.paper_link);set('research-notes',data.notes);set('research-status',data.status);set('research-visibility',data.visibility||'published');form('research-form');};
+    window.toggleResearch=async(id,v)=>{const {error}=await supabaseClient.from('research').update({visibility:v==='published'?'hidden':'published'}).eq('id',id);if(error)alert(error.message);else loadResearch();};
+    window.deleteResearch=async id=>{if(!confirm('Delete this research entry?'))return;const {error}=await supabaseClient.from('research').delete().eq('id',id);if(error)alert(error.message);else loadResearch();};
+
+    async function loadGoals(){
+        const {data,error}=await supabaseClient.from('goals').select('*').order('created_at',{ascending:false});
+        if(error){console.error(error);return;}
+        $('goals-list').innerHTML=arr(data).map(x=>`<div class="admin-list-item"><h3>${esc(x.title)}</h3><p>${esc(x.description||'')}</p><p class="muted">Target: ${esc(x.target_date||'')} · ${esc(x.status||'')}</p><div class="admin-actions"><button class="admin-btn" onclick="editGoal('${x.id}')">Edit</button>${publishButton('toggleGoal',x.id,x.visibility||'published')}<button class="admin-btn danger" onclick="deleteGoal('${x.id}')">Delete</button></div>${visibilityBadge(x.visibility||'published')}</div>`).join('');
+    }
+    $('new-goal-btn').onclick=()=>{editing.goal=null;['goal-title','goal-description','goal-target-date','goal-status'].forEach(id=>set(id));set('goal-visibility','published');form('goal-form');};
+    $('save-goal-btn').onclick=async()=>{const payload={title:val('goal-title'),description:val('goal-description'),target_date:$('goal-target-date').value||null,status:val('goal-status'),visibility:$('goal-visibility').value};const {error}=editing.goal?await supabaseClient.from('goals').update(payload).eq('id',editing.goal):await supabaseClient.from('goals').insert(payload);if(error)return alert(error.message);editing.goal=null;close('goal-form');await loadGoals();};
+    window.editGoal=async id=>{const {data,error}=await supabaseClient.from('goals').select('*').eq('id',id).single();if(error)return alert(error.message);editing.goal=id;set('goal-title',data.title);set('goal-description',data.description);set('goal-target-date',data.target_date);set('goal-status',data.status);set('goal-visibility',data.visibility||'published');form('goal-form');};
+    window.toggleGoal=async(id,v)=>{const {error}=await supabaseClient.from('goals').update({visibility:v==='published'?'hidden':'published'}).eq('id',id);if(error)alert(error.message);else loadGoals();};
+    window.deleteGoal=async id=>{if(!confirm('Delete this goal?'))return;const {error}=await supabaseClient.from('goals').delete().eq('id',id);if(error)alert(error.message);else loadGoals();};
+
+    function resetProject(){editing.project=null;['project-title','project-description','project-start-date','project-end-date','project-tech-used','project-images','project-challenges','project-outcome','project-related'].forEach(id=>set(id));$('project-image-file').value='';set('project-status','idea');set('project-visibility','published');form('project-form');}
+    $('new-project-btn').onclick=resetProject;
+    $('save-project-btn').onclick=async()=>{
+        const b=$('save-project-btn');b.disabled=true;b.textContent='Saving...';
+        try{
+            let images=csv(val('project-images')); const uploaded=await uploadMany('project-image-file','projects'); images=[...images,...uploaded];
+            const payload={title:val('project-title'),description:val('project-description'),start_date:$('project-start-date').value||null,end_date:$('project-end-date').value||null,technologies:csv(val('project-tech-used')),images,challenges:val('project-challenges'),outcome:val('project-outcome'),related:val('project-related'),status:$('project-status').value,visibility:$('project-visibility').value};
+            const q=editing.project?supabaseClient.from('projects').update(payload).eq('id',editing.project):supabaseClient.from('projects').insert(payload);const {error}=await q;if(error)throw error;
+            editing.project=null;close('project-form');await loadProjects();alert('Project saved successfully!');
+        }catch(e){alert('Error saving project: '+e.message)}finally{setBtn(b,'Save Project');}
+    };
+    async function loadProjects(){const {data,error}=await supabaseClient.from('projects').select('*').order('created_at',{ascending:false});if(error){console.error(error);return;} $('projects-list').innerHTML=arr(data).map(x=>`<div class="admin-list-item"><h3>${esc(x.title)}</h3><p>${esc(x.description||'')}</p><p class="muted">Status: ${esc(x.status||'')}</p><div class="admin-actions"><button class="admin-btn" onclick="editProject('${x.id}')">Edit</button>${publishButton('toggleProject',x.id,x.visibility||'published')}<button class="admin-btn danger" onclick="deleteProject('${x.id}')">Delete</button></div>${visibilityBadge(x.visibility||'published')}</div>`).join('');}
+    window.editProject=async id=>{const {data,error}=await supabaseClient.from('projects').select('*').eq('id',id).single();if(error)return alert(error.message);editing.project=id;set('project-title',data.title);set('project-description',data.description);set('project-start-date',data.start_date);set('project-end-date',data.end_date);set('project-tech-used',join(data.technologies));set('project-images',join(data.images));set('project-challenges',data.challenges);set('project-outcome',data.outcome);set('project-related',data.related);set('project-status',data.status||'idea');set('project-visibility',data.visibility||'published');$('project-image-file').value='';form('project-form');};
+    window.toggleProject=async(id,v)=>{const {error}=await supabaseClient.from('projects').update({visibility:v==='published'?'hidden':'published'}).eq('id',id);if(error)alert(error.message);else loadProjects();};
+    window.deleteProject=async id=>{if(!confirm('Delete this project?'))return;const {error}=await supabaseClient.from('projects').delete().eq('id',id);if(error)alert(error.message);else loadProjects();};
+
+    $('new-timeline-btn').onclick=()=>{editing.timeline=null;['timeline-date','timeline-title','timeline-description','timeline-type'].forEach(id=>set(id));set('timeline-visibility','published');form('timeline-form');};
+    $('save-timeline-btn').onclick=async()=>{const payload={date:$('timeline-date').value||null,title:val('timeline-title'),description:val('timeline-description'),type:val('timeline-type'),visibility:$('timeline-visibility').value};const {error}=editing.timeline?await supabaseClient.from('timeline').update(payload).eq('id',editing.timeline):await supabaseClient.from('timeline').insert(payload);if(error)return alert(error.message);editing.timeline=null;close('timeline-form');await loadTimeline();};
+    async function loadTimeline(){const {data,error}=await supabaseClient.from('timeline').select('*').order('date',{ascending:false});if(error){console.error(error);return;} $('timeline-list').innerHTML=arr(data).map(x=>`<div class="admin-list-item"><h3>${esc(x.title)}</h3><p>${esc(x.description||'')}</p><p class="muted">${esc(x.date||'')} · ${esc(x.type||'')}</p><div class="admin-actions"><button class="admin-btn" onclick="editTimeline('${x.id}')">Edit</button>${publishButton('toggleTimeline',x.id,x.visibility||'published')}<button class="admin-btn danger" onclick="deleteTimeline('${x.id}')">Delete</button></div>${visibilityBadge(x.visibility||'published')}</div>`).join('');}
+    window.editTimeline=async id=>{const {data,error}=await supabaseClient.from('timeline').select('*').eq('id',id).single();if(error)return alert(error.message);editing.timeline=id;set('timeline-date',data.date);set('timeline-title',data.title);set('timeline-description',data.description);set('timeline-type',data.type);set('timeline-visibility',data.visibility||'published');form('timeline-form');};
+    window.toggleTimeline=async(id,v)=>{const {error}=await supabaseClient.from('timeline').update({visibility:v==='published'?'hidden':'published'}).eq('id',id);if(error)alert(error.message);else loadTimeline();};
+    window.deleteTimeline=async id=>{if(!confirm('Delete this timeline entry?'))return;const {error}=await supabaseClient.from('timeline').delete().eq('id',id);if(error)alert(error.message);else loadTimeline();};
+
+    async function loadCurrently(){const {data,error}=await supabaseClient.from('currently').select('*').order('updated_at',{ascending:false}).limit(1).maybeSingle();if(error){console.error(error);return;} if(!data){currentlyId=null;set('currently-visibility','published'); if($('toggle-currently-btn'))$('toggle-currently-btn').textContent='Publish Currently';return;} currentlyId=data.id;set('currently-learning',data.learning);set('currently-building',data.building);set('currently-thinking',data.thinking);set('currently-visibility',data.visibility||'published'); if($('toggle-currently-btn'))$('toggle-currently-btn').textContent=(data.visibility||'published')==='published'?'Unpublish Currently':'Publish Currently';}
+    $('save-currently-btn').onclick=async()=>{const payload={learning:val('currently-learning'),building:val('currently-building'),thinking:val('currently-thinking'),visibility:$('currently-visibility').value};let result;if(currentlyId)result=await supabaseClient.from('currently').update(payload).eq('id',currentlyId);else result=await supabaseClient.from('currently').insert(payload).select().single();if(result.error)return alert(result.error.message);if(result.data?.id)currentlyId=result.data.id;await loadCurrently();};
+    $('edit-currently-btn').onclick=loadCurrently;
+    $('delete-currently-btn').onclick=async()=>{if(!currentlyId)return alert('No currently entry found.');if(!confirm('Delete the current entry?'))return;const {error}=await supabaseClient.from('currently').delete().eq('id',currentlyId);if(error)return alert(error.message);currentlyId=null;['currently-learning','currently-building','currently-thinking'].forEach(id=>set(id));set('currently-visibility','published');};
+    $('toggle-currently-btn').onclick=async()=>{if(!currentlyId)return alert('Save Currently first.');const current=$('currently-visibility').value;const {error}=await supabaseClient.from('currently').update({visibility:current==='published'?'hidden':'published'}).eq('id',currentlyId);if(error)alert(error.message);else await loadCurrently();};
+
+    $('new-achievement-btn').onclick=()=>{editing.achievement=null;['achievement-title','achievement-description','achievement-year'].forEach(id=>set(id));set('achievement-status','active');form('achievement-form');};
+    $('save-achievement-btn').onclick=async()=>{const payload={title:val('achievement-title'),description:val('achievement-description'),year:$('achievement-year').value?Number($('achievement-year').value):null,status:$('achievement-status').value};const {error}=editing.achievement?await supabaseClient.from('achievements').update(payload).eq('id',editing.achievement):await supabaseClient.from('achievements').insert(payload);if(error)return alert(error.message);editing.achievement=null;close('achievement-form');await loadAchievements();};
+    async function loadAchievements(){const {data,error}=await supabaseClient.from('achievements').select('*').order('year',{ascending:false});if(error){console.error(error);return;}$('achievements-list').innerHTML=arr(data).map(x=>`<div class="admin-list-item"><h3>${esc(x.title)}</h3><p>${esc(x.description||'')}</p><p class="muted">${esc(x.year||'')} · ${esc(x.status||'')}</p><div class="admin-actions"><button class="admin-btn" onclick="editAchievement('${x.id}')">Edit</button><button class="admin-btn secondary" onclick="toggleAchievement('${x.id}','${esc(x.status||'hidden')}')">${x.status==='active'?'Unpublish':'Publish'}</button><button class="admin-btn danger" onclick="deleteAchievement('${x.id}')">Delete</button></div></div>`).join('');}
+    window.editAchievement=async id=>{const {data,error}=await supabaseClient.from('achievements').select('*').eq('id',id).single();if(error)return alert(error.message);editing.achievement=id;set('achievement-title',data.title);set('achievement-description',data.description);set('achievement-year',data.year);set('achievement-status',data.status||'active');form('achievement-form');};
+    window.toggleAchievement=async(id,status)=>{const {error}=await supabaseClient.from('achievements').update({status:status==='active'?'hidden':'active'}).eq('id',id);if(error)alert(error.message);else loadAchievements();};
+    window.deleteAchievement=async id=>{if(!confirm('Delete this achievement?'))return;const {error}=await supabaseClient.from('achievements').delete().eq('id',id);if(error)alert(error.message);else loadAchievements();};
+
+    $('new-certificate-btn').onclick=()=>{editing.certificate=null;['certificate-title','certificate-description','certificate-year','certificate-image'].forEach(id=>set(id));$('certificate-image-file').value='';set('certificate-status','active');form('certificate-form');};
+    $('save-certificate-btn').onclick=async()=>{const b=$('save-certificate-btn');b.disabled=true;b.textContent='Saving...';try{let image=val('certificate-image');const f=$('certificate-image-file').files[0];if(f)image=await uploadPortfolioImage(f,'certificates');const payload={title:val('certificate-title'),description:val('certificate-description'),year:$('certificate-year').value?Number($('certificate-year').value):null,image,status:$('certificate-status').value};const q=editing.certificate?supabaseClient.from('certificates').update(payload).eq('id',editing.certificate):supabaseClient.from('certificates').insert(payload);const {error}=await q;if(error)throw error;editing.certificate=null;close('certificate-form');await loadCertificates();alert('Certificate saved successfully!');}catch(e){alert('Error saving certificate: '+e.message)}finally{setBtn(b,'Save Certificate');}};
+    async function loadCertificates(){const {data,error}=await supabaseClient.from('certificates').select('*').order('year',{ascending:false});if(error){console.error(error);return;}$('certificates-list').innerHTML=arr(data).map(x=>`<div class="admin-list-item"><h3>${esc(x.title)}</h3><p>${esc(x.description||'')}</p><p class="muted">${esc(x.year||'')} · ${esc(x.status||'')}</p><div class="admin-actions"><button class="admin-btn" onclick="editCertificate('${x.id}')">Edit</button><button class="admin-btn secondary" onclick="toggleCertificate('${x.id}','${esc(x.status||'hidden')}')">${x.status==='active'?'Unpublish':'Publish'}</button><button class="admin-btn danger" onclick="deleteCertificate('${x.id}')">Delete</button></div></div>`).join('');}
+    window.editCertificate=async id=>{const {data,error}=await supabaseClient.from('certificates').select('*').eq('id',id).single();if(error)return alert(error.message);editing.certificate=id;set('certificate-title',data.title);set('certificate-description',data.description);set('certificate-year',data.year);set('certificate-image',data.image);$('certificate-image-file').value='';set('certificate-status',data.status||'active');form('certificate-form');};
+    window.toggleCertificate=async(id,status)=>{const {error}=await supabaseClient.from('certificates').update({status:status==='active'?'hidden':'active'}).eq('id',id);if(error)alert(error.message);else loadCertificates();};
+    window.deleteCertificate=async id=>{if(!confirm('Delete this certificate?'))return;const {error}=await supabaseClient.from('certificates').delete().eq('id',id);if(error)alert(error.message);else loadCertificates();};
+
+    async function loadHomeCMS(){const {data,error}=await supabaseClient.from('home_content').select('*').limit(1).maybeSingle();if(error){console.error(error);return;}if(!data)return;set('home-small-title',data.small_title);set('home-name',data.name);set('home-headline',data.headline);set('home-hero-text',data.hero_text);set('home-button-text',data.button_text);set('home-button-link',data.button_link);set('home-status',data.status||'active'); $('toggle-home-btn').textContent=data.status==='active'?'Unpublish Home':'Publish Home';}
+    $('save-home-btn').onclick=async()=>{const payload={small_title:val('home-small-title'),name:val('home-name'),headline:val('home-headline'),hero_text:val('home-hero-text'),button_text:val('home-button-text'),button_link:val('home-button-link'),status:$('home-status').value};const {data:existing}=await supabaseClient.from('home_content').select('id').limit(1).maybeSingle();const {error}=existing?await supabaseClient.from('home_content').update(payload).eq('id',existing.id):await supabaseClient.from('home_content').insert(payload);if(error)return alert(error.message);await loadHomeCMS();};
+    $('toggle-home-btn').onclick=async()=>{const {data,error}=await supabaseClient.from('home_content').select('id,status').limit(1).maybeSingle();if(error)return alert(error.message);if(!data)return alert('Save Home first.');const {error:updateError}=await supabaseClient.from('home_content').update({status:data.status==='active'?'hidden':'active'}).eq('id',data.id);if(updateError)return alert(updateError.message);await loadHomeCMS();};
+
+    async function loadAboutCMS(){const {data,error}=await supabaseClient.from('about_content').select('*').limit(1).maybeSingle();if(error){console.error(error);return;}if(!data)return;set('about-section-title',data.section_title);set('about-heading',data.heading);set('about-paragraph1',data.paragraph1);set('about-paragraph2',data.paragraph2);set('about-paragraph3',data.paragraph3);set('about-department',data.department);set('about-university',data.university);set('about-interests',data.interests);set('about-photo',data.photo);set('about-tagline',data.tagline);set('about-status',data.status||'active'); $('toggle-about-btn').textContent=data.status==='active'?'Unpublish About':'Publish About';}
+    $('save-about-btn').onclick=async()=>{try{let photo=val('about-photo');const f=$('about-photo-file').files[0];if(f)photo=await uploadPortfolioImage(f,'profile');const payload={section_title:val('about-section-title'),heading:val('about-heading'),paragraph1:val('about-paragraph1'),paragraph2:val('about-paragraph2'),paragraph3:val('about-paragraph3'),department:val('about-department'),university:val('about-university'),interests:val('about-interests'),photo,tagline:val('about-tagline'),status:$('about-status').value};const {data:existing}=await supabaseClient.from('about_content').select('id').limit(1).maybeSingle();const {error}=existing?await supabaseClient.from('about_content').update(payload).eq('id',existing.id):await supabaseClient.from('about_content').insert(payload);if(error)throw error;await loadAboutCMS();alert('About saved successfully!');}catch(e){alert('Error saving About: '+e.message)}};
+    $('toggle-about-btn').onclick=async()=>{const {data,error}=await supabaseClient.from('about_content').select('id,status').limit(1).maybeSingle();if(error)return alert(error.message);if(!data)return alert('Save About first.');const {error:updateError}=await supabaseClient.from('about_content').update({status:data.status==='active'?'hidden':'active'}).eq('id',data.id);if(updateError)return alert(updateError.message);await loadAboutCMS();};
+
+    $('new-education-btn').onclick=()=>{editing.education=null;['education-degree','education-university','education-session'].forEach(id=>set(id));set('education-status','active');set('education-visibility','published');form('education-form');};
+    $('save-education-btn').onclick=async()=>{const payload={degree:val('education-degree'),university:val('education-university'),session:val('education-session'),status:$('education-status').value,visibility:$('education-visibility').value};const {error}=editing.education?await supabaseClient.from('education').update(payload).eq('id',editing.education):await supabaseClient.from('education').insert(payload);if(error)return alert(error.message);editing.education=null;close('education-form');loadEducationCMS();};
+    async function loadEducationCMS(){const {data,error}=await supabaseClient.from('education').select('*').order('created_at',{ascending:false});if(error){console.error(error);return;}$('education-list').innerHTML=arr(data).map(x=>`<div class="admin-list-item"><h3>${esc(x.degree||'')}</h3><p>${esc(x.university||'')}</p><p class="muted">${esc(x.session||'')} · ${esc(x.status||'')}</p><div class="admin-actions"><button class="admin-btn" onclick="editEducation('${x.id}')">Edit</button>${publishButton('toggleEducation',x.id,x.visibility||'published')}<button class="admin-btn danger" onclick="deleteEducation('${x.id}')">Delete</button></div>${visibilityBadge(x.visibility||'published')}</div>`).join('');}
+    window.editEducation=async id=>{const {data,error}=await supabaseClient.from('education').select('*').eq('id',id).single();if(error)return alert(error.message);editing.education=id;set('education-degree',data.degree);set('education-university',data.university);set('education-session',data.session);set('education-status',data.status||'active');set('education-visibility',data.visibility||'published');form('education-form');};
+    window.toggleEducation=async(id,v)=>{const {error}=await supabaseClient.from('education').update({visibility:v==='published'?'hidden':'published'}).eq('id',id);if(error)alert(error.message);else loadEducationCMS();};
+    window.deleteEducation=async id=>{if(!confirm('Delete this education entry?'))return;const {error}=await supabaseClient.from('education').delete().eq('id',id);if(error)alert(error.message);else loadEducationCMS();};
+
+    $('new-skill-btn').onclick=()=>{editing.skill=null;['skill-name','skill-percentage','skill-class'].forEach(id=>set(id));set('skill-status','active');set('skill-visibility','published');form('skill-form');};
+    $('save-skill-btn').onclick=async()=>{const payload={name:val('skill-name'),percentage:Math.max(0,Math.min(100,Number($('skill-percentage').value)||0)),skill_class:val('skill-class'),status:$('skill-status').value,visibility:$('skill-visibility').value};const {error}=editing.skill?await supabaseClient.from('skills').update(payload).eq('id',editing.skill):await supabaseClient.from('skills').insert(payload);if(error)return alert(error.message);editing.skill=null;close('skill-form');loadSkillsCMS();};
+    async function loadSkillsCMS(){const {data,error}=await supabaseClient.from('skills').select('*').order('created_at',{ascending:false});if(error){console.error(error);return;}$('skills-list').innerHTML=arr(data).map(x=>`<div class="admin-list-item"><h3>${esc(x.name)}</h3><p class="muted">${Number(x.percentage)||0}% · ${esc(x.status||'')}</p><div class="admin-actions"><button class="admin-btn" onclick="editSkill('${x.id}')">Edit</button>${publishButton('toggleSkill',x.id,x.visibility||'published')}<button class="admin-btn danger" onclick="deleteSkill('${x.id}')">Delete</button></div>${visibilityBadge(x.visibility||'published')}</div>`).join('');}
+    window.editSkill=async id=>{const {data,error}=await supabaseClient.from('skills').select('*').eq('id',id).single();if(error)return alert(error.message);editing.skill=id;set('skill-name',data.name);set('skill-percentage',data.percentage);set('skill-class',data.skill_class);set('skill-status',data.status||'active');set('skill-visibility',data.visibility||'published');form('skill-form');};
+    window.toggleSkill=async(id,v)=>{const {error}=await supabaseClient.from('skills').update({visibility:v==='published'?'hidden':'published'}).eq('id',id);if(error)alert(error.message);else loadSkillsCMS();};
+    window.deleteSkill=async id=>{if(!confirm('Delete this skill?'))return;const {error}=await supabaseClient.from('skills').delete().eq('id',id);if(error)alert(error.message);else loadSkillsCMS();};
+
+    $('new-contact-btn').onclick=()=>{editing.contact=null;['contact-icon','contact-title','contact-description','contact-link-text','contact-link-url','contact-sort-order'].forEach(id=>set(id));set('contact-status','active');set('contact-visibility','published');form('contact-form');};
+    $('save-contact-btn').onclick=async()=>{const payload={icon:val('contact-icon'),title:val('contact-title'),description:val('contact-description'),link_text:val('contact-link-text'),link_url:val('contact-link-url'),sort_order:Number($('contact-sort-order').value)||0,status:$('contact-status').value,visibility:$('contact-visibility').value};const {error}=editing.contact?await supabaseClient.from('contact').update(payload).eq('id',editing.contact):await supabaseClient.from('contact').insert(payload);if(error)return alert(error.message);editing.contact=null;close('contact-form');loadContactsCMS();};
+    async function loadContactsCMS(){const {data,error}=await supabaseClient.from('contact').select('*').order('sort_order',{ascending:true});if(error){console.error(error);return;}$('contact-list').innerHTML=arr(data).map(x=>`<div class="admin-list-item"><h3>${esc(x.icon||'')} ${esc(x.title||'')}</h3><p>${esc(x.description||'')}</p><p class="muted">${esc(x.status||'')}</p><div class="admin-actions"><button class="admin-btn" onclick="editContact('${x.id}')">Edit</button>${publishButton('toggleContact',x.id,x.visibility||'published')}<button class="admin-btn danger" onclick="deleteContact('${x.id}')">Delete</button></div>${visibilityBadge(x.visibility||'published')}</div>`).join('');}
+    window.editContact=async id=>{const {data,error}=await supabaseClient.from('contact').select('*').eq('id',id).single();if(error)return alert(error.message);editing.contact=id;set('contact-icon',data.icon);set('contact-title',data.title);set('contact-description',data.description);set('contact-link-text',data.link_text);set('contact-link-url',data.link_url);set('contact-sort-order',data.sort_order);set('contact-status',data.status||'active');set('contact-visibility',data.visibility||'published');form('contact-form');};
+    window.toggleContact=async(id,v)=>{const {error}=await supabaseClient.from('contact').update({visibility:v==='published'?'hidden':'published'}).eq('id',id);if(error)alert(error.message);else loadContactsCMS();};
+    window.deleteContact=async id=>{if(!confirm('Delete this contact item?'))return;const {error}=await supabaseClient.from('contact').delete().eq('id',id);if(error)alert(error.message);else loadContactsCMS();};
+
+    $('login-form').addEventListener('submit',async e=>{e.preventDefault();showMessage('Logging in...');const email=val('email'),password=$('password').value;const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});if(error)return showMessage(error.message,true);const {data:adminRow,error:adminError}=await supabaseClient.from('admins').select('user_id').eq('user_id',data.user.id).maybeSingle();if(adminError||!adminRow){await supabaseClient.auth.signOut();return showMessage('You are not authorized as an admin.',true);}showMessage('Login successful!');openAdmin();await loadAll();});
+    $('logout-btn').onclick=async()=>{await supabaseClient.auth.signOut();openLogin();showMessage('Logged out.');};
+
+    async function loadAll(){if(started)return;started=true;await Promise.all([loadPosts(),loadLearning(),loadResearch(),loadGoals(),loadProjects(),loadTimeline(),loadCurrently(),loadAchievements(),loadCertificates(),loadHomeCMS(),loadAboutCMS(),loadEducationCMS(),loadSkillsCMS(),loadContactsCMS()]);}
+    supabaseClient.auth.getSession().then(async()=>{const session=await requireSession();if(session){openAdmin();await loadAll();}});
+    supabaseClient.auth.onAuthStateChange(async(event,session)=>{if(event==='SIGNED_OUT'){started=false;openLogin();return;}if(session){const ok=await requireSession();if(ok){openAdmin();await loadAll();}}});
+})();
+</script>
+</body>
+</html>
