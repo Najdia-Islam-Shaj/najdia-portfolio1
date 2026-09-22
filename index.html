@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to my Journey | Najdia Islam Shaj</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .journal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:25px;margin-top:30px}
+        .journal-card{background:#fff;border:1px solid #e5e7eb;border-radius:15px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,.07);padding:24px}
+        .journal-card h3{color:#182848;margin:8px 0 10px}
+        .journal-card p{color:#666;margin-bottom:12px}
+        .journal-meta{font-size:13px;color:#0284c7;font-weight:700;margin-bottom:8px}
+        .journal-card img{width:100%;max-height:280px;object-fit:cover;border-radius:12px;margin-bottom:14px}.journal-link{display:inline-block;margin-top:10px;background:#182848;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:13px;font-weight:700}
+        .timeline-list{display:grid;gap:18px;margin-top:30px}
+        .timeline-item{background:#f8fafc;border:1px solid #e5e7eb;border-radius:15px;padding:22px}
+        .timeline-item h3{color:#182848;margin:5px 0 8px}
+        .timeline-date{color:#0284c7;font-size:13px;font-weight:700}
+        .currently-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+        .currently-card{background:#f8fafc;border:1px solid #e5e7eb;border-radius:15px;padding:25px;text-align:center}
+        .currently-card h3{color:#182848;margin-bottom:8px}
+        .currently-card p{color:#666}
+        .empty-state{color:#666;text-align:center;padding:20px}
+        @media(max-width:900px){.journal-grid{grid-template-columns:1fr}.currently-grid{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">Najdia.</div>
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#learning">Learning</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#journal">Journal</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#currently">Currently</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#research">Research</a>
+        <a href="#goals">Goals</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<header id="home">
+    <div class="hero-content">
+        <p class="small-title" id="home-small-title">Welcome to my Journey</p>
+        <h1>Hi, I'm <span id="home-name">Najdia Islam Shaj</span></h1>
+        <h2 id="home-headline">Electrical and Electronic Engineering Student</h2>
+        <p class="hero-text" id="home-hero-text">Learning. Building. Researching. Growing.</p>
+        <a href="#about" class="hero-button" id="home-button">Welcome to my Journey</a>
+    </div>
+</header>
+
+<section id="about">
+    <div class="about-container">
+        <div class="about-text">
+            <p class="section-title" id="about-section-title">ABOUT ME</p>
+            <h2 id="about-heading">Who Am I?</h2>
+            <p id="about-paragraph1">Hello! I am Najdia Islam Shaj, an Electrical and Electronic Engineering student at Jamalpur Science & Technology Univarsity , Jamalpur.</p>
+            <p id="about-paragraph2">I am passionate about technology, programming, engineering projects and research. I enjoy learning new things and trying to turn my knowledge into practical projects.</p>
+            <p id="about-paragraph3">Currently, I am exploring Python, Machine Learning, Deep Learning, Web Development and COMSOL.</p>
+            <div class="about-info">
+                <div><strong>🎓 Department</strong><span id="about-department">Electrical and Electronic Engineering</span></div>
+                <div><strong>🏫 University</strong><span id="about-university">Jamalpur Science & Technology Univarsity , Jamalpur</span></div>
+                <div><strong>🔬 Interests</strong><span id="about-interests">AI, ML, Communication & Research</span></div>
+            </div>
+        </div>
+        <div class="about-photo">
+            <div class="photo-placeholder"><img id="about-photo" src="profile.jpg.jpeg" alt="Najdia Islam Shaj"></div>
+            <p id="about-tagline">EEE Student • Research Enthusiast</p>
+        </div>
+    </div>
+</section>
+
+<section id="education">
+    <h2>Education</h2>
+    <div id="education-content">
+        <h3>B.Sc. in Electrical and Electronic Engineering</h3>
+        <p>Jamalpur Science & Technology Univarsity , Jamalpur</p>
+        <p>Session: 2022-2023</p>
+    </div>
+</section>
+
+<section id="learning">
+    <p class="section-title">MY LEARNING</p>
+    <h2>What I'm Learning</h2>
+    <p class="section-description">I am continuously learning new technologies and developing my technical skills step by step.</p>
+    <div class="learning-grid" id="learning-grid">
+        <div class="learning-card"><div class="learning-icon">🐍</div><h3>Python</h3><p>Learning Python programming, basic coding, loops, functions and numerical methods.</p><span class="learning-status">Currently Learning</span></div>
+        <div class="learning-card"><div class="learning-icon">🤖</div><h3>Machine Learning</h3><p>Exploring machine learning concepts, regression and data analysis.</p><span class="learning-status">Currently Learning</span></div>
+        <div class="learning-card"><div class="learning-icon">🔬</div><h3>Research</h3><p>Learning research methodology, paper reading and research writing.</p><span class="learning-status">Exploring</span></div>
+        <div class="learning-card"><div class="learning-icon">🌐</div><h3>Web Development</h3><p>Learning HTML and CSS to build my own personal websites and projects.</p><span class="learning-status">Currently Learning</span></div>
+        <div class="learning-card"><div class="learning-icon">🧠</div><h3>Deep Learning</h3><p>Exploring the fundamentals of deep learning and its applications.</p><span class="learning-status">Exploring</span></div>
+        <div class="learning-card"><div class="learning-icon">⚡</div><h3>COMSOL</h3><p>Learning simulation and multiphysics modelling for engineering applications.</p><span class="learning-status">Learning</span></div>
+    </div>
+</section>
+
+<section id="skills">
+    <p class="section-title">MY SKILLS</p>
+    <h2>What I Can Do</h2>
+    <p class="section-description">These are some of the technical and personal skills I am developing throughout my engineering journey.</p>
+    <div class="skills-container" id="skills-container">
+        <div class="skill"><div class="skill-info"><span>Python</span><span>50%</span></div><div class="skill-bar"><div class="skill-progress python"></div></div></div>
+        <div class="skill"><div class="skill-info"><span>HTML & Web Development</span><span>60%</span></div><div class="skill-bar"><div class="skill-progress html"></div></div></div>
+        <div class="skill"><div class="skill-info"><span>Research</span><span>45%</span></div><div class="skill-bar"><div class="skill-progress research"></div></div></div>
+        <div class="skill"><div class="skill-info"><span>Electrical Engineering</span><span>70%</span></div><div class="skill-bar"><div class="skill-progress engineering"></div></div></div>
+        <div class="skill"><div class="skill-info"><span>Presentation</span><span>75%</span></div><div class="skill-bar"><div class="skill-progress presentation"></div></div></div>
+        <div class="skill"><div class="skill-info"><span>Problem Solving</span><span>65%</span></div><div class="skill-bar"><div class="skill-progress problem-solving"></div></div></div>
+    </div>
+</section>
+
+<section id="projects">
+    <p class="section-title">MY PROJECTS</p>
+    <h2>Things I Have Built</h2>
+    <p class="section-description">Here are some of the engineering projects I have completed and the projects I am currently working on.</p>
+    <h3 class="project-category">Completed Projects</h3>
+    <div class="project-grid" id="completed-project-grid">
+        <div class="project-card"><div class="project-image matlab-image">MATLAB</div><div class="project-content"><span class="project-type">Group Project</span><h3>MATLAB Simulation Project</h3><p>A simulation-based engineering project developed using MATLAB as part of a group project.</p><span class="project-status completed">✓ Completed</span></div></div>
+        <div class="project-card"><div class="project-image autocad-image">AutoCAD</div><div class="project-content"><span class="project-type">Design Based</span><h3>AutoCAD Design Project</h3><p>A design-based engineering project developed using AutoCAD.</p><span class="project-status completed">✓ Completed</span></div></div>
+        <div class="project-card"><div class="project-image led-image">LED</div><div class="project-content"><span class="project-type">Group Project</span><h3>4×4×4 LED Cube Light</h3><p>An Arduino Uno based LED cube project designed and developed as a group project.</p><span class="project-status completed">✓ Completed</span></div></div>
+        <div class="project-card"><div class="project-image braking-image">BRAKING</div><div class="project-content"><span class="project-type">Group Project</span><h3>Regenerative Braking System</h3><p>A project focused on recovering energy during braking and converting it into useful electrical energy.</p><span class="project-status completed">✓ Completed</span></div></div>
+    </div>
+    <h3 class="project-category">Currently Working On</h3>
+    <div class="project-grid" id="ongoing-project-grid">
+        <div class="project-card ongoing-card"><div class="project-image ongoing-image">🔧</div><div class="project-content"><span class="project-type">Group Project</span><h3>Ongoing Group Project 01</h3><p>Currently under development. Project details will be added soon.</p><span class="project-status ongoing">⟳ In Progress</span></div></div>
+        <div class="project-card ongoing-card"><div class="project-image ongoing-image">⚙️</div><div class="project-content"><span class="project-type">Group Project</span><h3>Ongoing Group Project 02</h3><p>Currently under development. Project details will be added soon.</p><span class="project-status ongoing">⟳ In Progress</span></div></div>
+        <div class="project-card personal-card"><div class="project-image website-image">🌐</div><div class="project-content"><span class="project-type">Personal Project</span><h3>My Engineering Journey</h3><p>A personal portfolio website documenting my learning journey, projects, achievements and goals.</p><span class="project-status ongoing">⟳ Currently Building</span></div></div>
+    </div>
+</section>
+
+<section id="journal">
+    <p class="section-title">JOURNAL</p>
+    <h2>Posts & Journal</h2>
+    <p class="section-description">Notes, learning updates and reflections from my engineering journey.</p>
+    <div class="journal-grid" id="posts-grid">
+        <div class="journal-card"><p class="empty-state">No published journal posts yet.</p></div>
+    </div>
+</section>
+
+<section id="timeline">
+    <p class="section-title">MY TIMELINE</p>
+    <h2>Journey Timeline</h2>
+    <div class="timeline-list" id="timeline-list">
+        <div class="timeline-item"><p class="empty-state">No timeline entries yet.</p></div>
+    </div>
+</section>
+
+<section id="currently">
+    <p class="section-title">CURRENTLY</p>
+    <h2>What I'm Doing Now</h2>
+    <div class="currently-grid" id="currently-grid">
+        <div class="currently-card"><h3>📚 Learning</h3><p>Exploring new skills and technologies.</p></div>
+        <div class="currently-card"><h3>🛠 Building</h3><p>Working on practical engineering projects.</p></div>
+        <div class="currently-card"><h3>💭 Thinking</h3><p>Exploring research ideas and future goals.</p></div>
+    </div>
+</section>
+
+<section id="achievements">
+    <p class="section-title">MY ACHIEVEMENTS</p>
+    <h2>Milestones Along My Journey</h2>
+    <p class="section-description">Every achievement is a small step forward in my academic and engineering journey.</p>
+    <div class="achievement-grid" id="achievement-grid">
+        <div class="achievement-card"><div class="achievement-icon">🏆</div><div><span class="achievement-year">2026</span><h3>IEEE Membership</h3><p>Became a member of IEEE and started exploring professional and technical opportunities.</p></div></div>
+        <div class="achievement-card"><div class="achievement-icon">🧠</div><div><span class="achievement-year">2026</span><h3>Deep Learning & Explainable AI Training</h3><p>Completed a 3-Day Hands-on Training Program focused on research, deep learning and explainable AI.</p></div></div>
+        <div class="achievement-card"><div class="achievement-icon">🔬</div><div><span class="achievement-year">2026</span><h3>Started Research Journey</h3><p>Started learning research methodology, research paper reading and technical writing.</p></div></div>
+        <div class="achievement-card"><div class="achievement-icon">💻</div><div><span class="achievement-year">2026</span><h3>Started Programming Journey</h3><p>Started learning Python programming, numerical methods and basic data analysis.</p></div></div>
+    </div>
+</section>
+
+<section id="certificates">
+    <p class="section-title">MY CERTIFICATES</p>
+    <h2>Certificates & Training</h2>
+    <p class="section-description">Some of the training programs and learning experiences I have completed.</p>
+    <div class="certificate-grid" id="certificate-grid">
+        <div class="certificate-card"><div class="certificate-placeholder">🎓</div><div class="certificate-content"><h3>Deep Learning & Explainable AI</h3><p>3-Day Hands-on Training Program</p><span>2026</span></div></div>
+        <div class="certificate-card"><div class="certificate-placeholder">🎓</div><div class="certificate-content"><h3>More Certificates</h3><p>New certificates will be added here as I continue learning.</p><span>Coming Soon</span></div></div>
+    </div>
+</section>
+
+<section id="research">
+    <p class="section-title">RESEARCH</p>
+    <h2>Research Interests</h2>
+    <ul id="research-list">
+        <li>Artificial Intelligence</li><li>Machine Learning</li><li>Deep Learning</li><li>Communication Systems</li><li>Optical Fiber</li>
+    </ul>
+</section>
+
+<section id="goals">
+    <p class="section-title">FUTURE GOALS</p>
+    <h2>Future Goals</h2>
+    <ul id="goals-list">
+        <li>Publish a research paper</li><li>Build practical engineering projects</li><li>Improve programming skills</li><li>Learn advanced AI and Machine Learning</li>
+    </ul>
+</section>
+
+<section id="contact">
+    <p class="section-title">GET IN TOUCH</p>
+    <h2>Let's Connect</h2>
+    <p class="section-description">I am always interested in learning, collaborating, discussing engineering ideas and exploring new opportunities.</p>
+    <div class="contact-container" id="contact-container">
+        <div class="contact-card"><div class="contact-icon">📧</div><h3>Email</h3><p>najdiyaislam007@email.com</p><a href="mailto:najdiyaislam007@email.com">Send Email</a></div>
+        <div class="contact-card"><div class="contact-icon">💼</div><h3>LinkedIn</h3><p>Connect with me professionally</p><a href="https://www.linkedin.com/in/najdia-islam-shaj-1a40573aa" target="_blank" rel="noopener">View Profile</a></div>
+        <div class="contact-card"><div class="contact-icon">💻</div><h3>GitHub</h3><p>Explore my projects and code</p><a href="https://github.com/Najdia-Islam-Shaj/najdia-portfolio1" target="_blank" rel="noopener">View GitHub</a></div>
+    </div>
+</section>
+
+<footer><p>© 2026 Najdia Islam Shaj | My Engineering Journey</p></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<script>
+(function(){
+    const $ = id => document.getElementById(id);
+    const toArray = value => Array.isArray(value) ? value : [];
+    const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+    const url = value => {
+        const x = String(value || '').trim();
+        return (/^(https?:\/\/|mailto:|tel:|#|\/|\.\/)/i.test(x)) ? x : '#';
+    };
+    const visible = item => item && item.visibility !== 'hidden' && item.visibility !== 'unpublished';
+    const setDisplay = (id, show) => { const e=$(id); if(e) e.style.display = show ? '' : 'none'; };
+    const showEmpty = (id, text) => { const e=$(id); if(e) e.innerHTML = `<div class="empty-state">${esc(text)}</div>`; };
+    const projectClass = title => { const t=String(title||'').toLowerCase(); if(t.includes('matlab'))return 'matlab-image'; if(t.includes('autocad'))return 'autocad-image'; if(t.includes('led'))return 'led-image'; if(t.includes('braking'))return 'braking-image'; if(t.includes('engineering journey')||t.includes('website'))return 'website-image'; return 'ongoing-image'; };
+    const learningIcon = title => { const t=String(title||'').toLowerCase(); if(t.includes('python'))return '🐍'; if(t.includes('machine'))return '🤖'; if(t.includes('research'))return '🔬'; if(t.includes('web'))return '🌐'; if(t.includes('deep'))return '🧠'; if(t.includes('comsol'))return '⚡'; return '📘'; };
+    const img = (src, alt) => `<img src="${esc(src)}" alt="${esc(alt)}" onerror="this.style.display='none'">`;
+
+    async function read(table, builder){
+        let q = supabaseClient.from(table).select('*');
+        if(builder) q = builder(q);
+        return await q;
+    }
+
+    async function loadHome(){
+        const {data,error}=await read('home_content',q=>q.eq('status','active').order('updated_at',{ascending:false}).limit(1).maybeSingle());
+        if(error){console.error('Home:',error);return;}
+        if(!data){setDisplay('home',false);return;}
+        $('home-small-title').textContent=data.small_title||'';
+        $('home-name').textContent=data.name||'';
+        $('home-headline').textContent=data.headline||'';
+        $('home-hero-text').textContent=data.hero_text||'';
+        const b=$('home-button'); b.textContent=data.button_text||''; b.href=url(data.button_link||'#about');
+    }
+
+    async function loadAbout(){
+        const {data,error}=await read('about_content',q=>q.eq('status','active').order('updated_at',{ascending:false}).limit(1).maybeSingle());
+        if(error){console.error('About:',error);return;}
+        if(!data){setDisplay('about',false);return;}
+        const map={
+            'about-section-title':'section_title','about-heading':'heading','about-paragraph1':'paragraph1','about-paragraph2':'paragraph2','about-paragraph3':'paragraph3',
+            'about-department':'department','about-university':'university','about-interests':'interests','about-tagline':'tagline'
+        };
+        Object.entries(map).forEach(([id,key])=>{if($(id))$(id).textContent=data[key]||'';});
+        if(data.photo)$('about-photo').src=data.photo;
+    }
+
+    async function loadEducation(){
+        const {data,error}=await read('education',q=>q.order('created_at',{ascending:false}));
+        if(error){console.error('Education:',error);return;}
+        const rows=toArray(data).filter(x=>visible(x)&&x.status!=='hidden'&&x.status!=='inactive');
+        if(!rows.length){setDisplay('education',false);return;}
+        $('education-content').innerHTML=rows.map(x=>`<div class="education-item"><h3>${esc(x.degree||'')}</h3><p>${esc(x.university||'')}</p><p>Session: ${esc(x.session||'')}</p></div>`).join('');
+    }
+
+    async function loadLearning(){
+        const {data,error}=await read('learning',q=>q.order('created_at',{ascending:false}));
+        if(error){console.error('Learning:',error);return;}
+        const rows=toArray(data).filter(visible);
+        if(!rows.length){setDisplay('learning',false);return;}
+        $('learning-grid').innerHTML=rows.map(x=>`<div class="learning-card"><div class="learning-icon">${learningIcon(x.title)}</div><h3>${esc(x.title)}</h3><p>${esc(x.note||'')}</p><span class="learning-status">${esc(x.status||'')}</span></div>`).join('');
+    }
+
+    async function loadSkills(){
+        const {data,error}=await read('skills',q=>q.order('created_at',{ascending:false}));
+        if(error){console.error('Skills:',error);return;}
+        const rows=toArray(data).filter(x=>visible(x)&&x.status!=='hidden'&&x.status!=='inactive');
+        if(!rows.length){setDisplay('skills',false);return;}
+        $('skills-container').innerHTML=rows.map(x=>{const pct=Math.max(0,Math.min(100,Number(x.percentage)||0)); return `<div class="skill"><div class="skill-info"><span>${esc(x.name)}</span><span>${pct}%</span></div><div class="skill-bar"><div class="skill-progress" style="width:${pct}%"></div></div></div>`;}).join('');
+    }
+
+    function projectCard(x){
+        const status=x.status||'idea';
+        const label=status==='completed'?'✓ Completed':status==='in_progress'?'⟳ In Progress':status.replace(/_/g,' ');
+        const image=toArray(x.images)[0];
+        return `<div class="project-card"><div class="project-image ${projectClass(x.title)}">${image && /^https?:\/\//i.test(image)?img(image,x.title):'🔧'}</div><div class="project-content"><span class="project-type">Project</span><h3>${esc(x.title)}</h3><p>${esc(x.description||'')}</p><span class="project-status ${status==='completed'?'completed':'ongoing'}">${esc(label)}</span></div></div>`;
+    }
+
+    async function loadProjects(){
+        const {data,error}=await read('projects',q=>q.order('created_at',{ascending:false}));
+        if(error){console.error('Projects:',error);return;}
+        const rows=toArray(data).filter(x=>visible(x)&&x.status!=='archived');
+        if(!rows.length){setDisplay('projects',false);return;}
+        const completed=rows.filter(x=>x.status==='completed');
+        const ongoing=rows.filter(x=>x.status!=='completed');
+        $('completed-project-grid').innerHTML=completed.length?completed.map(projectCard).join(''):'<p class="empty-state">No completed projects yet.</p>';
+        $('ongoing-project-grid').innerHTML=ongoing.length?ongoing.map(projectCard).join(''):'<p class="empty-state">No ongoing projects yet.</p>';
+    }
+
+    async function loadPosts(){
+        const {data,error}=await read('posts',q=>q.eq('status','published').order('date',{ascending:false}).order('created_at',{ascending:false}));
+        if(error){console.error('Posts:',error);return;}
+        const rows=toArray(data);
+        if(!rows.length){showEmpty('posts-grid','No published journal posts yet.');return;}
+        $('posts-grid').innerHTML=rows.map(p=>`<article class="journal-card">${p.image && /^https?:\/\//i.test(p.image)?img(p.image,p.title):''}<div class="journal-meta">${esc(p.date||'')} ${toArray(p.tags).length?' · '+esc(toArray(p.tags).join(', ')):''}</div><h3>${esc(p.title||'Untitled')}</h3><p>${esc(p.summary||'')}</p>${p.body?`<p>${esc(String(p.body).slice(0,260))}${String(p.body).length>260?'…':''}</p>`:''}</article>`).join('');
+    }
+
+    async function loadTimeline(){
+        const {data,error}=await read('timeline',q=>q.order('date',{ascending:false}).order('created_at',{ascending:false}));
+        if(error){console.error('Timeline:',error);return;}
+        const rows=toArray(data).filter(visible);
+        if(!rows.length){showEmpty('timeline-list','No timeline entries yet.');return;}
+        $('timeline-list').innerHTML=rows.map(x=>`<article class="timeline-item"><div class="timeline-date">${esc(x.date||'')}</div><h3>${esc(x.title||'')}</h3><p>${esc(x.description||'')}</p>${x.type?`<span class="learning-status">${esc(x.type)}</span>`:''}</article>`).join('');
+    }
+
+    async function loadCurrently(){
+        const {data,error}=await read('currently',q=>q.order('updated_at',{ascending:false}).limit(1).maybeSingle());
+        if(error){console.error('Currently:',error);return;}
+        if(!data||!visible(data)){setDisplay('currently',false);return;}
+        $('currently-grid').innerHTML=`<div class="currently-card"><h3>📚 Learning</h3><p>${esc(data.learning||'')}</p></div><div class="currently-card"><h3>🛠 Building</h3><p>${esc(data.building||'')}</p></div><div class="currently-card"><h3>💭 Thinking</h3><p>${esc(data.thinking||'')}</p></div>`;
+    }
+
+    async function loadAchievements(){
+        const {data,error}=await read('achievements',q=>q.eq('status','active').order('year',{ascending:false}));
+        if(error){console.error('Achievements:',error);return;}
+        const rows=toArray(data); if(!rows.length){setDisplay('achievements',false);return;}
+        $('achievement-grid').innerHTML=rows.map(x=>`<div class="achievement-card"><div class="achievement-icon">🏆</div><div><span class="achievement-year">${esc(x.year||'')}</span><h3>${esc(x.title||'')}</h3><p>${esc(x.description||'')}</p></div></div>`).join('');
+    }
+
+    async function loadCertificates(){
+        const {data,error}=await read('certificates',q=>q.eq('status','active').order('year',{ascending:false}));
+        if(error){console.error('Certificates:',error);return;}
+        const rows=toArray(data); if(!rows.length){setDisplay('certificates',false);return;}
+        $('certificate-grid').innerHTML=rows.map(x=>`<div class="certificate-card"><div class="certificate-placeholder">${x.image&&/^https?:\/\//i.test(x.image)?img(x.image,x.title):'🎓'}</div><div class="certificate-content"><h3>${esc(x.title||'')}</h3><p>${esc(x.description||'')}</p><span>${esc(x.year||'')}</span></div></div>`).join('');
+    }
+
+    async function loadResearch(){
+        const {data,error}=await read('research',q=>q.order('created_at',{ascending:false}));
+        if(error){console.error('Research:',error);return;}
+        const rows=toArray(data).filter(x=>visible(x)&&x.status!=='hidden'&&x.status!=='inactive'); if(!rows.length){setDisplay('research',false);return;}
+        $('research-list').innerHTML=rows.map(x=>`<li>${esc(x.interest||'')}</li>`).join('');
+    }
+
+    async function loadGoals(){
+        const {data,error}=await read('goals',q=>q.order('created_at',{ascending:false}));
+        if(error){console.error('Goals:',error);return;}
+        const rows=toArray(data).filter(x=>visible(x)&&x.status!=='archived'); if(!rows.length){setDisplay('goals',false);return;}
+        $('goals-list').innerHTML=rows.map(x=>`<li><strong>${esc(x.title||'')}</strong>${x.description?` — ${esc(x.description)}`:''}</li>`).join('');
+    }
+
+    async function loadContact(){
+        const {data,error}=await read('contact',q=>q.order('sort_order',{ascending:true}));
+        if(error){console.error('Contact:',error);return;}
+        const rows=toArray(data).filter(x=>visible(x)&&x.status!=='hidden'&&x.status!=='inactive'); if(!rows.length){setDisplay('contact',false);return;}
+        $('contact-container').innerHTML=rows.map(x=>`<div class="contact-card"><div class="contact-icon">${esc(x.icon||'🔗')}</div><h3>${esc(x.title||'')}</h3><p>${esc(x.description||'')}</p><a href="${esc(url(x.link_url))}" ${/^https?:\/\//i.test(x.link_url||'')?'target="_blank" rel="noopener"':''}>${esc(x.link_text||'Open')}</a></div>`).join('');
+    }
+
+    async function init(){
+        if(!window.supabaseClient)return;
+        await Promise.allSettled([loadHome(),loadAbout(),loadEducation(),loadLearning(),loadSkills(),loadProjects(),loadPosts(),loadTimeline(),loadCurrently(),loadAchievements(),loadCertificates(),loadResearch(),loadGoals(),loadContact()]);
+    }
+    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+</body>
+</html>
