@@ -870,6 +870,23 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Honors & Achievements -->
+            <div style="margin-top: 48px;" id="achievements-section">
+                <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 20px;">Honors & Achievements</h3>
+                <div class="sub-grid-3" id="achievements-container">
+                    <div class="clean-card">
+                        <span style="font-size: 0.78rem; color: var(--accent-gold); font-weight: 600;">2026</span>
+                        <h4 style="font-family: var(--font-serif); font-size: 1.15rem; margin-top: 4px;">IEEE Membership</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 6px;">Active member of IEEE exploring technical symposiums and academic networking.</p>
+                    </div>
+                    <div class="clean-card">
+                        <span style="font-size: 0.78rem; color: var(--accent-gold); font-weight: 600;">2026</span>
+                        <h4 style="font-family: var(--font-serif); font-size: 1.15rem; margin-top: 4px;">Hands-on Training in Deep Learning</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 6px;">3-Day specialized training program covering Explainable AI & Neural Networks.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- 03. FUTURE SECTION -->
@@ -1153,6 +1170,79 @@
             } catch(e) {}
         }
 
+        async function loadCertificates(){
+            try {
+                const sb = getClient(); if(!sb) return;
+                const {data} = await sb.from('certificates').select('*').neq('status','hidden').order('year',{ascending:false});
+                if(data && data.length){
+                    $('certificates-container').innerHTML = data.map(c => `
+                        <div class="clean-card" style="cursor: pointer;" onclick="alert('${esc(c.title)} (${esc(c.year||'')})\\n\\n${esc(c.description||'')}')">
+                            <span style="font-size: 0.78rem; color: var(--accent-gold); font-weight: 600;">${esc(c.year||'')}</span>
+                            <h4 style="font-family: var(--font-serif); font-size: 1.15rem; margin-top: 4px;">${esc(c.title)}</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 6px;">${esc(c.description||'')}</p>
+                        </div>
+                    `).join('');
+                }
+            } catch(e) {}
+        }
+
+        async function loadAchievements(){
+            try {
+                const sb = getClient(); if(!sb) return;
+                const {data} = await sb.from('achievements').select('*').neq('status','hidden').order('year',{ascending:false});
+                if(data && data.length && $('achievements-container')){
+                    $('achievements-container').innerHTML = data.map(a => `
+                        <div class="clean-card" style="cursor: pointer;" onclick="alert('${esc(a.title)} (${esc(a.year||'')})\\n\\n${esc(a.description||'')}')">
+                            <span style="font-size: 0.78rem; color: var(--accent-gold); font-weight: 600;">${esc(a.year||'')}</span>
+                            <h4 style="font-family: var(--font-serif); font-size: 1.15rem; margin-top: 4px;">${esc(a.title)}</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 6px;">${esc(a.description||'')}</p>
+                        </div>
+                    `).join('');
+                }
+            } catch(e) {}
+        }
+
+        async function loadResearch(){
+            try {
+                const sb = getClient(); if(!sb) return;
+                const {data} = await sb.from('research').select('*').eq('visibility','published').order('created_at',{ascending:true});
+                if(data && data.length){
+                    $('research-container').innerHTML = data.map(r => `
+                        <li><strong>${esc(r.interest)}:</strong> ${esc(r.question || r.notes || '')}</li>
+                    `).join('');
+                }
+            } catch(e) {}
+        }
+
+        async function loadGoals(){
+            try {
+                const sb = getClient(); if(!sb) return;
+                const {data} = await sb.from('goals').select('*').eq('visibility','published').order('created_at',{ascending:true});
+                if(data && data.length){
+                    $('goals-container').innerHTML = data.map(g => `
+                        <li><strong>${esc(g.title)}:</strong> ${esc(g.description || '')}</li>
+                    `).join('');
+                }
+            } catch(e) {}
+        }
+
+        async function loadContacts(){
+            try {
+                const sb = getClient(); if(!sb) return;
+                const {data} = await sb.from('contact').select('*').eq('visibility','published').order('sort_order',{ascending:true});
+                if(data && data.length){
+                    $('contact-container').innerHTML = data.map(c => `
+                        <a href="${esc(c.link_url||'#')}" target="${c.link_url && c.link_url.startsWith('http') ? '_blank' : '_self'}" rel="noopener" class="clean-card" style="text-decoration: none; color: inherit; display: block;">
+                            <span style="font-size: 1.8rem;">${esc(c.icon || '📬')}</span>
+                            <h4 style="font-size: 1.1rem; margin-top: 6px; font-weight: 600;">${esc(c.title)}</h4>
+                            <p style="font-size: 0.88rem; color: var(--text-secondary);">${esc(c.description || '')}</p>
+                            <span style="font-size: 0.88rem; font-weight: 500; color: var(--text-primary); margin-top: 8px; display: inline-block;">${esc(c.link_text || 'Open →')}</span>
+                        </a>
+                    `).join('');
+                }
+            } catch(e) {}
+        }
+
         async function init(){
             await loadHome();
             await loadAbout();
@@ -1161,6 +1251,11 @@
             await loadSkills();
             await loadProjects();
             await loadLearning();
+            await loadCertificates();
+            await loadAchievements();
+            await loadResearch();
+            await loadGoals();
+            await loadContacts();
         }
 
         if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
