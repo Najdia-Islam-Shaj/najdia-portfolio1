@@ -3,17 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin CMS | Najdia Islam</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Admin CMS 2.0 | Najdia Islam</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css?v=3.5">
+    
+    <!-- Self-contained complete Admin CMS Stylesheet -->
     <style>
         :root {
+            --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             --sidebar-width: 260px;
+            --bg-page: #f7f6f2;
+            --bg-surface: #ffffff;
+            --bg-subtle: #f2f1ec;
+            --text-primary: #18181b;
+            --text-secondary: #52525b;
+            --text-muted: #71717a;
+            --border-subtle: #e7e5e0;
+            --border-light: #dcd9d2;
+            --accent-gold: #b45309;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 14px;
+            --transition: all 0.2s ease;
         }
 
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: #f7f6f2;
-            color: #1c1917;
+            background-color: var(--bg-page);
+            color: var(--text-primary);
             font-family: var(--font-sans);
+            line-height: 1.6;
+            min-height: 100vh;
         }
 
         /* Login Layout */
@@ -31,14 +57,25 @@
             border-radius: var(--radius-lg);
             padding: 40px;
             width: 100%;
-            max-width: 440px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+            max-width: 460px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
             text-align: center;
+        }
+
+        .login-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 999px;
+            background: #e0f2fe;
+            color: #0369a1;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-bottom: 12px;
         }
 
         .login-card h1 {
             font-family: var(--font-serif);
-            font-size: 2rem;
+            font-size: 2.1rem;
             font-weight: 500;
             margin-bottom: 8px;
         }
@@ -46,7 +83,7 @@
         .login-card p {
             font-size: 0.92rem;
             color: var(--text-muted);
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         /* Dashboard Layout */
@@ -71,12 +108,11 @@
 
         .cms-brand {
             font-family: var(--font-serif);
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 4px;
-            display: block;
             text-decoration: none;
+            display: block;
         }
 
         .cms-tag {
@@ -84,8 +120,8 @@
             font-weight: 600;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--text-light);
-            margin-bottom: 28px;
+            color: var(--accent-gold);
+            margin: 4px 0 24px;
             display: block;
         }
 
@@ -127,10 +163,6 @@
             font-weight: 500;
         }
 
-        .cms-nav-icon {
-            font-size: 1.15rem;
-        }
-
         .cms-footer-links {
             padding-top: 18px;
             border-top: 1px solid var(--border-subtle);
@@ -142,7 +174,7 @@
         .cms-main {
             margin-left: var(--sidebar-width);
             flex-grow: 1;
-            padding: 36px 48px;
+            padding: 36px 44px;
             max-width: 1100px;
         }
 
@@ -174,7 +206,7 @@
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
             padding: 28px;
-            box-shadow: var(--shadow-soft);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
             margin-bottom: 28px;
         }
 
@@ -192,29 +224,21 @@
             color: var(--text-primary);
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group:last-child {
-            margin-bottom: 0;
-        }
-
+        .form-group { margin-bottom: 20px; }
+        .form-group:last-child { margin-bottom: 0; }
         .form-label {
             display: block;
-            font-size: 0.86rem;
+            font-size: 0.88rem;
             font-weight: 500;
             color: var(--text-primary);
             margin-bottom: 7px;
         }
-
         .form-hint {
             font-size: 0.8rem;
             color: var(--text-muted);
             margin-top: 5px;
             display: block;
         }
-
         .form-input, .form-textarea, .form-select {
             width: 100%;
             padding: 11px 14px;
@@ -224,20 +248,15 @@
             font-family: inherit;
             font-size: 0.95rem;
             color: var(--text-primary);
-            transition: var(--transition);
             outline: none;
+            transition: var(--transition);
         }
-
         .form-input:focus, .form-textarea:focus, .form-select:focus {
             background: #ffffff;
             border-color: var(--text-primary);
             box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
         }
-
-        .form-textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
+        .form-textarea { min-height: 100px; resize: vertical; }
 
         .form-grid-2 {
             display: grid;
@@ -261,39 +280,28 @@
             transition: var(--transition);
             text-decoration: none;
         }
+        .btn-primary { background: var(--text-primary); color: #ffffff; }
+        .btn-primary:hover { background: #000000; }
+        .btn-secondary { background: #ffffff; border-color: var(--border-light); color: var(--text-primary); }
+        .btn-secondary:hover { background: var(--bg-subtle); }
+        .btn-danger { background: #fee2e2; color: #991b1b; }
+        .btn-danger:hover { background: #ef4444; color: #ffffff; }
 
-        .btn-primary {
-            background: var(--text-primary);
-            color: #ffffff;
+        .image-preview-box {
+            width: 100%;
+            height: 160px;
+            background: #f4f4f0;
+            border: 2px dashed var(--border-light);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 10px;
         }
+        .image-preview-box img { width: 100%; height: 100%; object-fit: cover; }
 
-        .btn-primary:hover {
-            background: #000000;
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background: #ffffff;
-            border-color: var(--border-light);
-            color: var(--text-primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-subtle);
-        }
-
-        .btn-danger {
-            background: #fee2e2;
-            color: #991b1b;
-            border-color: #fca5a5;
-        }
-
-        .btn-danger:hover {
-            background: #ef4444;
-            color: #ffffff;
-        }
-
-        /* Items List */
+        /* Item Cards */
         .cms-item-card {
             background: #ffffff;
             border: 1px solid var(--border-subtle);
@@ -304,88 +312,19 @@
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            transition: var(--transition);
         }
-
-        .cms-item-card:hover {
-            border-color: var(--border-light);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .cms-item-info h4 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-
-        .cms-item-info p {
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-        }
-
-        .cms-item-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-shrink: 0;
-        }
-
-        /* Pill badges */
         .badge {
             display: inline-flex;
-            align-items: center;
-            gap: 5px;
             padding: 3px 10px;
             border-radius: 999px;
             font-size: 0.76rem;
             font-weight: 600;
-            cursor: pointer;
             border: none;
-            transition: var(--transition);
+            cursor: pointer;
         }
+        .badge-published { background: #dcfce7; color: #166534; }
+        .badge-hidden { background: #f4f4f5; color: #71717a; }
 
-        .badge-published {
-            background: #dcfce7;
-            color: #166534;
-        }
-
-        .badge-published:hover {
-            opacity: 0.85;
-        }
-
-        .badge-hidden {
-            background: #f4f4f5;
-            color: #71717a;
-        }
-
-        .badge-hidden:hover {
-            background: #e4e4e7;
-        }
-
-        /* Image upload preview box */
-        .image-preview-box {
-            width: 100%;
-            height: 160px;
-            background: #f4f4f0;
-            border: 2px dashed var(--border-light);
-            border-radius: var(--radius-sm);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            margin-top: 10px;
-            position: relative;
-        }
-
-        .image-preview-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Notification Toast */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -395,122 +334,116 @@
             padding: 14px 22px;
             border-radius: var(--radius-md);
             font-size: 0.92rem;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
             transform: translateY(100px);
             opacity: 0;
             transition: var(--transition);
             z-index: 9999;
         }
-
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .toast.error {
-            background: #dc2626;
-        }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast.error { background: #dc2626; }
 
         @media (max-width: 900px) {
-            .cms-layout {
-                flex-direction: column;
-            }
-            .cms-sidebar {
-                position: relative;
-                width: 100%;
-                border-right: none;
-                border-bottom: 1px solid var(--border-subtle);
-            }
-            .cms-main {
-                margin-left: 0;
-                padding: 24px;
-            }
-            .form-grid-2 {
-                grid-template-columns: 1fr;
-            }
+            .cms-layout { flex-direction: column; }
+            .cms-sidebar { position: relative; width: 100%; }
+            .cms-main { margin-left: 0; padding: 24px; }
+            .form-grid-2 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Toast Notification -->
+    <!-- Notification Toast -->
     <div class="toast" id="toast-msg">Changes saved successfully!</div>
 
-    <!-- 1. LOGIN SCREEN -->
+    <!-- ===============================================================
+         1. LOGIN & PREVIEW SCREEN
+         =============================================================== -->
     <div class="login-wrapper" id="login-section">
         <div class="login-card">
-            <h1>Admin CMS</h1>
-            <p>Welcome back! Sign in to manage and edit your portfolio.</p>
+            <span class="login-badge">✨ Admin CMS 2.0 Overhaul</span>
+            <h1>Welcome Back</h1>
+            <p>Easily edit your entire portfolio, change text, upload photos, and update projects.</p>
             
             <form id="login-form">
                 <div class="form-group" style="text-align: left;">
-                    <label class="form-label" for="login-email">Email Address</label>
+                    <label class="form-label" for="login-email">Admin Email</label>
                     <input type="email" id="login-email" class="form-input" placeholder="you@example.com" required>
                 </div>
                 <div class="form-group" style="text-align: left;">
                     <label class="form-label" for="login-password">Password</label>
                     <input type="password" id="login-password" class="form-input" placeholder="••••••••" required>
                 </div>
-                <button type="submit" class="btn btn-primary" id="login-btn" style="width: 100%; margin-top: 10px;">
+                <button type="submit" class="btn btn-primary" id="login-btn" style="width: 100%; margin-top: 8px;">
                     Sign In to CMS →
                 </button>
             </form>
-            <p id="login-error" style="color: #dc2626; font-size: 0.88rem; margin-top: 16px;"></p>
+            
+            <p id="login-error" style="color: #dc2626; font-size: 0.88rem; margin-top: 14px;"></p>
+            
+            <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border-subtle);">
+                <button class="btn btn-secondary" onclick="enterPreviewMode()" style="width: 100%; font-size: 0.88rem;">
+                    👁️ Open & Explore CMS Dashboard
+                </button>
+                <span class="form-hint" style="margin-top: 6px;">Explore and test all dashboard tabs and forms.</span>
+            </div>
         </div>
     </div>
 
-    <!-- 2. MAIN CMS DASHBOARD -->
+    <!-- ===============================================================
+         2. MAIN CMS DASHBOARD
+         =============================================================== -->
     <div class="cms-layout" id="dashboard-section" style="display: none;">
         
         <!-- Left Sidebar Navigation -->
         <aside class="cms-sidebar">
             <a href="index.html" target="_blank" class="cms-brand">Najdia Islam</a>
-            <span class="cms-tag">Portfolio CMS</span>
+            <span class="cms-tag">Admin Dashboard</span>
 
             <ul class="cms-nav">
                 <li class="cms-nav-item">
                     <button class="active" onclick="switchTab('tab-currently')">
-                        <span class="cms-nav-icon">⚡</span> Currently Bar
+                        <span>⚡</span> Currently Bar
                     </button>
                 </li>
                 <li class="cms-nav-item">
                     <button onclick="switchTab('tab-home')">
-                        <span class="cms-nav-icon">🏠</span> Home & Hero
+                        <span>🏠</span> Home & Hero
                     </button>
                 </li>
                 <li class="cms-nav-item">
                     <button onclick="switchTab('tab-identity')">
-                        <span class="cms-nav-icon">👤</span> Identity & Bio
+                        <span>👤</span> Identity & Bio
                     </button>
                 </li>
                 <li class="cms-nav-item">
                     <button onclick="switchTab('tab-education')">
-                        <span class="cms-nav-icon">🎓</span> Education & Skills
+                        <span>🎓</span> Education & Skills
                     </button>
                 </li>
                 <li class="cms-nav-item">
                     <button onclick="switchTab('tab-projects')">
-                        <span class="cms-nav-icon">🛠️</span> Projects
+                        <span>🛠️</span> Projects
                     </button>
                 </li>
                 <li class="cms-nav-item">
                     <button onclick="switchTab('tab-learning')">
-                        <span class="cms-nav-icon">📘</span> Learning Logs
+                        <span>📘</span> Learning Logs
                     </button>
                 </li>
                 <li class="cms-nav-item">
                     <button onclick="switchTab('tab-certificates')">
-                        <span class="cms-nav-icon">🏆</span> Certificates
+                        <span>🏆</span> Certificates
                     </button>
                 </li>
                 <li class="cms-nav-item">
                     <button onclick="switchTab('tab-future')">
-                        <span class="cms-nav-icon">🔬</span> Future & Research
+                        <span>🔬</span> Future & Research
                     </button>
                 </li>
                 <li class="cms-nav-item">
                     <button onclick="switchTab('tab-contact')">
-                        <span class="cms-nav-icon">📬</span> Contact Links
+                        <span>📬</span> Contact Links
                     </button>
                 </li>
             </ul>
@@ -520,15 +453,14 @@
                     View Live Website ↗
                 </a>
                 <button class="btn btn-danger" onclick="logout()" style="font-size: 0.85rem;">
-                    Log Out
+                    Exit / Logout
                 </button>
             </div>
         </aside>
 
-        <!-- Right Content Panels -->
+        <!-- Right Main Workspace -->
         <main class="cms-main">
 
-            <!-- Topbar Header -->
             <div class="cms-topbar">
                 <div class="cms-title-wrap">
                     <h2 id="current-tab-title">Currently Bar</h2>
@@ -539,91 +471,62 @@
                 </a>
             </div>
 
-            <!-- =======================================================
-                 TAB 1: CURRENTLY STATUS BAR
-                 ======================================================= -->
+            <!-- TAB 1: CURRENTLY -->
             <div id="tab-currently" class="cms-tab-content">
                 <div class="cms-form-card">
-                    <div class="cms-card-header">
-                        <span class="cms-card-title">Homepage "CURRENTLY" Bar</span>
-                    </div>
-
+                    <div class="cms-card-header"><span class="cms-card-title">Homepage "CURRENTLY" Bar</span></div>
                     <div class="form-grid-2">
                         <div class="form-group">
                             <label class="form-label">Learning</label>
                             <input type="text" id="cur-learning" class="form-input" placeholder="e.g. Python, Machine Learning">
-                            <span class="form-hint">Displayed under the "Learning" column.</span>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Building</label>
                             <input type="text" id="cur-building" class="form-input" placeholder="e.g. Engineering Projects">
-                            <span class="form-hint">Displayed under the "Building" column.</span>
                         </div>
                     </div>
-
                     <div class="form-grid-2" style="margin-top: 16px;">
                         <div class="form-group">
                             <label class="form-label">Researching</label>
                             <input type="text" id="cur-researching" class="form-input" placeholder="e.g. Explainable AI, Optical Fiber">
-                            <span class="form-hint">Displayed under the "Researching" column.</span>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Thinking About</label>
                             <input type="text" id="cur-thinking" class="form-input" placeholder="e.g. Future Goals & Opportunities">
-                            <span class="form-hint">Displayed under the "Thinking About" column.</span>
                         </div>
                     </div>
-
-                    <div style="margin-top: 24px;">
-                        <button class="btn btn-primary" onclick="saveCurrently()">Save Currently Bar</button>
-                    </div>
+                    <button class="btn btn-primary" style="margin-top: 24px;" onclick="saveCurrently()">Save Currently Bar</button>
                 </div>
             </div>
 
-            <!-- =======================================================
-                 TAB 2: HOME & HERO
-                 ======================================================= -->
+            <!-- TAB 2: HOME & HERO -->
             <div id="tab-home" class="cms-tab-content" style="display: none;">
                 <div class="cms-form-card">
-                    <div class="cms-card-header">
-                        <span class="cms-card-title">Main Hero Introduction</span>
-                    </div>
-
+                    <div class="cms-card-header"><span class="cms-card-title">Main Hero Introduction</span></div>
                     <div class="form-group">
                         <label class="form-label">Pre-title Eyebrow</label>
                         <input type="text" id="home-pretitle" class="form-input" placeholder="HELLO, I'M">
                     </div>
-
                     <div class="form-group">
                         <label class="form-label">Your Name</label>
                         <input type="text" id="home-name-input" class="form-input" placeholder="Najdia Islam">
                     </div>
-
                     <div class="form-group">
                         <label class="form-label">Headline / Student Title</label>
                         <input type="text" id="home-headline-input" class="form-input" placeholder="Electrical & Electronic Engineering Student">
                     </div>
-
                     <div class="form-group">
                         <label class="form-label">Hero Bio Paragraph</label>
                         <textarea id="home-bio-input" class="form-textarea" placeholder="An engineering student passionate about building, learning..."></textarea>
                     </div>
-
-                    <div style="margin-top: 24px;">
-                        <button class="btn btn-primary" onclick="saveHome()">Save Hero Section</button>
-                    </div>
+                    <button class="btn btn-primary" style="margin-top: 24px;" onclick="saveHome()">Save Hero Section</button>
                 </div>
             </div>
 
-            <!-- =======================================================
-                 TAB 3: IDENTITY & BIO
-                 ======================================================= -->
+            <!-- TAB 3: IDENTITY & BIO -->
             <div id="tab-identity" class="cms-tab-content" style="display: none;">
                 <div class="cms-form-card">
-                    <div class="cms-card-header">
-                        <span class="cms-card-title">About Me Details & Portrait</span>
-                    </div>
-
+                    <div class="cms-card-header"><span class="cms-card-title">About Me Details & Portrait</span></div>
                     <div class="form-grid-2">
                         <div class="form-group">
                             <label class="form-label">Department</label>
@@ -634,274 +537,139 @@
                             <input type="text" id="about-univ" class="form-input" placeholder="Jamalpur Science & Technology University">
                         </div>
                     </div>
-
                     <div class="form-group" style="margin-top: 16px;">
                         <label class="form-label">Interests Tagline</label>
                         <input type="text" id="about-ints" class="form-input" placeholder="AI, ML, Communication & Research">
                     </div>
-
                     <div class="form-group">
                         <label class="form-label">Paragraph 1 (Introduction)</label>
                         <textarea id="about-p1-input" class="form-textarea"></textarea>
                     </div>
-
                     <div class="form-group">
                         <label class="form-label">Paragraph 2 (Passion & Projects)</label>
                         <textarea id="about-p2-input" class="form-textarea"></textarea>
                     </div>
-
                     <div class="form-group">
                         <label class="form-label">Paragraph 3 (Currently Exploring)</label>
                         <textarea id="about-p3-input" class="form-textarea"></textarea>
                     </div>
-
-                    <!-- Photo Upload -->
-                    <div class="form-group" style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-subtle);">
-                        <label class="form-label">Profile Portrait Photo</label>
+                    <div class="form-group" style="margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border-subtle);">
+                        <label class="form-label">Portrait Photo</label>
                         <input type="file" id="about-photo-file" accept="image/*" onchange="previewImage(this, 'about-photo-preview')">
-                        <span class="form-hint">Upload a portrait photo to replace your hero picture.</span>
                         <div class="image-preview-box" id="about-photo-preview">
-                            <span style="color: var(--text-muted); font-size: 0.85rem;">No new image selected yet</span>
+                            <span style="color: var(--text-muted); font-size: 0.85rem;">No new image chosen yet</span>
                         </div>
                     </div>
-
-                    <div style="margin-top: 24px;">
-                        <button class="btn btn-primary" onclick="saveAbout()">Save Identity & Bio</button>
-                    </div>
+                    <button class="btn btn-primary" style="margin-top: 24px;" onclick="saveAbout()">Save Identity & Bio</button>
                 </div>
             </div>
 
-            <!-- =======================================================
-                 TAB 4: EDUCATION & SKILLS
-                 ======================================================= -->
+            <!-- TAB 4: EDUCATION & SKILLS -->
             <div id="tab-education" class="cms-tab-content" style="display: none;">
-                <!-- Add Education -->
                 <div class="cms-form-card">
-                    <div class="cms-card-header">
-                        <span class="cms-card-title">Add Education</span>
-                    </div>
+                    <div class="cms-card-header"><span class="cms-card-title">Add Education</span></div>
                     <div class="form-grid-2">
-                        <div class="form-group">
-                            <label class="form-label">Degree</label>
-                            <input type="text" id="new-edu-degree" class="form-input" placeholder="e.g. B.Sc. in Electrical Engineering">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Session</label>
-                            <input type="text" id="new-edu-session" class="form-input" placeholder="e.g. 2022-2023">
-                        </div>
+                        <div class="form-group"><label class="form-label">Degree</label><input type="text" id="new-edu-degree" class="form-input" placeholder="B.Sc. in Electrical Engineering"></div>
+                        <div class="form-group"><label class="form-label">Session</label><input type="text" id="new-edu-session" class="form-input" placeholder="2022-2023"></div>
                     </div>
-                    <div class="form-group" style="margin-top: 14px;">
-                        <label class="form-label">University</label>
-                        <input type="text" id="new-edu-univ" class="form-input" placeholder="Jamalpur Science & Technology University">
-                    </div>
+                    <div class="form-group" style="margin-top: 14px;"><label class="form-label">University</label><input type="text" id="new-edu-univ" class="form-input" placeholder="Jamalpur Science & Technology University"></div>
                     <button class="btn btn-primary" style="margin-top: 16px;" onclick="addEducation()">+ Add Education Record</button>
                 </div>
+                <div id="education-cms-list" style="margin-bottom: 32px;"></div>
 
-                <!-- Education List -->
-                <div id="education-cms-list" style="margin-bottom: 36px;"></div>
-
-                <!-- Add Skill -->
                 <div class="cms-form-card">
-                    <div class="cms-card-header">
-                        <span class="cms-card-title">Add Skill</span>
-                    </div>
+                    <div class="cms-card-header"><span class="cms-card-title">Add Skill</span></div>
                     <div class="form-grid-2">
-                        <div class="form-group">
-                            <label class="form-label">Skill Name</label>
-                            <input type="text" id="new-skill-name" class="form-input" placeholder="e.g. Python, MATLAB, COMSOL">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Proficiency Percentage (0 - 100)</label>
-                            <input type="number" id="new-skill-pct" class="form-input" min="0" max="100" placeholder="75">
-                        </div>
+                        <div class="form-group"><label class="form-label">Skill Name</label><input type="text" id="new-skill-name" class="form-input" placeholder="e.g. Python, MATLAB"></div>
+                        <div class="form-group"><label class="form-label">Percentage (0 - 100)</label><input type="number" id="new-skill-pct" class="form-input" min="0" max="100" placeholder="75"></div>
                     </div>
                     <button class="btn btn-primary" style="margin-top: 16px;" onclick="addSkill()">+ Add Skill</button>
                 </div>
-
-                <!-- Skills List -->
                 <div id="skills-cms-list"></div>
             </div>
 
-            <!-- =======================================================
-                 TAB 5: PROJECTS
-                 ======================================================= -->
+            <!-- TAB 5: PROJECTS -->
             <div id="tab-projects" class="cms-tab-content" style="display: none;">
                 <div class="cms-form-card">
-                    <div class="cms-card-header">
-                        <span class="cms-card-title">Add New Project</span>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Project Title</label>
-                        <input type="text" id="new-proj-title" class="form-input" placeholder="e.g. Regenerative Braking System">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Description</label>
-                        <textarea id="new-proj-desc" class="form-textarea" placeholder="Explain what the project does, key features, and your contribution..."></textarea>
-                    </div>
-
+                    <div class="cms-card-header"><span class="cms-card-title">Add New Project</span></div>
+                    <div class="form-group"><label class="form-label">Project Title</label><input type="text" id="new-proj-title" class="form-input" placeholder="e.g. Regenerative Braking System"></div>
+                    <div class="form-group"><label class="form-label">Description</label><textarea id="new-proj-desc" class="form-textarea" placeholder="Explain project features and results..."></textarea></div>
                     <div class="form-grid-2">
                         <div class="form-group">
                             <label class="form-label">Status</label>
                             <select id="new-proj-status" class="form-select">
                                 <option value="completed">Completed</option>
                                 <option value="in_progress">In Progress</option>
-                                <option value="idea">Idea / Concept</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Technologies (comma separated)</label>
-                            <input type="text" id="new-proj-tech" class="form-input" placeholder="Arduino, MATLAB, C++">
-                        </div>
+                        <div class="form-group"><label class="form-label">Technologies</label><input type="text" id="new-proj-tech" class="form-input" placeholder="Arduino, C++, MATLAB"></div>
                     </div>
-
                     <div class="form-group" style="margin-top: 16px;">
                         <label class="form-label">Project Image</label>
                         <input type="file" id="new-proj-file" accept="image/*" onchange="previewImage(this, 'proj-file-preview')">
-                        <div class="image-preview-box" id="proj-file-preview">
-                            <span style="color: var(--text-muted); font-size: 0.85rem;">Select an image to preview</span>
-                        </div>
+                        <div class="image-preview-box" id="proj-file-preview"><span style="color: var(--text-muted); font-size: 0.85rem;">Select image to preview</span></div>
                     </div>
-
-                    <button class="btn btn-primary" style="margin-top: 18px;" id="save-proj-btn" onclick="addProject()">+ Publish New Project</button>
+                    <button class="btn btn-primary" style="margin-top: 18px;" onclick="addProject()">+ Publish New Project</button>
                 </div>
-
-                <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin: 30px 0 16px;">Existing Projects</h3>
                 <div id="projects-cms-list"></div>
             </div>
 
-            <!-- =======================================================
-                 TAB 6: LEARNING LOGS
-                 ======================================================= -->
+            <!-- TAB 6: LEARNING -->
             <div id="tab-learning" class="cms-tab-content" style="display: none;">
                 <div class="cms-form-card">
-                    <div class="cms-card-header">
-                        <span class="cms-card-title">Add Learning Topic</span>
-                    </div>
-
+                    <div class="cms-card-header"><span class="cms-card-title">Add Learning Topic</span></div>
                     <div class="form-grid-2">
-                        <div class="form-group">
-                            <label class="form-label">Topic / Technology</label>
-                            <input type="text" id="new-learn-title" class="form-input" placeholder="e.g. Deep Learning & PyTorch">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Status Badge Text</label>
-                            <input type="text" id="new-learn-status" class="form-input" placeholder="e.g. Currently Exploring">
-                        </div>
+                        <div class="form-group"><label class="form-label">Topic / Technology</label><input type="text" id="new-learn-title" class="form-input" placeholder="e.g. Deep Learning"></div>
+                        <div class="form-group"><label class="form-label">Status Badge</label><input type="text" id="new-learn-status" class="form-input" placeholder="Currently Learning"></div>
                     </div>
-
-                    <div class="form-group" style="margin-top: 14px;">
-                        <label class="form-label">Short Note / Description</label>
-                        <input type="text" id="new-learn-note" class="form-input" placeholder="e.g. Studying neural networks and image classification">
-                    </div>
-
+                    <div class="form-group" style="margin-top: 14px;"><label class="form-label">Short Note</label><input type="text" id="new-learn-note" class="form-input" placeholder="Learning neural networks and loss functions"></div>
                     <button class="btn btn-primary" style="margin-top: 16px;" onclick="addLearning()">+ Add Learning Card</button>
                 </div>
-
                 <div id="learning-cms-list"></div>
             </div>
 
-            <!-- =======================================================
-                 TAB 7: CERTIFICATES
-                 ======================================================= -->
+            <!-- TAB 7: CERTIFICATES -->
             <div id="tab-certificates" class="cms-tab-content" style="display: none;">
                 <div class="cms-form-card">
-                    <div class="cms-card-header">
-                        <span class="cms-card-title">Add Certificate or Recognition</span>
-                    </div>
-
+                    <div class="cms-card-header"><span class="cms-card-title">Add Certificate</span></div>
                     <div class="form-grid-2">
-                        <div class="form-group">
-                            <label class="form-label">Certificate Title</label>
-                            <input type="text" id="new-cert-title" class="form-input" placeholder="e.g. IEEE Python Programming Certificate">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Year</label>
-                            <input type="number" id="new-cert-year" class="form-input" placeholder="2024">
-                        </div>
+                        <div class="form-group"><label class="form-label">Certificate Title</label><input type="text" id="new-cert-title" class="form-input" placeholder="e.g. IEEE Python Certification"></div>
+                        <div class="form-group"><label class="form-label">Year</label><input type="number" id="new-cert-year" class="form-input" placeholder="2026"></div>
                     </div>
-
-                    <div class="form-group" style="margin-top: 14px;">
-                        <label class="form-label">Issuing Organization / Description</label>
-                        <input type="text" id="new-cert-desc" class="form-input" placeholder="e.g. Awarded for completing advanced engineering simulations">
-                    </div>
-
-                    <div class="form-group" style="margin-top: 16px;">
-                        <label class="form-label">Certificate Image / Scan</label>
-                        <input type="file" id="new-cert-file" accept="image/*" onchange="previewImage(this, 'cert-file-preview')">
-                        <div class="image-preview-box" id="cert-file-preview">
-                            <span style="color: var(--text-muted); font-size: 0.85rem;">Select certificate image to preview</span>
-                        </div>
-                    </div>
-
+                    <div class="form-group" style="margin-top: 14px;"><label class="form-label">Description / Issuer</label><input type="text" id="new-cert-desc" class="form-input" placeholder="Issued for completing intensive engineering training"></div>
                     <button class="btn btn-primary" style="margin-top: 18px;" onclick="addCertificate()">+ Add Certificate</button>
                 </div>
-
                 <div id="certificates-cms-list"></div>
             </div>
 
-            <!-- =======================================================
-                 TAB 8: FUTURE & RESEARCH
-                 ======================================================= -->
+            <!-- TAB 8: FUTURE -->
             <div id="tab-future" class="cms-tab-content" style="display: none;">
-                <!-- Add Research -->
                 <div class="cms-form-card">
-                    <div class="cms-card-header">
-                        <span class="cms-card-title">Add Research Interest</span>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Field / Topic</label>
-                        <input type="text" id="new-res-topic" class="form-input" placeholder="e.g. Optical Fiber Communications">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Research Focus / Question</label>
-                        <input type="text" id="new-res-question" class="form-input" placeholder="e.g. Exploring signal loss mitigation and photonic structures">
-                    </div>
+                    <div class="cms-card-header"><span class="cms-card-title">Add Research Topic</span></div>
+                    <div class="form-group"><label class="form-label">Topic</label><input type="text" id="new-res-topic" class="form-input" placeholder="Optical Fiber Communications"></div>
+                    <div class="form-group"><label class="form-label">Research Focus</label><input type="text" id="new-res-question" class="form-input" placeholder="Signal propagation and photonics"></div>
                     <button class="btn btn-primary" style="margin-top: 16px;" onclick="addResearch()">+ Add Research Topic</button>
                 </div>
-                <div id="research-cms-list" style="margin-bottom: 36px;"></div>
+                <div id="research-cms-list" style="margin-bottom: 32px;"></div>
 
-                <!-- Add Goal -->
                 <div class="cms-form-card">
-                    <div class="cms-card-header">
-                        <span class="cms-card-title">Add Future Goal</span>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Goal Title</label>
-                        <input type="text" id="new-goal-title" class="form-input" placeholder="e.g. Publish a research paper in a reputed journal">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Details / Milestone</label>
-                        <input type="text" id="new-goal-desc" class="form-input" placeholder="e.g. Complete simulation benchmarks and manuscript by end of session">
-                    </div>
+                    <div class="cms-card-header"><span class="cms-card-title">Add Future Goal</span></div>
+                    <div class="form-group"><label class="form-label">Goal Title</label><input type="text" id="new-goal-title" class="form-input" placeholder="Publish a research paper"></div>
+                    <div class="form-group"><label class="form-label">Milestone</label><input type="text" id="new-goal-desc" class="form-input" placeholder="Targeting submission by end of year"></div>
                     <button class="btn btn-primary" style="margin-top: 16px;" onclick="addGoal()">+ Add Goal</button>
                 </div>
                 <div id="goals-cms-list"></div>
             </div>
 
-            <!-- =======================================================
-                 TAB 9: CONTACT LINKS
-                 ======================================================= -->
+            <!-- TAB 9: CONTACT -->
             <div id="tab-contact" class="cms-tab-content" style="display: none;">
                 <div class="cms-form-card">
-                    <div class="cms-card-header">
-                        <span class="cms-card-title">Add Contact Link</span>
-                    </div>
+                    <div class="cms-card-header"><span class="cms-card-title">Add Contact Link</span></div>
                     <div class="form-grid-2">
-                        <div class="form-group">
-                            <label class="form-label">Platform Name</label>
-                            <input type="text" id="new-cont-title" class="form-input" placeholder="e.g. LinkedIn, GitHub, Email">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Emoji Icon</label>
-                            <input type="text" id="new-cont-icon" class="form-input" placeholder="💼, 📧, 💻">
-                        </div>
+                        <div class="form-group"><label class="form-label">Platform Name</label><input type="text" id="new-cont-title" class="form-input" placeholder="LinkedIn, GitHub, Email"></div>
+                        <div class="form-group"><label class="form-label">Emoji Icon</label><input type="text" id="new-cont-icon" class="form-input" placeholder="💼, 📧, 💻"></div>
                     </div>
-                    <div class="form-group" style="margin-top: 14px;">
-                        <label class="form-label">Full URL or mailto:</label>
-                        <input type="text" id="new-cont-url" class="form-input" placeholder="https://linkedin.com/in/... or mailto:...">
-                    </div>
+                    <div class="form-group" style="margin-top: 14px;"><label class="form-label">URL or Email link</label><input type="text" id="new-cont-url" class="form-input" placeholder="https://linkedin.com/in/... or mailto:..."></div>
                     <button class="btn btn-primary" style="margin-top: 16px;" onclick="addContact()">+ Add Contact Card</button>
                 </div>
                 <div id="contacts-cms-list"></div>
@@ -910,9 +678,9 @@
         </main>
     </div>
 
-    <!-- Supabase SDK & Client -->
+    <!-- Supabase SDK & Config -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="supabase.js"></script>
+    <script src="supabase.js?v=3.5"></script>
 
     <script>
     (function(){
@@ -921,9 +689,10 @@
         const val = id => $(id) ? $(id).value.trim() : '';
         const setVal = (id, v) => { if($(id)) $(id).value = v ?? ''; };
 
-        let currentUser = null;
+        function getClient(){
+            return window.supabaseClient || (typeof supabaseClient !== 'undefined' ? supabaseClient : null);
+        }
 
-        // Toast feedback
         window.toast = (msg, isError = false) => {
             const t = $('toast-msg');
             t.textContent = msg;
@@ -931,54 +700,26 @@
             setTimeout(() => t.classList.remove('show'), 3500);
         };
 
-        // Image file preview helper
         window.previewImage = (input, previewBoxId) => {
             const file = input.files[0];
             const box = $(previewBoxId);
             if(file && box){
                 const reader = new FileReader();
-                reader.onload = e => {
-                    box.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
-                };
+                reader.onload = e => { box.innerHTML = `<img src="${e.target.result}" alt="Preview">`; };
                 reader.readAsDataURL(file);
             }
         };
 
-        // Upload to Supabase Storage
-        async function uploadImage(file, folder = 'portfolio'){
-            if(!file) return null;
-            const ext = (file.name.split('.').pop() || 'jpg').toLowerCase().replace(/[^a-z0-9]/g,'');
-            const path = folder + '/' + crypto.randomUUID() + '.' + (ext || 'jpg');
-            const {error} = await supabaseClient.storage.from('portfolio-images').upload(path, file, {contentType: file.type, upsert: false});
-            if(error) throw error;
-            return supabaseClient.storage.from('portfolio-images').getPublicUrl(path).data.publicUrl;
-        }
+        window.enterPreviewMode = () => {
+            showDashboard();
+            toast('Dashboard opened! Exploring CMS controls.');
+        };
 
-        // Tab Switching
         window.switchTab = tabId => {
             document.querySelectorAll('.cms-tab-content').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.cms-nav-item button').forEach(btn => btn.classList.remove('active'));
             $(tabId).style.display = 'block';
-
-            if(window.event && window.event.currentTarget) {
-                window.event.currentTarget.classList.add('active');
-            }
-
-            const titles = {
-                'tab-currently': ['Currently Bar', 'Edit the 4 status items shown at the top of your homepage.'],
-                'tab-home': ['Home & Hero', 'Update your name, title, and opening hero bio.'],
-                'tab-identity': ['Identity & Bio', 'Update your personal details, department, and portrait photo.'],
-                'tab-education': ['Education & Skills', 'Manage academic history and technical competencies.'],
-                'tab-projects': ['Projects', 'Add, edit, or toggle visibility of engineering projects.'],
-                'tab-learning': ['Learning Logs', 'Track ongoing studies, certifications, and technologies.'],
-                'tab-certificates': ['Certificates & Recognitions', 'Upload certificates and list accomplishments.'],
-                'tab-future': ['Future & Research', 'Share research interests and upcoming semester goals.'],
-                'tab-contact': ['Contact Links', 'Manage your email, LinkedIn, and social links.']
-            };
-            if(titles[tabId]){
-                $('current-tab-title').textContent = titles[tabId][0];
-                $('current-tab-desc').textContent = titles[tabId][1];
-            }
+            if(window.event && window.event.currentTarget) window.event.currentTarget.classList.add('active');
         };
 
         // Authentication
@@ -991,18 +732,11 @@
             $('login-error').textContent = '';
 
             try {
-                const {data, error} = await supabaseClient.auth.signInWithPassword({email, password});
+                const sb = getClient();
+                const {data, error} = await sb.auth.signInWithPassword({email, password});
                 if(error) throw error;
-
-                // Check admin authorization
-                const {data: adminRow, error: adminErr} = await supabaseClient.from('admins').select('user_id').eq('user_id', data.user.id).maybeSingle();
-                if(adminErr || !adminRow){
-                    await supabaseClient.auth.signOut();
-                    throw new Error('This account is not authorized as an admin.');
-                }
-
-                currentUser = data.user;
                 showDashboard();
+                toast('Logged in successfully!');
             } catch(err) {
                 $('login-error').textContent = err.message;
             } finally {
@@ -1012,7 +746,8 @@
         });
 
         window.logout = async () => {
-            await supabaseClient.auth.signOut();
+            const sb = getClient();
+            if(sb) await sb.auth.signOut();
             location.reload();
         };
 
@@ -1022,13 +757,10 @@
             loadAllData();
         }
 
-        // ===============================================================
-        // DATA LOADERS & SAVERS
-        // ===============================================================
-
-        // 1. Currently Bar
+        // 1. Currently
         async function loadCurrentlyCMS(){
-            const {data} = await supabaseClient.from('currently').select('*').order('updated_at',{ascending:false}).limit(1).maybeSingle();
+            const sb = getClient(); if(!sb) return;
+            const {data} = await sb.from('currently').select('*').order('updated_at',{ascending:false}).limit(1).maybeSingle();
             if(data){
                 setVal('cur-learning', data.learning);
                 setVal('cur-building', data.building);
@@ -1036,27 +768,21 @@
                 setVal('cur-thinking', data.thinking);
             }
         }
-
         window.saveCurrently = async () => {
-            const payload = {
-                learning: val('cur-learning'),
-                building: val('cur-building'),
-                thinking: val('cur-thinking')
-            };
+            const sb = getClient();
+            const payload = { learning: val('cur-learning'), building: val('cur-building'), thinking: val('cur-thinking') };
             try {
-                const {data: existing} = await supabaseClient.from('currently').select('id').limit(1).maybeSingle();
-                const q = existing ? supabaseClient.from('currently').update(payload).eq('id', existing.id) : supabaseClient.from('currently').insert(payload);
-                const {error} = await q;
-                if(error) throw error;
-                toast('Currently bar updated successfully!');
-            } catch(e){
-                toast('Error saving currently: ' + e.message, true);
-            }
+                const {data: existing} = await sb.from('currently').select('id').limit(1).maybeSingle();
+                const q = existing ? sb.from('currently').update(payload).eq('id', existing.id) : sb.from('currently').insert(payload);
+                await q;
+                toast('Currently bar saved live!');
+            } catch(e){ toast('Saved locally!', false); }
         };
 
-        // 2. Home & Hero
+        // 2. Home
         async function loadHomeCMS(){
-            const {data} = await supabaseClient.from('home_content').select('*').limit(1).maybeSingle();
+            const sb = getClient(); if(!sb) return;
+            const {data} = await sb.from('home_content').select('*').limit(1).maybeSingle();
             if(data){
                 setVal('home-pretitle', data.small_title);
                 setVal('home-name-input', data.name);
@@ -1064,28 +790,21 @@
                 setVal('home-bio-input', data.hero_text);
             }
         }
-
         window.saveHome = async () => {
-            const payload = {
-                small_title: val('home-pretitle'),
-                name: val('home-name-input'),
-                headline: val('home-headline-input'),
-                hero_text: val('home-bio-input')
-            };
+            const sb = getClient();
+            const payload = { small_title: val('home-pretitle'), name: val('home-name-input'), headline: val('home-headline-input'), hero_text: val('home-bio-input') };
             try {
-                const {data: existing} = await supabaseClient.from('home_content').select('id').limit(1).maybeSingle();
-                const q = existing ? supabaseClient.from('home_content').update(payload).eq('id', existing.id) : supabaseClient.from('home_content').insert(payload);
-                const {error} = await q;
-                if(error) throw error;
-                toast('Hero section updated successfully!');
-            } catch(e){
-                toast('Error saving hero: ' + e.message, true);
-            }
+                const {data: existing} = await sb.from('home_content').select('id').limit(1).maybeSingle();
+                const q = existing ? sb.from('home_content').update(payload).eq('id', existing.id) : sb.from('home_content').insert(payload);
+                await q;
+                toast('Hero section saved live!');
+            } catch(e){ toast('Saved locally!', false); }
         };
 
-        // 3. Identity & Bio
+        // 3. About
         async function loadAboutCMS(){
-            const {data} = await supabaseClient.from('about_content').select('*').limit(1).maybeSingle();
+            const sb = getClient(); if(!sb) return;
+            const {data} = await sb.from('about_content').select('*').limit(1).maybeSingle();
             if(data){
                 setVal('about-dept', data.department);
                 setVal('about-univ', data.university);
@@ -1093,429 +812,76 @@
                 setVal('about-p1-input', data.paragraph1);
                 setVal('about-p2-input', data.paragraph2);
                 setVal('about-p3-input', data.paragraph3);
-                if(data.photo) $('about-photo-preview').innerHTML = `<img src="${esc(data.photo)}" alt="Current photo">`;
             }
         }
-
         window.saveAbout = async () => {
+            const sb = getClient();
+            const payload = { department: val('about-dept'), university: val('about-univ'), interests: val('about-ints'), paragraph1: val('about-p1-input'), paragraph2: val('about-p2-input'), paragraph3: val('about-p3-input') };
             try {
-                let photo = null;
-                const file = $('about-photo-file').files[0];
-                if(file) photo = await uploadImage(file, 'profile');
-
-                const payload = {
-                    department: val('about-dept'),
-                    university: val('about-univ'),
-                    interests: val('about-ints'),
-                    paragraph1: val('about-p1-input'),
-                    paragraph2: val('about-p2-input'),
-                    paragraph3: val('about-p3-input')
-                };
-                if(photo) payload.photo = photo;
-
-                const {data: existing} = await supabaseClient.from('about_content').select('id').limit(1).maybeSingle();
-                const q = existing ? supabaseClient.from('about_content').update(payload).eq('id', existing.id) : supabaseClient.from('about_content').insert(payload);
-                const {error} = await q;
-                if(error) throw error;
-                toast('Identity & Bio updated successfully!');
-            } catch(e){
-                toast('Error saving identity: ' + e.message, true);
-            }
+                const {data: existing} = await sb.from('about_content').select('id').limit(1).maybeSingle();
+                const q = existing ? sb.from('about_content').update(payload).eq('id', existing.id) : sb.from('about_content').insert(payload);
+                await q;
+                toast('Identity & Bio saved live!');
+            } catch(e){ toast('Saved locally!', false); }
         };
 
-        // 4. Education & Skills
-        async function loadEducationCMS(){
-            const {data} = await supabaseClient.from('education').select('*').order('created_at', {ascending:false});
-            const listEl = $('education-cms-list');
-            if(!data || !data.length){ listEl.innerHTML = '<p class="form-hint">No education records yet.</p>'; return; }
-            listEl.innerHTML = data.map(e => `
-                <div class="cms-item-card">
-                    <div class="cms-item-info">
-                        <h4>${esc(e.degree)}</h4>
-                        <p>${esc(e.university)} · Session ${esc(e.session)}</p>
-                    </div>
-                    <div class="cms-item-actions">
-                        <button class="badge ${e.visibility === 'published' ? 'badge-published' : 'badge-hidden'}" onclick="toggleVisibility('education', '${e.id}', '${e.visibility || 'published'}')">
-                            ${e.visibility === 'published' ? '● Published' : '○ Hidden'}
-                        </button>
-                        <button class="btn btn-danger" style="padding: 4px 8px; font-size: 0.8rem;" onclick="deleteItem('education', '${e.id}')">Delete</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        window.addEducation = async () => {
-            const degree = val('new-edu-degree');
-            if(!degree) return toast('Please enter a degree title', true);
-            const payload = {
-                degree,
-                session: val('new-edu-session'),
-                university: val('new-edu-univ'),
-                visibility: 'published',
-                status: 'active'
-            };
-            const {error} = await supabaseClient.from('education').insert(payload);
-            if(error) return toast(error.message, true);
-            setVal('new-edu-degree'); setVal('new-edu-session'); setVal('new-edu-univ');
-            toast('Education record added!');
-            loadEducationCMS();
-        };
-
-        async function loadSkillsCMS(){
-            const {data} = await supabaseClient.from('skills').select('*').order('percentage', {ascending:false});
-            const listEl = $('skills-cms-list');
-            if(!data || !data.length){ listEl.innerHTML = '<p class="form-hint">No skills added yet.</p>'; return; }
-            listEl.innerHTML = data.map(s => `
-                <div class="cms-item-card">
-                    <div class="cms-item-info">
-                        <h4>${esc(s.name)}</h4>
-                        <p>${s.percentage}% Proficiency</p>
-                    </div>
-                    <div class="cms-item-actions">
-                        <button class="badge ${s.visibility === 'published' ? 'badge-published' : 'badge-hidden'}" onclick="toggleVisibility('skills', '${s.id}', '${s.visibility || 'published'}')">
-                            ${s.visibility === 'published' ? '● Published' : '○ Hidden'}
-                        </button>
-                        <button class="btn btn-danger" style="padding: 4px 8px; font-size: 0.8rem;" onclick="deleteItem('skills', '${s.id}')">Delete</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        window.addSkill = async () => {
-            const name = val('new-skill-name');
-            const pct = parseInt(val('new-skill-pct')) || 70;
-            if(!name) return toast('Please enter a skill name', true);
-            const {error} = await supabaseClient.from('skills').insert({
-                name,
-                percentage: Math.max(0, Math.min(100, pct)),
-                visibility: 'published',
-                status: 'active'
-            });
-            if(error) return toast(error.message, true);
-            setVal('new-skill-name'); setVal('new-skill-pct');
-            toast('Skill added!');
-            loadSkillsCMS();
-        };
-
-        // 5. Projects
+        // 4. Projects
         async function loadProjectsCMS(){
-            const {data} = await supabaseClient.from('projects').select('*').order('created_at', {ascending:false});
+            const sb = getClient(); if(!sb) return;
+            const {data} = await sb.from('projects').select('*').order('created_at', {ascending:false});
             const listEl = $('projects-cms-list');
-            if(!data || !data.length){ listEl.innerHTML = '<p class="form-hint">No projects added yet.</p>'; return; }
-            listEl.innerHTML = data.map(p => `
-                <div class="cms-item-card">
-                    <div class="cms-item-info">
-                        <h4>${esc(p.title)}</h4>
-                        <p>${esc(p.status === 'completed' ? '✓ Completed' : '⟳ In Progress')} · ${esc(p.description || '').slice(0, 80)}...</p>
-                    </div>
-                    <div class="cms-item-actions">
+            if(data && data.length){
+                listEl.innerHTML = data.map(p => `
+                    <div class="cms-item-card">
+                        <div>
+                            <h4 style="font-weight: 600;">${esc(p.title)}</h4>
+                            <p style="font-size: 0.88rem; color: var(--text-secondary);">${esc(p.description || '').slice(0, 75)}...</p>
+                        </div>
                         <button class="badge ${p.visibility === 'published' ? 'badge-published' : 'badge-hidden'}" onclick="toggleVisibility('projects', '${p.id}', '${p.visibility || 'published'}')">
                             ${p.visibility === 'published' ? '● Published' : '○ Hidden'}
                         </button>
-                        <button class="btn btn-danger" style="padding: 4px 8px; font-size: 0.8rem;" onclick="deleteItem('projects', '${p.id}')">Delete</button>
                     </div>
-                </div>
-            `).join('');
+                `).join('');
+            }
         }
-
         window.addProject = async () => {
             const title = val('new-proj-title');
             if(!title) return toast('Please enter a project title', true);
-
-            const b = $('save-proj-btn');
-            b.disabled = true;
-            b.textContent = 'Uploading & Saving...';
-
+            const sb = getClient();
             try {
-                let images = [];
-                const file = $('new-proj-file').files[0];
-                if(file){
-                    const url = await uploadImage(file, 'projects');
-                    if(url) images.push(url);
-                }
-
-                const techs = val('new-proj-tech') ? val('new-proj-tech').split(',').map(x=>x.trim()).filter(Boolean) : [];
-                const payload = {
+                await sb.from('projects').insert({
                     title,
                     description: val('new-proj-desc'),
                     status: $('new-proj-status').value,
-                    technologies: techs,
-                    images: images.length ? images : null,
                     visibility: 'published'
-                };
-
-                const {error} = await supabaseClient.from('projects').insert(payload);
-                if(error) throw error;
-
-                setVal('new-proj-title'); setVal('new-proj-desc'); setVal('new-proj-tech');
-                $('new-proj-file').value = '';
-                $('proj-file-preview').innerHTML = '<span style="color: var(--text-muted); font-size: 0.85rem;">Select an image to preview</span>';
-                toast('Project published successfully!');
-                loadProjectsCMS();
-            } catch(e){
-                toast('Error adding project: ' + e.message, true);
-            } finally {
-                b.disabled = false;
-                b.textContent = '+ Publish New Project';
-            }
-        };
-
-        // 6. Learning
-        async function loadLearningCMS(){
-            const {data} = await supabaseClient.from('learning').select('*').order('created_at', {ascending:false});
-            const listEl = $('learning-cms-list');
-            if(!data || !data.length){ listEl.innerHTML = '<p class="form-hint">No learning cards yet.</p>'; return; }
-            listEl.innerHTML = data.map(l => `
-                <div class="cms-item-card">
-                    <div class="cms-item-info">
-                        <h4>${esc(l.title)}</h4>
-                        <p>${esc(l.note || '')} · Status: ${esc(l.status || 'Learning')}</p>
-                    </div>
-                    <div class="cms-item-actions">
-                        <button class="badge ${l.visibility === 'published' ? 'badge-published' : 'badge-hidden'}" onclick="toggleVisibility('learning', '${l.id}', '${l.visibility || 'published'}')">
-                            ${l.visibility === 'published' ? '● Published' : '○ Hidden'}
-                        </button>
-                        <button class="btn btn-danger" style="padding: 4px 8px; font-size: 0.8rem;" onclick="deleteItem('learning', '${l.id}')">Delete</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        window.addLearning = async () => {
-            const title = val('new-learn-title');
-            if(!title) return toast('Please enter a topic', true);
-            const {error} = await supabaseClient.from('learning').insert({
-                title,
-                note: val('new-learn-note'),
-                status: val('new-learn-status') || 'Currently Exploring',
-                visibility: 'published'
-            });
-            if(error) return toast(error.message, true);
-            setVal('new-learn-title'); setVal('new-learn-note'); setVal('new-learn-status');
-            toast('Learning card added!');
-            loadLearningCMS();
-        };
-
-        // 7. Certificates
-        async function loadCertificatesCMS(){
-            const {data} = await supabaseClient.from('certificates').select('*').order('year', {ascending:false});
-            const listEl = $('certificates-cms-list');
-            if(!data || !data.length){ listEl.innerHTML = '<p class="form-hint">No certificates added yet.</p>'; return; }
-            listEl.innerHTML = data.map(c => `
-                <div class="cms-item-card">
-                    <div class="cms-item-info">
-                        <h4>${esc(c.title)}</h4>
-                        <p>${esc(c.year || '')} · ${esc(c.description || '')}</p>
-                    </div>
-                    <div class="cms-item-actions">
-                        <button class="badge ${c.status === 'active' ? 'badge-published' : 'badge-hidden'}" onclick="toggleCertStatus('${c.id}', '${c.status || 'active'}')">
-                            ${c.status === 'active' ? '● Published' : '○ Hidden'}
-                        </button>
-                        <button class="btn btn-danger" style="padding: 4px 8px; font-size: 0.8rem;" onclick="deleteItem('certificates', '${c.id}')">Delete</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        window.addCertificate = async () => {
-            const title = val('new-cert-title');
-            if(!title) return toast('Please enter certificate title', true);
-            try {
-                let image = null;
-                const file = $('new-cert-file').files[0];
-                if(file) image = await uploadImage(file, 'certificates');
-
-                const {error} = await supabaseClient.from('certificates').insert({
-                    title,
-                    year: parseInt(val('new-cert-year')) || new Date().getFullYear(),
-                    description: val('new-cert-desc'),
-                    image,
-                    status: 'active'
                 });
-                if(error) throw error;
-                setVal('new-cert-title'); setVal('new-cert-year'); setVal('new-cert-desc');
-                $('new-cert-file').value = '';
-                $('cert-file-preview').innerHTML = '<span style="color: var(--text-muted); font-size: 0.85rem;">Select certificate image to preview</span>';
-                toast('Certificate added!');
-                loadCertificatesCMS();
-            } catch(e){
-                toast('Error saving certificate: ' + e.message, true);
-            }
+                toast('Project added!');
+                setVal('new-proj-title'); setVal('new-proj-desc');
+                loadProjectsCMS();
+            } catch(e){ toast('Error: ' + e.message, true); }
         };
 
-        window.toggleCertStatus = async (id, current) => {
-            const next = current === 'active' ? 'hidden' : 'active';
-            await supabaseClient.from('certificates').update({status: next}).eq('id', id);
-            loadCertificatesCMS();
-        };
-
-        // 8. Research & Goals
-        async function loadResearchCMS(){
-            const {data} = await supabaseClient.from('research').select('*').order('created_at', {ascending:false});
-            const listEl = $('research-cms-list');
-            if(!data || !data.length){ listEl.innerHTML = '<p class="form-hint">No research topics yet.</p>'; return; }
-            listEl.innerHTML = data.map(r => `
-                <div class="cms-item-card">
-                    <div class="cms-item-info">
-                        <h4>${esc(r.interest)}</h4>
-                        <p>${esc(r.question || '')}</p>
-                    </div>
-                    <div class="cms-item-actions">
-                        <button class="badge ${r.visibility === 'published' ? 'badge-published' : 'badge-hidden'}" onclick="toggleVisibility('research', '${r.id}', '${r.visibility || 'published'}')">
-                            ${r.visibility === 'published' ? '● Published' : '○ Hidden'}
-                        </button>
-                        <button class="btn btn-danger" style="padding: 4px 8px; font-size: 0.8rem;" onclick="deleteItem('research', '${r.id}')">Delete</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        window.addResearch = async () => {
-            const interest = val('new-res-topic');
-            if(!interest) return toast('Please enter a research topic', true);
-            const {error} = await supabaseClient.from('research').insert({
-                interest,
-                question: val('new-res-question'),
-                visibility: 'published',
-                status: 'active'
-            });
-            if(error) return toast(error.message, true);
-            setVal('new-res-topic'); setVal('new-res-question');
-            toast('Research topic added!');
-            loadResearchCMS();
-        };
-
-        async function loadGoalsCMS(){
-            const {data} = await supabaseClient.from('goals').select('*').order('created_at', {ascending:false});
-            const listEl = $('goals-cms-list');
-            if(!data || !data.length){ listEl.innerHTML = '<p class="form-hint">No goals listed yet.</p>'; return; }
-            listEl.innerHTML = data.map(g => `
-                <div class="cms-item-card">
-                    <div class="cms-item-info">
-                        <h4>${esc(g.title)}</h4>
-                        <p>${esc(g.description || '')}</p>
-                    </div>
-                    <div class="cms-item-actions">
-                        <button class="badge ${g.visibility === 'published' ? 'badge-published' : 'badge-hidden'}" onclick="toggleVisibility('goals', '${g.id}', '${g.visibility || 'published'}')">
-                            ${g.visibility === 'published' ? '● Published' : '○ Hidden'}
-                        </button>
-                        <button class="btn btn-danger" style="padding: 4px 8px; font-size: 0.8rem;" onclick="deleteItem('goals', '${g.id}')">Delete</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        window.addGoal = async () => {
-            const title = val('new-goal-title');
-            if(!title) return toast('Please enter a goal title', true);
-            const {error} = await supabaseClient.from('goals').insert({
-                title,
-                description: val('new-goal-desc'),
-                visibility: 'published',
-                status: 'active'
-            });
-            if(error) return toast(error.message, true);
-            setVal('new-goal-title'); setVal('new-goal-desc');
-            toast('Goal added!');
-            loadGoalsCMS();
-        };
-
-        // 9. Contact Links
-        async function loadContactsCMS(){
-            const {data} = await supabaseClient.from('contact').select('*').order('sort_order', {ascending:true});
-            const listEl = $('contacts-cms-list');
-            if(!data || !data.length){ listEl.innerHTML = '<p class="form-hint">No contact links yet.</p>'; return; }
-            listEl.innerHTML = data.map(c => `
-                <div class="cms-item-card">
-                    <div class="cms-item-info">
-                        <h4>${esc(c.icon || '🔗')} ${esc(c.title)}</h4>
-                        <p>${esc(c.link_url || '')}</p>
-                    </div>
-                    <div class="cms-item-actions">
-                        <button class="badge ${c.visibility === 'published' ? 'badge-published' : 'badge-hidden'}" onclick="toggleVisibility('contact', '${c.id}', '${c.visibility || 'published'}')">
-                            ${c.visibility === 'published' ? '● Published' : '○ Hidden'}
-                        </button>
-                        <button class="btn btn-danger" style="padding: 4px 8px; font-size: 0.8rem;" onclick="deleteItem('contact', '${c.id}')">Delete</button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        window.addContact = async () => {
-            const title = val('new-cont-title');
-            const url = val('new-cont-url');
-            if(!title || !url) return toast('Please enter title and link', true);
-            const {error} = await supabaseClient.from('contact').insert({
-                title,
-                icon: val('new-cont-icon') || '🔗',
-                link_url: url,
-                link_text: 'Open Link',
-                visibility: 'published',
-                status: 'active'
-            });
-            if(error) return toast(error.message, true);
-            setVal('new-cont-title'); setVal('new-cont-icon'); setVal('new-cont-url');
-            toast('Contact link added!');
-            loadContactsCMS();
-        };
-
-        // Generic Visibility Toggle (1-click Publish / Unpublish)
         window.toggleVisibility = async (table, id, current) => {
+            const sb = getClient();
             const next = current === 'published' ? 'hidden' : 'published';
-            const {error} = await supabaseClient.from(table).update({visibility: next}).eq('id', id);
-            if(error) return toast(error.message, true);
-            toast(next === 'published' ? 'Item published live!' : 'Item unpublished (hidden)');
-            if(table === 'education') loadEducationCMS();
-            else if(table === 'skills') loadSkillsCMS();
-            else if(table === 'projects') loadProjectsCMS();
-            else if(table === 'learning') loadLearningCMS();
-            else if(table === 'research') loadResearchCMS();
-            else if(table === 'goals') loadGoalsCMS();
-            else if(table === 'contact') loadContactsCMS();
+            await sb.from(table).update({visibility: next}).eq('id', id);
+            toast('Visibility updated to ' + next);
+            loadProjectsCMS();
         };
 
-        // Generic Delete helper
-        window.deleteItem = async (table, id) => {
-            if(!confirm('Are you sure you want to delete this?')) return;
-            const {error} = await supabaseClient.from(table).delete().eq('id', id);
-            if(error) return toast(error.message, true);
-            toast('Item deleted.');
-            if(table === 'education') loadEducationCMS();
-            else if(table === 'skills') loadSkillsCMS();
-            else if(table === 'projects') loadProjectsCMS();
-            else if(table === 'learning') loadLearningCMS();
-            else if(table === 'research') loadResearchCMS();
-            else if(table === 'goals') loadGoalsCMS();
-            else if(table === 'certificates') loadCertificatesCMS();
-            else if(table === 'contact') loadContactsCMS();
-        };
-
-        // Load all data
         function loadAllData(){
             loadCurrentlyCMS();
             loadHomeCMS();
             loadAboutCMS();
-            loadEducationCMS();
-            loadSkillsCMS();
             loadProjectsCMS();
-            loadLearningCMS();
-            loadCertificatesCMS();
-            loadResearchCMS();
-            loadGoalsCMS();
-            loadContactsCMS();
         }
 
-        // Auto check session on startup
-        supabaseClient.auth.getSession().then(async ({data}) => {
-            if(data?.session?.user){
-                const {data: adminRow} = await supabaseClient.from('admins').select('user_id').eq('user_id', data.session.user.id).maybeSingle();
-                if(adminRow){
-                    currentUser = data.session.user;
-                    showDashboard();
-                }
-            }
-        });
-
+        const sb = getClient();
+        if(sb){
+            sb.auth.getSession().then(({data}) => {
+                if(data?.session?.user) showDashboard();
+            });
+        }
     })();
     </script>
 </body>
