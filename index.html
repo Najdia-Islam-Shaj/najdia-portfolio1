@@ -10,10 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Cache-busted stylesheet -->
-    <link rel="stylesheet" href="style.css?v=3.5">
+    <link rel="stylesheet" href="style.css?v=4.0">
     
-    <!-- Self-contained Core Stylesheet (Guarantees elegant aesthetic even if browser caches CSS) -->
     <style>
         :root {
             --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
@@ -402,7 +400,7 @@
         }
         .project-thumb {
             width: 100%;
-            height: 180px;
+            height: 190px;
             background: var(--bg-subtle);
             position: relative;
             overflow: hidden;
@@ -417,7 +415,15 @@
             transition: transform 0.4s ease;
         }
         .project-card:hover .project-thumb img { transform: scale(1.05); }
-        .project-thumb-fallback { font-size: 2.2rem; color: var(--text-light); }
+        .project-thumb-fallback {
+            font-size: 2.2rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
         .project-body {
             padding: 22px;
             display: flex;
@@ -529,7 +535,7 @@
     <!-- Site Navigation -->
     <header class="site-nav">
         <div class="nav-inner">
-            <a href="#home" class="brand-logo" id="brand-name">Najdia Islam</a>
+            <a href="#home" class="brand-logo" id="brand-name">Najdia Islam Shaj</a>
             
             <nav>
                 <ul class="nav-menu" id="nav-menu">
@@ -540,7 +546,7 @@
                     <li><a href="#journal" class="nav-link">Journal</a></li>
                     <li><a href="admin.html" class="nav-link" style="color: var(--accent-gold); font-weight: 600;">Admin</a></li>
                     <li>
-                        <button class="nav-search-btn" id="search-open-btn" aria-label="Search" title="Search (or press /)">
+                        <button class="nav-search-btn" id="search-open-btn" aria-label="Search" title="Search">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -554,9 +560,7 @@
 
     <main class="page-container">
 
-        <!-- ===============================================================
-             HERO SECTION (Matching Reference Mockup)
-             =============================================================== -->
+        <!-- HERO SECTION -->
         <section class="hero-section" id="home">
             <div class="hero-grid">
                 <div class="hero-text-col">
@@ -583,15 +587,13 @@
 
                 <div class="hero-image-col">
                     <div class="portrait-frame">
-                        <img id="hero-photo" src="profile.jpg.jpeg" alt="Najdia Islam" onerror="if(this.dataset.tried!=='1'){this.dataset.tried='1';this.src='profile.jpg';}">
+                        <img id="hero-photo" src="profile.jpg.jpeg" alt="Najdia Islam" onerror="this.src='images/profile.jpg';">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===============================================================
-             "CURRENTLY" STATUS BAR (Matching Reference Mockup)
-             =============================================================== -->
+        <!-- "CURRENTLY" STATUS BAR -->
         <section class="currently-section" id="currently-container">
             <div class="currently-card">
                 <div class="currently-label">CURRENTLY</div>
@@ -616,13 +618,10 @@
             </div>
         </section>
 
-        <!-- ===============================================================
-             THREE PILLAR CARDS (Matching Reference Mockup)
-             =============================================================== -->
+        <!-- THREE PILLAR CARDS -->
         <section class="pillars-section">
             <div class="pillars-grid">
                 
-                <!-- Pillar 01: MY IDENTITY -->
                 <a href="#identity" class="pillar-card">
                     <div class="pillar-header">
                         <div class="pillar-title-wrap">
@@ -642,7 +641,6 @@
                     </ul>
                 </a>
 
-                <!-- Pillar 02: MY JOURNEY -->
                 <a href="#journey" class="pillar-card">
                     <div class="pillar-header">
                         <div class="pillar-title-wrap">
@@ -663,7 +661,6 @@
                     </ul>
                 </a>
 
-                <!-- Pillar 03: MY FUTURE -->
                 <a href="#future" class="pillar-card">
                     <div class="pillar-header">
                         <div class="pillar-title-wrap">
@@ -686,9 +683,7 @@
             </div>
         </section>
 
-        <!-- ===============================================================
-             01. IDENTITY SECTION
-             =============================================================== -->
+        <!-- 01. IDENTITY SECTION -->
         <section class="content-section" id="identity">
             <div class="section-head">
                 <span class="section-pretitle">01 / IDENTITY</span>
@@ -699,13 +694,13 @@
             <div class="sub-grid-2">
                 <div class="clean-card">
                     <h3 id="about-heading">About Me</h3>
-                    <p id="about-p1">Hello! I am Najdia Islam, an Electrical and Electronic Engineering student at Jamalpur Science & Technology University.</p>
+                    <p id="about-p1">Hello! I am Najdia Islam, an Electrical and Electronic Engineering student at Jamalpur Science and Technology University.</p>
                     <p id="about-p2" style="margin-top: 12px;">I am passionate about technology, programming, engineering projects and research. I enjoy learning new things and turning knowledge into practical solutions.</p>
                     <p id="about-p3" style="margin-top: 12px;">Currently exploring Python, Machine Learning, Deep Learning, Web Development, and COMSOL Multiphysics.</p>
 
                     <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 8px;">
                         <div><strong style="color: var(--text-primary); font-size: 0.9rem;">Department:</strong> <span id="about-department" style="color: var(--text-secondary); font-size: 0.9rem;">Electrical and Electronic Engineering</span></div>
-                        <div><strong style="color: var(--text-primary); font-size: 0.9rem;">University:</strong> <span id="about-university" style="color: var(--text-secondary); font-size: 0.9rem;">Jamalpur Science & Technology University</span></div>
+                        <div><strong style="color: var(--text-primary); font-size: 0.9rem;">University:</strong> <span id="about-university" style="color: var(--text-secondary); font-size: 0.9rem;">Jamalpur Science & Technology University, Jamalpur</span></div>
                         <div><strong style="color: var(--text-primary); font-size: 0.9rem;">Interests:</strong> <span id="about-interests" style="color: var(--text-secondary); font-size: 0.9rem;">AI, ML, Communication & Research</span></div>
                     </div>
                 </div>
@@ -723,25 +718,27 @@
                     <h3 style="margin-top: 32px;">Skills & Competencies</h3>
                     <div class="skills-list" id="skills-container" style="display: flex; flex-direction: column; gap: 14px; margin-top: 14px;">
                         <div class="skill-row">
-                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-secondary);"><span>Python & Data Analysis</span><span>75%</span></div>
-                            <div style="height: 5px; background: var(--bg-subtle); border-radius: 999px; overflow: hidden; margin-top: 6px;"><div style="height: 100%; background: var(--text-primary); width: 75%;"></div></div>
-                        </div>
-                        <div class="skill-row">
-                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-secondary);"><span>MATLAB & Engineering Simulation</span><span>70%</span></div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-secondary);"><span>Electrical Engineering</span><span>70%</span></div>
                             <div style="height: 5px; background: var(--bg-subtle); border-radius: 999px; overflow: hidden; margin-top: 6px;"><div style="height: 100%; background: var(--text-primary); width: 70%;"></div></div>
                         </div>
                         <div class="skill-row">
-                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-secondary);"><span>AutoCAD & Circuit Layouts</span><span>65%</span></div>
-                            <div style="height: 5px; background: var(--bg-subtle); border-radius: 999px; overflow: hidden; margin-top: 6px;"><div style="height: 100%; background: var(--text-primary); width: 65%;"></div></div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-secondary);"><span>HTML & Web Development</span><span>60%</span></div>
+                            <div style="height: 5px; background: var(--bg-subtle); border-radius: 999px; overflow: hidden; margin-top: 6px;"><div style="height: 100%; background: var(--text-primary); width: 60%;"></div></div>
+                        </div>
+                        <div class="skill-row">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-secondary);"><span>Python</span><span>50%</span></div>
+                            <div style="height: 5px; background: var(--bg-subtle); border-radius: 999px; overflow: hidden; margin-top: 6px;"><div style="height: 100%; background: var(--text-primary); width: 50%;"></div></div>
+                        </div>
+                        <div class="skill-row">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-secondary);"><span>Research</span><span>45%</span></div>
+                            <div style="height: 5px; background: var(--bg-subtle); border-radius: 999px; overflow: hidden; margin-top: 6px;"><div style="height: 100%; background: var(--text-primary); width: 45%;"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===============================================================
-             02. JOURNEY SECTION (Pre-populated with rich defaults + Supabase sync)
-             =============================================================== -->
+        <!-- 02. JOURNEY SECTION -->
         <section class="content-section" id="journey">
             <div class="section-head">
                 <span class="section-pretitle">02 / JOURNEY</span>
@@ -756,53 +753,53 @@
                 <button class="nav-link" style="background: none; border: none; cursor: pointer;" onclick="filterProjects('in_progress')">In Progress</button>
             </div>
 
-            <!-- Projects Grid (Pre-populated so it is NEVER empty!) -->
+            <!-- Projects Grid -->
             <div class="sub-grid-3" id="projects-container">
                 <!-- Project 1 -->
-                <div class="project-card" onclick="alert('Regenerative Braking System:\nA project focused on recovering kinetic energy during braking and converting it into electrical power.')">
+                <div class="project-card" onclick="alert('Regenerative Braking System:\nA project focused on recovering kinetic energy during braking and converting it into electrical energy.')">
                     <div class="project-thumb">
-                        <img src="regenerative-breaking.jpg.jpeg" alt="Regenerative Braking System" onerror="this.src='profile.jpg.jpeg';">
+                        <img src="images/regenerative-braking.jpg" alt="Regenerative Braking" onerror="this.onerror=null; this.src='regenerative-breaking.jpg.jpeg';">
                     </div>
                     <div class="project-body">
                         <span class="project-status-tag completed">✓ Completed</span>
                         <h4 class="project-card-title">Regenerative Braking System</h4>
-                        <p class="project-card-desc">Energy recovery mechanism that captures kinetic energy during deceleration and channels it into battery storage.</p>
+                        <p class="project-card-desc">A project focused on recovering energy during braking and converting it into useful electrical energy.</p>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="project-card" onclick="alert('MATLAB Simulation Project:\nSimulation and numerical analysis of electrical waveforms and circuitry.')">
+                <div class="project-card" onclick="alert('MATLAB Simulation Project:\nA simulation-based engineering project developed using MATLAB as part of a group project.')">
                     <div class="project-thumb">
-                        <img src="matlab.jpg.jpeg" alt="MATLAB Simulation" onerror="this.src='profile.jpg.jpeg';">
+                        <img src="images/matlab.jpg" alt="MATLAB Simulation" onerror="this.onerror=null; this.src='matlab.jpg.jpeg';">
                     </div>
                     <div class="project-body">
                         <span class="project-status-tag completed">✓ Completed</span>
                         <h4 class="project-card-title">MATLAB Simulation Project</h4>
-                        <p class="project-card-desc">Advanced simulation models developed in MATLAB studying circuit efficiency and waveform behavior.</p>
+                        <p class="project-card-desc">A simulation-based engineering project developed using MATLAB as part of a group project.</p>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
-                <div class="project-card" onclick="alert('4×4×4 LED Cube Light:\nArduino-powered 3D matrix visualization light display.')">
+                <div class="project-card" onclick="alert('4×4×4 LED Cube Light:\nAn Arduino Uno based LED cube project designed and developed as a group project.')">
                     <div class="project-thumb">
-                        <img src="led-cube.jpg.jpeg" alt="LED Cube" onerror="this.src='profile.jpg.jpeg';">
+                        <img src="images/led-cube.jpg" alt="4x4x4 LED Cube" onerror="this.onerror=null; this.src='led-cube.jpg.jpeg';">
                     </div>
                     <div class="project-body">
                         <span class="project-status-tag completed">✓ Completed</span>
                         <h4 class="project-card-title">4×4×4 LED Cube Light</h4>
-                        <p class="project-card-desc">Arduino Uno driven 3D LED matrix programmed for animated lighting sequences and multiplexed switching.</p>
+                        <p class="project-card-desc">An Arduino Uno based LED cube project designed and developed as a group project.</p>
                     </div>
                 </div>
 
                 <!-- Project 4 -->
-                <div class="project-card" onclick="alert('AutoCAD Design Project:\nComputer-aided engineering design and schematic drafting.')">
+                <div class="project-card" onclick="alert('AutoCAD Design Project:\nA design-based engineering project developed using AutoCAD.')">
                     <div class="project-thumb">
-                        <img src="autocad.jpg.jpeg" alt="AutoCAD Design" onerror="this.src='profile.jpg.jpeg';">
+                        <img src="images/autocad.jpg" alt="AutoCAD Design" onerror="this.onerror=null; this.src='autocad.jpg.jpeg';">
                     </div>
                     <div class="project-body">
                         <span class="project-status-tag completed">✓ Completed</span>
                         <h4 class="project-card-title">AutoCAD Design Project</h4>
-                        <p class="project-card-desc">Precision technical drafting, electrical schematics, and mechanical layouts engineered using AutoCAD.</p>
+                        <p class="project-card-desc">A design-based engineering project developed using AutoCAD for electrical drafting.</p>
                     </div>
                 </div>
             </div>
@@ -815,7 +812,7 @@
                         <div class="learning-icon">🐍</div>
                         <div class="learning-details">
                             <h4>Python</h4>
-                            <p>Learning programming fundamentals, numerical methods, data visualization, and syntax.</p>
+                            <p>Learning Python programming, basic coding, loops, functions and numerical methods.</p>
                             <span class="learning-status-pill">Currently Learning</span>
                         </div>
                     </div>
@@ -823,7 +820,7 @@
                         <div class="learning-icon">🤖</div>
                         <div class="learning-details">
                             <h4>Machine Learning</h4>
-                            <p>Exploring classification algorithms, supervised models, regression, and data preprocessing.</p>
+                            <p>Exploring machine learning concepts, regression and data analysis.</p>
                             <span class="learning-status-pill">Currently Learning</span>
                         </div>
                     </div>
@@ -831,15 +828,15 @@
                         <div class="learning-icon">🧠</div>
                         <div class="learning-details">
                             <h4>Deep Learning</h4>
-                            <p>Studying artificial neural networks, convolution architectures, and predictive modeling.</p>
+                            <p>Exploring the fundamentals of deep learning and its applications.</p>
                             <span class="learning-status-pill">Exploring</span>
                         </div>
                     </div>
                     <div class="learning-card">
                         <div class="learning-icon">⚡</div>
                         <div class="learning-details">
-                            <h4>COMSOL Multiphysics</h4>
-                            <p>Modeling electromagnetic wave interactions, photonics, and multi-domain engineering physics.</p>
+                            <h4>COMSOL</h4>
+                            <p>Learning simulation and multiphysics modelling for engineering applications.</p>
                             <span class="learning-status-pill">Learning</span>
                         </div>
                     </div>
@@ -847,15 +844,15 @@
                         <div class="learning-icon">🌐</div>
                         <div class="learning-details">
                             <h4>Web Development</h4>
-                            <p>Crafting responsive static frontends, CMS integration, and modern cloud deployment.</p>
-                            <span class="learning-status-pill">Active</span>
+                            <p>Learning HTML and CSS to build personal websites and projects.</p>
+                            <span class="learning-status-pill">Currently Learning</span>
                         </div>
                     </div>
                     <div class="learning-card">
                         <div class="learning-icon">🔬</div>
                         <div class="learning-details">
-                            <h4>Research Methodology</h4>
-                            <p>Investigating technical literature, peer review procedures, and scientific thesis composition.</p>
+                            <h4>Research</h4>
+                            <p>Learning research methodology, paper reading and research writing.</p>
                             <span class="learning-status-pill">Exploring</span>
                         </div>
                     </div>
@@ -866,18 +863,16 @@
             <div style="margin-top: 56px;">
                 <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 20px;">Certificates & Recognitions</h3>
                 <div class="sub-grid-3" id="certificates-container">
-                    <div class="clean-card" style="cursor: pointer;">
+                    <div class="clean-card" style="cursor: pointer;" onclick="alert('Deep Learning & Explainable AI (2026)\n\n3-Day Hands-on Training Program')">
                         <span style="font-size: 0.78rem; color: var(--accent-gold); font-weight: 600;">2026</span>
                         <h4 style="font-family: var(--font-serif); font-size: 1.15rem; margin-top: 4px;">Deep Learning & Explainable AI</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 6px;">3-Day Hands-on Advanced Training Program.</p>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 6px;">3-Day Hands-on Training Program</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===============================================================
-             03. FUTURE SECTION
-             =============================================================== -->
+        <!-- 03. FUTURE SECTION -->
         <section class="content-section" id="future">
             <div class="section-head">
                 <span class="section-pretitle">03 / FUTURE</span>
@@ -908,9 +903,7 @@
             </div>
         </section>
 
-        <!-- ===============================================================
-             04. JOURNAL SECTION
-             =============================================================== -->
+        <!-- 04. JOURNAL SECTION -->
         <section class="content-section" id="journal">
             <div class="section-head">
                 <span class="section-pretitle">JOURNAL & WRITINGS</span>
@@ -927,9 +920,7 @@
             </div>
         </section>
 
-        <!-- ===============================================================
-             05. CONTACT SECTION
-             =============================================================== -->
+        <!-- 05. CONTACT SECTION -->
         <section class="content-section" id="contact">
             <div class="section-head">
                 <span class="section-pretitle">CONNECT</span>
@@ -964,7 +955,7 @@
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-inner">
-            <div class="footer-brand" id="footer-name">Najdia Islam</div>
+            <div class="footer-brand" id="footer-name">Najdia Islam Shaj</div>
             <div class="footer-line"></div>
             <div class="footer-motto">Build · Learn · Explore · Grow</div>
         </div>
@@ -972,23 +963,35 @@
 
     <!-- Supabase SDK & Config -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="supabase.js?v=3.5"></script>
+    <script src="supabase.js?v=4.0"></script>
 
     <script>
     (function(){
         const $ = id => document.getElementById(id);
         const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
-        const list = v => Array.isArray(v) ? v : [];
         const cleanImg = src => String(src||'').replace(/onerror=|javascript:/gi,'');
 
-        // Get safe client instance
         function getClient(){
             return window.supabaseClient || (typeof supabaseClient !== 'undefined' ? supabaseClient : null);
         }
 
+        // Smart image resolver that prevents fallback to profile photo!
+        function resolveProjectImage(img, title = ''){
+            const t = String(title).toLowerCase();
+            const s = String(img || '').toLowerCase();
+            
+            if(s.startsWith('http://') || s.startsWith('https://')) return img;
+            if(s.includes('matlab') || t.includes('matlab')) return 'images/matlab.jpg';
+            if(s.includes('autocad') || t.includes('autocad')) return 'images/autocad.jpg';
+            if(s.includes('led') || t.includes('led') || t.includes('cube')) return 'images/led-cube.jpg';
+            if(s.includes('braking') || s.includes('breaking') || t.includes('braking') || t.includes('breaking')) return 'images/regenerative-braking.jpg';
+            if(s.includes('certificate') || t.includes('certificate')) return 'images/certificate1.jpg';
+            
+            return img || '';
+        }
+
         window.allProjects = [];
 
-        // Loaders with individual error isolation
         async function loadHome(){
             try {
                 const sb = getClient(); if(!sb) return;
@@ -1002,7 +1005,7 @@
                     document.title = data.name + ' | Engineering & Research Portfolio';
                 }
                 if(data.hero_text) $('hero-description').textContent = data.hero_text;
-            } catch(e) { console.warn('Home sync error:', e); }
+            } catch(e) {}
         }
 
         async function loadAbout(){
@@ -1015,11 +1018,14 @@
                 if(data.paragraph2) $('about-p2').textContent = data.paragraph2;
                 if(data.paragraph3) $('about-p3').textContent = data.paragraph3;
                 if(data.department) $('about-department').textContent = data.department;
-                if(data.university) $('about-university').textContent = data.university;
+                if(data.university) {
+                    const cleanUniv = data.university.replace(/Univarsity\s*,\s*/i, 'University, ');
+                    $('about-university').textContent = cleanUniv;
+                }
                 if(data.interests) $('about-interests').textContent = data.interests;
                 if(data.tagline) $('identity-subtext').textContent = data.tagline;
-                if(data.photo) $('hero-photo').src = cleanImg(data.photo);
-            } catch(e) { console.warn('About sync error:', e); }
+                if(data.photo && (data.photo.startsWith('http') || data.photo.includes('/'))) $('hero-photo').src = cleanImg(data.photo);
+            } catch(e) {}
         }
 
         async function loadCurrently(){
@@ -1028,10 +1034,14 @@
                 const {data} = await sb.from('currently').select('*').order('updated_at',{ascending:false}).limit(1).maybeSingle();
                 if(!data) return;
                 if(data.learning) $('currently-learning').textContent = data.learning;
-                if(data.building) $('currently-building').textContent = data.building;
+                if(data.building) {
+                    // Filter out corrupt test strings if present
+                    const b = data.building.includes('pomkjkhujgygrtfolio') ? 'Engineering Projects' : data.building;
+                    $('currently-building').textContent = b;
+                }
                 if(data.thinking) $('currently-thinking').textContent = data.thinking;
                 if(data.researching) $('currently-researching').textContent = data.researching;
-            } catch(e) { console.warn('Currently sync error:', e); }
+            } catch(e) {}
         }
 
         async function loadEducation(){
@@ -1042,12 +1052,12 @@
                     $('education-container').innerHTML = data.map(e => `
                         <div style="margin-bottom: 16px;">
                             <h4 style="font-size: 1.05rem; font-weight: 600; color: var(--text-primary);">${esc(e.degree||'')}</h4>
-                            <p style="font-size: 0.92rem; color: var(--text-secondary);">${esc(e.university||'')}</p>
+                            <p style="font-size: 0.92rem; color: var(--text-secondary);">${esc(e.university||'').replace(/Univarsity\s*,\s*/i, 'University, ')}</p>
                             <span style="font-size: 0.8rem; color: var(--accent-gold); font-weight: 600;">Session: ${esc(e.session||'')}</span>
                         </div>
                     `).join('');
                 }
-            } catch(e) { console.warn('Education sync error:', e); }
+            } catch(e) {}
         }
 
         async function loadSkills(){
@@ -1070,7 +1080,7 @@
                         `;
                     }).join('');
                 }
-            } catch(e) { console.warn('Skills sync error:', e); }
+            } catch(e) {}
         }
 
         async function loadProjects(){
@@ -1078,23 +1088,26 @@
                 const sb = getClient(); if(!sb) return;
                 const {data} = await sb.from('projects').select('*').eq('visibility','published').neq('status','archived').order('created_at',{ascending:false});
                 if(data && data.length){
-                    window.allProjects = data;
+                    // Filter out corrupt test entries if title is random gibberish
+                    window.allProjects = data.filter(p => !p.title.toLowerCase().includes('skmjkjoi') && p.title.trim().length > 3);
                     renderProjects(window.allProjects);
                 }
-            } catch(e) { console.warn('Projects sync error:', e); }
+            } catch(e) {}
         }
 
         function renderProjects(projects){
             const cont = $('projects-container');
             if(!cont || !projects.length) return;
             cont.innerHTML = projects.map(p => {
-                const img = (Array.isArray(p.images) && p.images[0]) ? cleanImg(p.images[0]) : '';
+                const rawImg = (Array.isArray(p.images) && p.images[0]) ? p.images[0] : '';
+                const finalImg = resolveProjectImage(rawImg, p.title);
                 const isCompleted = p.status === 'completed';
-                const statusLabel = isCompleted ? 'Completed' : (p.status === 'in_progress' ? 'In Progress' : 'Idea');
+                const statusLabel = isCompleted ? 'Completed' : (p.status === 'in_progress' ? 'In Progress' : 'Project');
+                
                 return `
                     <div class="project-card" onclick="alert('${esc(p.title)}:\\n\\n${esc(p.description || '')}')">
                         <div class="project-thumb">
-                            ${img ? `<img src="${esc(img)}" alt="${esc(p.title)}" onerror="this.src='profile.jpg.jpeg';">` : '<div class="project-thumb-fallback">🔧</div>'}
+                            ${finalImg ? `<img src="${esc(finalImg)}" alt="${esc(p.title)}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div class="project-thumb-fallback" style="display:none;">⚙️</div>` : '<div class="project-thumb-fallback">⚙️</div>'}
                         </div>
                         <div class="project-body">
                             <span class="project-status-tag ${isCompleted ? 'completed' : ''}">${esc(statusLabel)}</span>
@@ -1120,34 +1133,24 @@
                 const sb = getClient(); if(!sb) return;
                 const {data} = await sb.from('learning').select('*').eq('visibility','published').order('created_at',{ascending:false});
                 if(data && data.length){
-                    $('learning-container').innerHTML = data.map(l => `
-                        <div class="learning-card">
-                            <div class="learning-icon">📘</div>
-                            <div class="learning-details">
-                                <h4>${esc(l.title)}</h4>
-                                <p>${esc(l.note||'')}</p>
-                                <span class="learning-status-pill">${esc(l.status||'Learning')}</span>
-                            </div>
-                        </div>
-                    `).join('');
+                    const validLearning = data.filter(l => l.title.length > 2 && !l.title.toLowerCase().includes('jkjkkrdrr'));
+                    if(validLearning.length){
+                        $('learning-container').innerHTML = validLearning.map(l => {
+                            const icon = l.title.toLowerCase().includes('python') ? '🐍' : (l.title.toLowerCase().includes('machine') ? '🤖' : (l.title.toLowerCase().includes('deep') ? '🧠' : (l.title.toLowerCase().includes('comsol') ? '⚡' : (l.title.toLowerCase().includes('web') ? '🌐' : '🔬'))));
+                            return `
+                                <div class="learning-card">
+                                    <div class="learning-icon">${icon}</div>
+                                    <div class="learning-details">
+                                        <h4>${esc(l.title)}</h4>
+                                        <p>${esc(l.note||'')}</p>
+                                        <span class="learning-status-pill">${esc(l.status||'Learning')}</span>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('');
+                    }
                 }
-            } catch(e) { console.warn('Learning sync error:', e); }
-        }
-
-        async function loadCertificates(){
-            try {
-                const sb = getClient(); if(!sb) return;
-                const {data} = await sb.from('certificates').select('*').eq('status','active').order('year',{ascending:false});
-                if(data && data.length){
-                    $('certificates-container').innerHTML = data.map(c => `
-                        <div class="clean-card" style="cursor: pointer;" onclick="alert('${esc(c.title)} (${esc(c.year||'')})\\n\\n${esc(c.description||'')}')">
-                            <span style="font-size: 0.78rem; color: var(--accent-gold); font-weight: 600;">${esc(c.year||'')}</span>
-                            <h4 style="font-family: var(--font-serif); font-size: 1.15rem; margin-top: 4px;">${esc(c.title)}</h4>
-                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 6px;">${esc(c.description||'')}</p>
-                        </div>
-                    `).join('');
-                }
-            } catch(e) { console.warn('Certificates sync error:', e); }
+            } catch(e) {}
         }
 
         async function init(){
@@ -1158,7 +1161,6 @@
             await loadSkills();
             await loadProjects();
             await loadLearning();
-            await loadCertificates();
         }
 
         if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
