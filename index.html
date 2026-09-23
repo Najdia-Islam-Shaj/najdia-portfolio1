@@ -1,926 +1,755 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Welcome to my Journey | Najdia Islam Shaj</title>
+    <title>Najdia Islam | Engineering & Research Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="profile.jpg.jpeg" type="image/jpeg">
 </head>
+<body>
 
-
-    <body>
-
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="logo">Najdia.</div>
-
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#learning">Learning</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#achievements">Achievements</a>
-            <a href="#certificates">Certificates</a>
-            <a href="#contact">Contact</a>
+    <!-- Site Navigation -->
+    <header class="site-nav">
+        <div class="nav-inner">
+            <a href="#home" class="brand-logo" id="brand-name">Najdia Islam</a>
+            
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#identity" class="nav-link">Identity</a></li>
+                    <li><a href="#journey" class="nav-link">Journey</a></li>
+                    <li><a href="#future" class="nav-link">Future</a></li>
+                    <li><a href="#journal" class="nav-link">Journal</a></li>
+                    <li><a href="admin.html" class="nav-link">Admin</a></li>
+                    <li>
+                        <button class="nav-search-btn" id="search-open-btn" aria-label="Search portfolio" title="Search (or press /)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
         </div>
-    </nav>
+    </header>
 
+    <main class="page-container">
 
-    
-
-
-    <!-- Header -->
-    <header id="home">
-
-    <div class="hero-content">
-
-        <p class="small-title" id="home-small-title">WELCOME TO MY WORLD</p>
-
-        <h1>Hi, I'm <span id="home-name">Najdia Islam Shaj</span></h1>
-
-        <h2 id="home-headline">Electrical and Electronic Engineering Student</h2>
-
-        <p class="hero-text" id="home-hero-text">
-            Learning. Building. Researching. Growing.
-        </p>
-
-        <a href="#about" class="hero-button" id="home-button">
-            Welcome to my Journey
-        </a>
-
-    </div>
-
-</header>
-
-    <!-- About Me -->
-    <section id="about">
-
-    <div class="about-container">
-
-        <div class="about-text">
-
-            <p class="section-title" id="about-section-title">ABOUT ME</p>
-
-            <h2 id="about-heading">Who Am I?</h2>
-
-            <p id="about-paragraph1">
-                Hello! I am Najdia Islam, an Electrical and Electronic
-                Engineering student at Jamalpur Science & Technology Univarsity , Jamalpur.
-            </p>
-
-            <p id="about-paragraph2">
-                I am passionate about technology, programming,
-                engineering projects and research. I enjoy learning
-                new things and trying to turn my knowledge into
-                practical projects.
-            </p>
-
-            <p id="about-paragraph3">
-                Currently, I am exploring Python, Machine Learning,
-                Deep Learning, Web Development and COMSOL.
-            </p>
-
-            <div class="about-info">
-
-                <div>
-                    <strong>🎓 Department</strong>
-                    <span id="about-department">Electrical and Electronic Engineering</span>
+        <!-- Hero Section -->
+        <section class="hero-section" id="home">
+            <div class="hero-grid">
+                <div class="hero-text-col">
+                    <p class="hero-eyebrow" id="hero-eyebrow">HELLO, I'M</p>
+                    <h1 class="hero-title" id="hero-name">Najdia Islam</h1>
+                    <p class="hero-description" id="hero-description">
+                        An engineering student passionate about building, learning, and exploring the intersection of technology, research, and real-world impact.
+                    </p>
+                    
+                    <div class="hero-divider"></div>
+                    
+                    <div class="hero-actions">
+                        <a href="#identity" class="hero-arrow-link">
+                            About Me <span>→</span>
+                        </a>
+                        <a href="#journey" class="hero-arrow-link">
+                            View My Journey <span>→</span>
+                        </a>
+                        <a href="#future" class="hero-arrow-link">
+                            See My Future <span>→</span>
+                        </a>
+                    </div>
                 </div>
 
-                <div>
-                    <strong>🏫 University</strong>
-                    <span id="about-university">Jamalpur Science & Technology Univarsity , Jamalpur</span>
+                <div class="hero-image-col">
+                    <div class="portrait-frame">
+                        <img id="hero-photo" src="profile.jpg.jpeg" alt="Najdia Islam" onerror="if(this.dataset.tried!=='1'){this.dataset.tried='1';this.src='profile.jpg';}">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- "CURRENTLY" Status Bar -->
+        <section class="currently-section" id="currently-container">
+            <div class="currently-card">
+                <div class="currently-label">CURRENTLY</div>
+                <div class="currently-grid">
+                    <div class="currently-col">
+                        <span class="currently-col-title">Learning</span>
+                        <span class="currently-col-value" id="currently-learning">Python, Machine Learning</span>
+                    </div>
+                    <div class="currently-col">
+                        <span class="currently-col-title">Building</span>
+                        <span class="currently-col-value" id="currently-building">Engineering Projects</span>
+                    </div>
+                    <div class="currently-col">
+                        <span class="currently-col-title">Researching</span>
+                        <span class="currently-col-value" id="currently-researching">Explainable AI, Optical Fiber</span>
+                    </div>
+                    <div class="currently-col">
+                        <span class="currently-col-title">Thinking About</span>
+                        <span class="currently-col-value" id="currently-thinking">Future Goals & Opportunities</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three Pillar Interactive Cards -->
+        <section class="pillars-section">
+            <div class="pillars-grid">
+                
+                <!-- Pillar 01: MY IDENTITY -->
+                <a href="#identity" class="pillar-card">
+                    <div class="pillar-header">
+                        <div class="pillar-title-wrap">
+                            <span class="pillar-num">01.</span>
+                            <span class="pillar-name">MY IDENTITY</span>
+                        </div>
+                        <span class="pillar-arrow">→</span>
+                    </div>
+                    <p class="pillar-desc">
+                        Learn more about who I am, my education, skills, interests and what drives me.
+                    </p>
+                    <div class="pillar-divider"></div>
+                    <ul class="pillar-links">
+                        <li class="pillar-link-item">About Me</li>
+                        <li class="pillar-link-item">Education</li>
+                        <li class="pillar-link-item">Skills & Interests</li>
+                    </ul>
+                </a>
+
+                <!-- Pillar 02: MY JOURNEY -->
+                <a href="#journey" class="pillar-card">
+                    <div class="pillar-header">
+                        <div class="pillar-title-wrap">
+                            <span class="pillar-num">02.</span>
+                            <span class="pillar-name">MY JOURNEY</span>
+                        </div>
+                        <span class="pillar-arrow">→</span>
+                    </div>
+                    <p class="pillar-desc">
+                        Explore my learning, projects, achievements, certificates and key moments.
+                    </p>
+                    <div class="pillar-divider"></div>
+                    <ul class="pillar-links">
+                        <li class="pillar-link-item">Learning</li>
+                        <li class="pillar-link-item">Projects</li>
+                        <li class="pillar-link-item">Achievements</li>
+                        <li class="pillar-link-item">Certificates</li>
+                    </ul>
+                </a>
+
+                <!-- Pillar 03: MY FUTURE -->
+                <a href="#future" class="pillar-card">
+                    <div class="pillar-header">
+                        <div class="pillar-title-wrap">
+                            <span class="pillar-num">03.</span>
+                            <span class="pillar-name">MY FUTURE</span>
+                        </div>
+                        <span class="pillar-arrow">→</span>
+                    </div>
+                    <p class="pillar-desc">
+                        Discover my research interests, goals and upcoming projects.
+                    </p>
+                    <div class="pillar-divider"></div>
+                    <ul class="pillar-links">
+                        <li class="pillar-link-item">Research</li>
+                        <li class="pillar-link-item">Goals</li>
+                        <li class="pillar-link-item">Upcoming Projects</li>
+                    </ul>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- ===============================================================
+             DETAIL SECTIONS
+             =============================================================== -->
+
+        <!-- 01. IDENTITY SECTION -->
+        <section class="content-section" id="identity">
+            <div class="section-head">
+                <span class="section-pretitle">01 / IDENTITY</span>
+                <h2 class="section-headline">Who I Am & Academic Background</h2>
+                <p class="section-subtext" id="identity-subtext">Building a strong technical foundation in Electrical and Electronic Engineering.</p>
+            </div>
+
+            <div class="sub-grid-2">
+                <!-- Bio & Academic Card -->
+                <div class="clean-card">
+                    <h3 id="about-heading">About Me</h3>
+                    <p id="about-p1">Hello! I am Najdia Islam, an Electrical and Electronic Engineering student at Jamalpur Science & Technology University.</p>
+                    <p id="about-p2" style="margin-top: 12px;">I am passionate about technology, programming, engineering projects and research. I enjoy learning new things and turning knowledge into practical solutions.</p>
+                    <p id="about-p3" style="margin-top: 12px;">Currently exploring Python, Machine Learning, Deep Learning, Web Development, and COMSOL Multiphysics.</p>
+
+                    <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 8px;">
+                        <div><strong style="color: var(--text-primary); font-size: 0.9rem;">Department:</strong> <span id="about-department" style="color: var(--text-secondary); font-size: 0.9rem;">Electrical and Electronic Engineering</span></div>
+                        <div><strong style="color: var(--text-primary); font-size: 0.9rem;">University:</strong> <span id="about-university" style="color: var(--text-secondary); font-size: 0.9rem;">Jamalpur Science & Technology University</span></div>
+                        <div><strong style="color: var(--text-primary); font-size: 0.9rem;">Interests:</strong> <span id="about-interests" style="color: var(--text-secondary); font-size: 0.9rem;">AI, ML, Communication & Research</span></div>
+                    </div>
                 </div>
 
-                <div>
-                    <strong>🔬 Interests</strong>
-                    <span id="about-interests">AI, ML, Communication & Research</span>
+                <!-- Education & Skills Card -->
+                <div class="clean-card">
+                    <h3>Education</h3>
+                    <div id="education-container">
+                        <div style="margin-bottom: 16px;">
+                            <h4 style="font-size: 1.05rem; font-weight: 600; color: var(--text-primary);" id="edu-degree">B.Sc. in Electrical and Electronic Engineering</h4>
+                            <p style="font-size: 0.92rem; color: var(--text-secondary);" id="edu-univ">Jamalpur Science & Technology University, Jamalpur</p>
+                            <span style="font-size: 0.8rem; color: var(--accent-gold); font-weight: 600;" id="edu-session">Session: 2022-2023</span>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 32px;">Skills & Competencies</h3>
+                    <div class="skills-list" id="skills-container">
+                        <!-- Populated dynamically -->
+                        <div class="skill-row">
+                            <div class="skill-info"><span>Python & Data Analysis</span><span>70%</span></div>
+                            <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width: 70%;"></div></div>
+                        </div>
+                        <div class="skill-row">
+                            <div class="skill-info"><span>MATLAB & Simulation</span><span>65%</span></div>
+                            <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width: 65%;"></div></div>
+                        </div>
+                        <div class="skill-row">
+                            <div class="skill-info"><span>AutoCAD & Circuit Design</span><span>60%</span></div>
+                            <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width: 60%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. JOURNEY SECTION -->
+        <section class="content-section" id="journey">
+            <div class="section-head">
+                <span class="section-pretitle">02 / JOURNEY</span>
+                <h2 class="section-headline">Projects, Learning & Milestones</h2>
+                <p class="section-subtext">A living record of technical projects, continuous learning modules, and academic achievements.</p>
+            </div>
+
+            <!-- Filter buttons -->
+            <div style="display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;" id="project-filters">
+                <button class="nav-link active" style="background: none; border: none; cursor: pointer;" onclick="filterProjects('all')">All Projects</button>
+                <button class="nav-link" style="background: none; border: none; cursor: pointer;" onclick="filterProjects('completed')">Completed</button>
+                <button class="nav-link" style="background: none; border: none; cursor: pointer;" onclick="filterProjects('in_progress')">In Progress</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="sub-grid-3" id="projects-container">
+                <!-- Projects populated dynamically -->
+            </div>
+
+            <!-- Learning Grid -->
+            <div style="margin-top: 56px;">
+                <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 20px;">What I Am Learning</h3>
+                <div class="sub-grid-3" id="learning-container">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Achievements & Certificates -->
+            <div style="margin-top: 56px;">
+                <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 20px;">Certificates & Recognitions</h3>
+                <div class="sub-grid-3" id="certificates-container">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. FUTURE SECTION -->
+        <section class="content-section" id="future">
+            <div class="section-head">
+                <span class="section-pretitle">03 / FUTURE</span>
+                <h2 class="section-headline">Research Interests & Future Goals</h2>
+                <p class="section-subtext">Exploring long-term engineering challenges, research directions, and upcoming endeavors.</p>
+            </div>
+
+            <div class="sub-grid-2">
+                <!-- Research Interests -->
+                <div class="clean-card">
+                    <h3>Research Focus</h3>
+                    <p style="margin-bottom: 16px;">Areas of scientific investigation, emerging technologies, and communication systems.</p>
+                    <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 12px; color: var(--text-secondary);" id="research-container">
+                        <li><strong>Artificial Intelligence & Machine Learning:</strong> Applied deep learning and intelligent systems.</li>
+                        <li><strong>Optical Fiber & Communications:</strong> Next-generation high-speed signal propagation.</li>
+                        <li><strong>Biomedical Electronics:</strong> Signal processing and modern diagnostic instrumentation.</li>
+                    </ul>
                 </div>
 
+                <!-- Future Goals -->
+                <div class="clean-card">
+                    <h3>Future Goals</h3>
+                    <p style="margin-bottom: 16px;">Key academic, professional, and project targets set for the coming semesters.</p>
+                    <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 12px; color: var(--text-secondary);" id="goals-container">
+                        <li><strong>Research Publication:</strong> Author and publish a peer-reviewed research paper.</li>
+                        <li><strong>Advanced Hardware Systems:</strong> Build automated multi-sensor IoT and embedded devices.</li>
+                        <li><strong>Global Collaboration:</strong> Engage with international student chapters and technical symposiums.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04. JOURNAL SECTION -->
+        <section class="content-section" id="journal">
+            <div class="section-head">
+                <span class="section-pretitle">JOURNAL & WRITINGS</span>
+                <h2 class="section-headline">Reflections, Notes & Articles</h2>
+                <p class="section-subtext">Documenting lessons learned, engineering observations, and technical journey logs.</p>
             </div>
 
+            <div class="sub-grid-2" id="posts-container">
+                <!-- Populated dynamically -->
+            </div>
+        </section>
+
+        <!-- 05. CONTACT SECTION -->
+        <section class="content-section" id="contact">
+            <div class="section-head">
+                <span class="section-pretitle">CONNECT</span>
+                <h2 class="section-headline">Get In Touch</h2>
+                <p class="section-subtext">Open to research discussions, collaborative engineering projects, and opportunities.</p>
+            </div>
+
+            <div class="contact-grid" id="contact-container">
+                <!-- Populated dynamically or fallback -->
+                <a href="mailto:najdiyaislam007@email.com" class="contact-card">
+                    <span class="contact-icon">📧</span>
+                    <span class="contact-title">Email</span>
+                    <span class="contact-sub">Reach out directly via email</span>
+                    <span class="contact-action">Send Message →</span>
+                </a>
+                <a href="https://www.linkedin.com/in/najdia-islam-shaj-1a40573aa" target="_blank" rel="noopener" class="contact-card">
+                    <span class="contact-icon">💼</span>
+                    <span class="contact-title">LinkedIn</span>
+                    <span class="contact-sub">Connect professionally</span>
+                    <span class="contact-action">View Profile →</span>
+                </a>
+                <a href="https://github.com/Najdia-Islam-Shaj" target="_blank" rel="noopener" class="contact-card">
+                    <span class="contact-icon">💻</span>
+                    <span class="contact-title">GitHub</span>
+                    <span class="contact-sub">Code repositories & experiments</span>
+                    <span class="contact-action">Explore Code →</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand" id="footer-name">Najdia Islam</div>
+            <div class="footer-line"></div>
+            <div class="footer-motto">Build · Learn · Explore · Grow</div>
         </div>
-
-
-        <div class="about-photo">
-
-            <div class="photo-placeholder">
-
-    <img id="about-photo" src="profile.jpg.jpeg" alt="Najdia Islam">
-
-</div>
-
-            <p id="about-tagline">EEE Student • Research Enthusiast</p>
-
-        </div>
-
-    </div>
-
-</section>
-
-    <!-- Education -->
-    <section id="education">
-        <h2>Education</h2>
-        <div id="education-content">
-            <h3>B.Sc. in Electrical and Electronic Engineering</h3>
-            <p>Jamalpur Science & Technology Univarsity , Jamalpur</p>
-            <p>Session: 2022-2023</p>
-        </div>
-    </section>
-
-    <!-- What I Am Learning -->
-  
-      <section id="learning">
-
-    <p class="section-title">MY LEARNING</p>
-
-    <h2>What I'm Learning</h2>
-
-    <p class="section-description">
-        I am continuously learning new technologies and developing
-        my technical skills step by step.
-    </p>
-
-
-    <div class="learning-grid" id="learning-grid">
-
-        <!-- Python -->
-        <div class="learning-card">
-
-            <div class="learning-icon">🐍</div>
-
-            <h3>Python</h3>
-
-            <p>
-                Learning Python programming, basic coding,
-                loops, functions and numerical methods.
-            </p>
-
-            <span class="learning-status">
-                Currently Learning
-            </span>
-
-        </div>
-
-
-        <!-- Machine Learning -->
-        <div class="learning-card">
-
-            <div class="learning-icon">🤖</div>
-
-            <h3>Machine Learning</h3>
-
-            <p>
-                Exploring machine learning concepts,
-                regression and data analysis.
-            </p>
-
-            <span class="learning-status">
-                Currently Learning
-            </span>
-
-        </div>
-
-
-        <!-- Research -->
-        <div class="learning-card">
-
-            <div class="learning-icon">🔬</div>
-
-            <h3>Research</h3>
-
-            <p>
-                Learning research methodology, paper reading
-                and research writing.
-            </p>
-
-            <span class="learning-status">
-                Exploring
-            </span>
-
-        </div>
-
-
-        <!-- Web Development -->
-        <div class="learning-card">
-
-            <div class="learning-icon">🌐</div>
-
-            <h3>Web Development</h3>
-
-            <p>
-                Learning HTML and CSS to build my own
-                personal websites and projects.
-            </p>
-
-            <span class="learning-status">
-                Currently Learning
-            </span>
-
-        </div>
-
-
-        <!-- Deep Learning -->
-        <div class="learning-card">
-
-            <div class="learning-icon">🧠</div>
-
-            <h3>Deep Learning</h3>
-
-            <p>
-                Exploring the fundamentals of deep learning
-                and its applications.
-            </p>
-
-            <span class="learning-status">
-                Exploring
-            </span>
-
-        </div>
-
-
-        <!-- COMSOL -->
-        <div class="learning-card">
-
-            <div class="learning-icon">⚡</div>
-
-            <h3>COMSOL</h3>
-
-            <p>
-                Learning simulation and multiphysics modelling
-                for engineering applications.
-            </p>
-
-            <span class="learning-status">
-                Learning
-            </span>
-
-        </div>
-
-    </div>
-
-</section>
-
-    <!-- Skills -->
-   <!-- Skills Section -->
-<section id="skills">
-
-    <p class="section-title">MY SKILLS</p>
-
-    <h2>What I Can Do</h2>
-
-    <p class="section-description">
-        These are some of the technical and personal skills
-        I am developing throughout my engineering journey.
-    </p>
-
-
-    <div class="skills-container" id="skills-container">
-
-        <!-- Python -->
-        <div class="skill">
-
-            <div class="skill-info">
-                <span>Python</span>
-                <span>50%</span>
-            </div>
-
-            <div class="skill-bar">
-                <div class="skill-progress python"></div>
-            </div>
-
-        </div>
-
-
-        <!-- HTML -->
-        <div class="skill">
-
-            <div class="skill-info">
-                <span>HTML & Web Development</span>
-                <span>60%</span>
-            </div>
-
-            <div class="skill-bar">
-                <div class="skill-progress html"></div>
-            </div>
-
-        </div>
-
-
-        <!-- Research -->
-        <div class="skill">
-
-            <div class="skill-info">
-                <span>Research</span>
-                <span>45%</span>
-            </div>
-
-            <div class="skill-bar">
-                <div class="skill-progress research"></div>
-            </div>
-
-        </div>
-
-
-        <!-- Engineering -->
-        <div class="skill">
-
-            <div class="skill-info">
-                <span>Electrical Engineering</span>
-                <span>70%</span>
-            </div>
-
-            <div class="skill-bar">
-                <div class="skill-progress engineering"></div>
-            </div>
-
-        </div>
-
-
-        <!-- Presentation -->
-        <div class="skill">
-
-            <div class="skill-info">
-                <span>Presentation</span>
-                <span>75%</span>
-            </div>
-
-            <div class="skill-bar">
-                <div class="skill-progress presentation"></div>
-            </div>
-
-        </div>
-
-
-        <!-- Problem Solving -->
-        <div class="skill">
-
-            <div class="skill-info">
-                <span>Problem Solving</span>
-                <span>65%</span>
-            </div>
-
-            <div class="skill-bar">
-                <div class="skill-progress problem-solving"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-    <!-- Projects -->
-    
-       <!-- Projects Section -->
-<section id="projects">
-
-    <p class="section-title">MY PROJECTS</p>
-
-    <h2>Things I Have Built</h2>
-
-    <p class="section-description">
-        Here are some of the engineering projects I have completed
-        and the projects I am currently working on.
-    </p>
-
-
-    <!-- Completed Projects -->
-
-    <h3 class="project-category">Completed Projects</h3>
-
-    <div class="project-grid" id="completed-project-grid">
-
-
-        <!-- Project 1 -->
-
-        <div class="project-card">
-
-          <div class="project-image matlab-image">
-    <img src="images/matlab.jpg" alt="MATLAB Simulation Project">
-</div>
-
-            <div class="project-content">
-
-                <span class="project-type">
-                    Group Project
-                </span>
-
-                <h3>MATLAB Simulation Project</h3>
-
-                <p>
-                    A simulation-based engineering project developed
-                    using MATLAB as part of a group project.
-                </p>
-
-                <span class="project-status completed">
-                    ✓ Completed
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- Project 2 -->
-
-        <div class="project-card">
-
-            <div class="project-image autocad-image">
-    <img src="images/autocad.jpg" alt="AutoCAD Design Project">
-</div>
-
-            <div class="project-content">
-
-                <span class="project-type">
-                    Design Based
-                </span>
-
-                <h3>AutoCAD Design Project</h3>
-
-                <p>
-                    A design-based engineering project developed
-                    using AutoCAD.
-                </p>
-
-                <span class="project-status completed">
-                    ✓ Completed
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- Project 3 -->
-
-        <div class="project-card">
-
-           <div class="project-image led-image">
-    <img src="images/led-cube.jpg" alt="4x4x4 LED Cube">
-</div>
-
-            <div class="project-content">
-
-                <span class="project-type">
-                    Group Project
-                </span>
-
-                <h3>4×4×4 LED Cube Light</h3>
-
-                <p>
-                    An Arduino Uno based LED cube project designed
-                    and developed as a group project.
-                </p>
-
-                <span class="project-status completed">
-                    ✓ Completed
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- Project 4 -->
-
-        <div class="project-card">
-
-            <div class="project-image braking-image">
-    <img src="images/regenerative-braking.jpg" alt="Regenerative Braking System">
-</div>
-
-            <div class="project-content">
-
-                <span class="project-type">
-                    Group Project
-                </span>
-
-                <h3>Regenerative Braking System</h3>
-
-                <p>
-                    A project focused on recovering energy during
-                    braking and converting it into useful electrical energy.
-                </p>
-
-                <span class="project-status completed">
-                    ✓ Completed
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- Ongoing Projects -->
-
-    <h3 class="project-category">
-        Currently Working On
-    </h3>
-
-    <div class="project-grid" id="ongoing-project-grid">
-
-
-        <!-- Ongoing Project 1 -->
-
-        <div class="project-card ongoing-card">
-
-            <div class="project-image ongoing-image">
-                🔧
-            </div>
-
-            <div class="project-content">
-
-                <span class="project-type">
-                    Group Project
-                </span>
-
-                <h3>Ongoing Group Project 01</h3>
-
-                <p>
-                    Currently under development.
-                    Project details will be added soon.
-                </p>
-
-                <span class="project-status ongoing">
-                    ⟳ In Progress
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- Ongoing Project 2 -->
-
-        <div class="project-card ongoing-card">
-
-            <div class="project-image ongoing-image">
-                ⚙️
-            </div>
-
-            <div class="project-content">
-
-                <span class="project-type">
-                    Group Project
-                </span>
-
-                <h3>Ongoing Group Project 02</h3>
-
-                <p>
-                    Currently under development.
-                    Project details will be added soon.
-                </p>
-
-                <span class="project-status ongoing">
-                    ⟳ In Progress
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- Personal Website -->
-
-        <div class="project-card personal-card">
-
-            <div class="project-image website-image">
-                🌐
-            </div>
-
-            <div class="project-content">
-
-                <span class="project-type">
-                    Personal Project
-                </span>
-
-                <h3>My Engineering Journey</h3>
-
-                <p>
-                    A personal portfolio website documenting my
-                    learning journey, projects, achievements and goals.
-                </p>
-
-                <span class="project-status ongoing">
-                    ⟳ Currently Building
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-    <!-- Achievements -->
-    
-      <!-- Achievements Section -->
-<section id="achievements">
-
-    <p class="section-title">MY ACHIEVEMENTS</p>
-
-    <h2>Milestones Along My Journey</h2>
-
-    <p class="section-description">
-        Every achievement is a small step forward in my
-        academic and engineering journey.
-    </p>
-
-
-    <div class="achievement-grid" id="achievement-grid">
-
-
-        <!-- Achievement 1 -->
-
-        <div class="achievement-card">
-
-            <div class="achievement-icon">
-                🏆
-            </div>
-
-            <div>
-
-                <span class="achievement-year">
-                    2026
-                </span>
-
-                <h3>IEEE Membership</h3>
-
-                <p>
-                    Became a member of IEEE and started exploring
-                    professional and technical opportunities.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Achievement 2 -->
-
-        <div class="achievement-card">
-
-            <div class="achievement-icon">
-                🧠
-            </div>
-
-            <div>
-
-                <span class="achievement-year">
-                    2026
-                </span>
-
-                <h3>Deep Learning & Explainable AI Training</h3>
-
-                <p>
-                    Completed a 3-Day Hands-on Training Program
-                    focused on research, deep learning and
-                    explainable AI.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Achievement 3 -->
-
-        <div class="achievement-card">
-
-            <div class="achievement-icon">
-                🔬
-            </div>
-
-            <div>
-
-                <span class="achievement-year">
-                    2026
-                </span>
-
-                <h3>Started Research Journey</h3>
-
-                <p>
-                    Started learning research methodology,
-                    research paper reading and technical writing.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- Achievement 4 -->
-
-        <div class="achievement-card">
-
-            <div class="achievement-icon">
-                💻
-            </div>
-
-            <div>
-
-                <span class="achievement-year">
-                    2026
-                </span>
-
-                <h3>Started Programming Journey</h3>
-
-                <p>
-                    Started learning Python programming,
-                    numerical methods and basic data analysis.
-                </p>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-<!-- Certificates Section -->
-<section id="certificates">
-
-    <p class="section-title">MY CERTIFICATES</p>
-
-    <h2>Certificates & Training</h2>
-
-    <p class="section-description">
-        Some of the training programs and learning experiences
-        I have completed.
-    </p>
-
-
-    <div class="certificate-grid" id="certificate-grid">
-
-
-        <!-- Certificate 1 -->
-
-        <div class="certificate-card">
-
-           <div class="certificate-placeholder">
-    <img src="images/certificate1.jpg" alt="Deep Learning and Explainable AI Certificate">
-</div>
-
-            <div class="certificate-content">
-
-                <h3>
-                    Deep Learning & Explainable AI
-                </h3>
-
-                <p>
-                    3-Day Hands-on Training Program
-                </p>
-
-                <span>
-                    2026
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- Add more certificates later -->
-
-        <div class="certificate-card">
-
-            <div class="certificate-placeholder">
-                🎓
-            </div>
-
-            <div class="certificate-content">
-
-                <h3>
-                    More Certificates
-                </h3>
-
-                <p>
-                    New certificates will be added here
-                    as I continue learning.
-                </p>
-
-                <span>
-                    Coming Soon
-                </span>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-    <!-- Research -->
-    <section id="research">
-        <h2>Research Interests</h2>
-
-        <ul id="research-list">
-            <li>Artificial Intelligence</li>
-            <li>Machine Learning</li>
-            <li>Deep Learning</li>
-            <li>Communication Systems</li>
-            <li>Optical Fiber</li>
-        </ul>
-    </section>
-
-    <!-- Future Goals -->
-    <section id="goals">
-        <h2>Future Goals</h2>
-
-        <ul id="goals-list">
-            <li>Publish a research paper</li>
-            <li>Build practical engineering projects</li>
-            <li>Improve programming skills</li>
-            <li>Learn advanced AI and Machine Learning</li>
-        </ul>
-    </section>
-
-    <!-- Contact -->
-    
-<section id="contact">
-
-    <p class="section-title">GET IN TOUCH</p>
-
-    <h2>Let's Connect</h2>
-
-    <p class="section-description">
-        I am always interested in learning, collaborating,
-        discussing engineering ideas and exploring new opportunities.
-    </p>
-
-    <div class="contact-container" id="contact-container">
-
-        <div class="contact-card">
-            <div class="contact-icon">📧</div>
-            <h3>Email</h3>
-            <p>Your Email Address</p>
-            <a href="mailto:najdiyaislam007@email.com">Send Email</a>
-        </div>
-
-        <div class="contact-card">
-            <div class="contact-icon">💼</div>
-            <h3>LinkedIn</h3>
-            <p>Connect with me professionally</p>
-            <a href="https://www.linkedin.com/in/najdia-islam-shaj-1a40573aa?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">View Profile</a>
-        </div>
-
-        <div class="contact-card">
-            <div class="contact-icon">💻</div>
-            <h3>GitHub</h3>
-            <p>Explore my projects and code</p>
-            <a href="#" target="_blank">View GitHub</a>
-        </div>
-
-    </div>
-
-</section>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Najdia Islam Shaj | My Engineering Journey</p>
     </footer>
 
+    <!-- ===============================================================
+         MODALS (Project Details, Certificate Lightbox, Instant Search)
+         =============================================================== -->
+
+    <!-- Search Modal -->
+    <div class="modal-backdrop" id="search-modal">
+        <div class="modal-box search-modal-box">
+            <button class="modal-close-btn" onclick="closeModal('search-modal')">&times;</button>
+            <div class="search-input-wrap">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted);">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-query-input" class="search-input" placeholder="Search projects, skills, research, posts..." autocomplete="off">
+            </div>
+            <div class="search-results-list" id="search-results">
+                <p style="color: var(--text-muted); font-size: 0.9rem; padding: 10px;">Type to search across everything...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Details Modal -->
+    <div class="modal-backdrop" id="project-modal">
+        <div class="modal-box">
+            <button class="modal-close-btn" onclick="closeModal('project-modal')">&times;</button>
+            <div id="project-modal-content">
+                <!-- Dynamically loaded on click -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Certificate Lightbox Modal -->
+    <div class="modal-backdrop" id="cert-modal">
+        <div class="modal-box" style="max-width: 600px; text-align: center;">
+            <button class="modal-close-btn" onclick="closeModal('cert-modal')">&times;</button>
+            <img id="cert-modal-img" src="" alt="Certificate" style="max-width: 100%; max-height: 70vh; border-radius: var(--radius-sm); margin-bottom: 14px; object-fit: contain;">
+            <h3 id="cert-modal-title" style="font-family: var(--font-serif); font-size: 1.3rem;"></h3>
+            <p id="cert-modal-desc" style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px;"></p>
+        </div>
+    </div>
+
+    <!-- Supabase SDK & Client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase.js"></script>
+
     <script>
     (function(){
+        // Utilities
+        const $ = id => document.getElementById(id);
         const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
         const list = v => Array.isArray(v) ? v : [];
         const safeUrl = v => { const x=String(v||''); if(/^https?:\/\//i.test(x)||/^mailto:/i.test(x)||/^tel:/i.test(x)||x.startsWith('#')||x.startsWith('/')||x.startsWith('./')) return x; return '#'; };
-        const legacyImg = src => { const x=String(src||''); return x.replace(/onerror=|javascript:/gi,''); };
-        const imgTag = (src,alt,cls='') => `<img class="${cls}" src="${esc(legacyImg(src))}" alt="${esc(alt)}" onerror="if(this.dataset.fallback!=='1' && /\\.jpg$/i.test(this.src)){this.dataset.fallback='1';this.src=this.src+'.jpeg';}else{this.style.display='none';}">`;
-        const iconFor = title => { const t=String(title||'').toLowerCase(); if(t.includes('python'))return '🐍'; if(t.includes('machine'))return '🤖'; if(t.includes('research'))return '🔬'; if(t.includes('web'))return '🌐'; if(t.includes('deep'))return '🧠'; if(t.includes('comsol'))return '⚡'; return '📘'; };
-        const projectClass = title => { const t=String(title||'').toLowerCase(); if(t.includes('matlab'))return 'matlab-image'; if(t.includes('autocad'))return 'autocad-image'; if(t.includes('led'))return 'led-image'; if(t.includes('braking'))return 'braking-image'; if(t.includes('engineering journey')||t.includes('website'))return 'website-image'; return 'ongoing-image'; };
-        async function get(table, query){ let q=supabaseClient.from(table).select('*'); if(query) q=query(q); return q; }
-        const showSection = (id, visible) => { const e=document.getElementById(id); if(e) e.style.display = visible ? '' : 'none'; };
+        const cleanImg = src => String(src||'').replace(/onerror=|javascript:/gi,'');
 
-        async function loadHome(){ const {data,error}=await get('home_content',q=>q.eq('status','active').order('updated_at',{ascending:false}).limit(1).maybeSingle()); if(error){console.error(error);return;} if(!data){showSection('home',false);return;} showSection('home',true); document.getElementById('home-small-title').textContent=data.small_title||''; document.getElementById('home-name').textContent=data.name||''; document.getElementById('home-headline').textContent=data.headline||''; document.getElementById('home-hero-text').textContent=data.hero_text||''; const b=document.getElementById('home-button'); b.textContent=data.button_text||''; b.href=safeUrl(data.button_link||'#about'); }
-        async function loadAbout(){ const {data,error}=await get('about_content',q=>q.eq('status','active').order('updated_at',{ascending:false}).limit(1).maybeSingle()); if(error){console.error(error);return;} if(!data){showSection('about',false);return;} showSection('about',true); const ids=['about-section-title','about-heading','about-paragraph1','about-paragraph2','about-paragraph3','about-department','about-university','about-interests','about-tagline']; ids.forEach(id=>{const e=document.getElementById(id); if(!e)return; const map={'about-section-title':'section_title','about-heading':'heading','about-paragraph1':'paragraph1','about-paragraph2':'paragraph2','about-paragraph3':'paragraph3','about-department':'department','about-university':'university','about-interests':'interests','about-tagline':'tagline'}; e.textContent=data[map[id]]||'';}); const img=document.getElementById('about-photo'); if(img&&data.photo) img.src=legacyImg(data.photo); }
-        async function loadEducation(){ const {data,error}=await get('education',q=>q.eq('visibility','published').eq('status','active').order('created_at',{ascending:false})); if(error){console.error(error);return;} if(!list(data).length){showSection('education',false);return;} showSection('education',true); document.getElementById('education-content').innerHTML=list(data).map(x=>`<div class="education-item"><h3>${esc(x.degree||'')}</h3><p>${esc(x.university||'')}</p><p>Session: ${esc(x.session||'')}</p></div>`).join(''); }
-        async function loadLearning(){ const {data,error}=await get('learning',q=>q.eq('visibility','published').order('created_at',{ascending:false})); if(error){console.error(error);return;} if(!list(data).length){showSection('learning',false);return;} showSection('learning',true); document.getElementById('learning-grid').innerHTML=list(data).map(x=>`<div class="learning-card"><div class="learning-icon">${iconFor(x.title)}</div><h3>${esc(x.title)}</h3><p>${esc(x.note||'')}</p><span class="learning-status">${esc(x.status||'')}</span></div>`).join(''); }
-        async function loadSkills(){ const {data,error}=await get('skills',q=>q.eq('visibility','published').eq('status','active').order('created_at',{ascending:false})); if(error){console.error(error);return;} if(!list(data).length){showSection('skills',false);return;} showSection('skills',true); document.getElementById('skills-container').innerHTML=list(data).map(x=>{let c=String(x.skill_class||'').replace(/[^a-z0-9_-]/gi,'');return `<div class="skill"><div class="skill-info"><span>${esc(x.name)}</span><span>${Number(x.percentage)||0}%</span></div><div class="skill-bar"><div class="skill-progress ${c}" style="width:${Math.max(0,Math.min(100,Number(x.percentage)||0))}%"></div></div></div>`}).join(''); }
-        function projectCard(p){ const images=list(p.images); const image=images[0]||''; const cls=projectClass(p.title); const status=p.status||'idea'; const label=status==='completed'?'✓ Completed':status==='in_progress'?'⟳ In Progress':status==='archived'?'Archived':status.replace(/_/g,' '); return `<div class="project-card"><div class="project-image ${cls}">${image?imgTag(image,p.title):'🔧'}</div><div class="project-content"><span class="project-type">${esc(status==='completed'?'Project':'Project')}</span><h3>${esc(p.title)}</h3><p>${esc(p.description||'')}</p><span class="project-status ${status==='completed'?'completed':'ongoing'}">${esc(label)}</span></div></div>`; }
-        async function loadProjects(){ const {data,error}=await get('projects',q=>q.eq('visibility','published').neq('status','archived').order('created_at',{ascending:false})); if(error){console.error(error);return;} if(!list(data).length){showSection('projects',false);return;} showSection('projects',true); const completed=list(data).filter(x=>x.status==='completed'); const ongoing=list(data).filter(x=>x.status!=='completed'); document.getElementById('completed-project-grid').innerHTML=completed.length?completed.map(projectCard).join(''):'<p class="section-description">No completed projects yet.</p>'; document.getElementById('ongoing-project-grid').innerHTML=ongoing.length?ongoing.map(projectCard).join(''):'<p class="section-description">No ongoing projects yet.</p>'; }
-        async function loadAchievements(){ const {data,error}=await get('achievements',q=>q.eq('status','active').order('year',{ascending:false})); if(error){console.error(error);return;} if(!list(data).length){showSection('achievements',false);return;} showSection('achievements',true); document.getElementById('achievement-grid').innerHTML=list(data).map(x=>`<div class="achievement-card"><div class="achievement-icon">🏆</div><div><span class="achievement-year">${esc(x.year||'')}</span><h3>${esc(x.title||'')}</h3><p>${esc(x.description||'')}</p></div></div>`).join(''); }
-        async function loadCertificates(){ const {data,error}=await get('certificates',q=>q.eq('status','active').order('year',{ascending:false})); if(error){console.error(error);return;} if(!list(data).length){showSection('certificates',false);return;} showSection('certificates',true); document.getElementById('certificate-grid').innerHTML=list(data).map(x=>`<div class="certificate-card"><div class="certificate-placeholder">${x.image?imgTag(x.image,x.title):'🎓'}</div><div class="certificate-content"><h3>${esc(x.title||'')}</h3><p>${esc(x.description||'')}</p><span>${esc(x.year||'')}</span></div></div>`).join(''); }
-        async function loadResearch(){ const {data,error}=await get('research',q=>q.eq('visibility','published').eq('status','active').order('created_at',{ascending:false})); if(error){console.error(error);return;} if(!list(data).length){showSection('research',false);return;} showSection('research',true); document.getElementById('research-list').innerHTML=list(data).map(x=>`<li>${esc(x.interest||'')}</li>`).join(''); }
-        async function loadGoals(){ const {data,error}=await get('goals',q=>q.eq('visibility','published').neq('status','archived').order('created_at',{ascending:false})); if(error){console.error(error);return;} if(!list(data).length){showSection('goals',false);return;} showSection('goals',true); document.getElementById('goals-list').innerHTML=list(data).map(x=>`<li><strong>${esc(x.title||'')}</strong>${x.description?` — ${esc(x.description)}`:''}</li>`).join(''); }
-        async function loadContact(){ const {data,error}=await get('contact',q=>q.eq('visibility','published').eq('status','active').order('sort_order',{ascending:true})); if(error){console.error(error);return;} if(!list(data).length){showSection('contact',false);return;} showSection('contact',true); document.getElementById('contact-container').innerHTML=list(data).map(x=>`<div class="contact-card"><div class="contact-icon">${esc(x.icon||'🔗')}</div><h3>${esc(x.title||'')}</h3><p>${esc(x.description||'')}</p><a href="${esc(safeUrl(x.link_url))}" ${/^https?:\/\//i.test(x.link_url||'')?'target="_blank" rel="noopener"':''}>${esc(x.link_text||'Open')}</a></div>`).join(''); }
-        async function init(){ if(!window.supabaseClient)return; await Promise.all([loadHome(),loadAbout(),loadEducation(),loadLearning(),loadSkills(),loadProjects(),loadAchievements(),loadCertificates(),loadResearch(),loadGoals(),loadContact()]); }
-        if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+        // Global store for search & filters
+        window.allProjects = [];
+        window.searchableIndex = [];
+
+        // Modal helpers
+        window.openModal = id => { const el=$(id); if(el) el.classList.add('open'); };
+        window.closeModal = id => { const el=$(id); if(el) el.classList.remove('open'); };
+        document.querySelectorAll('.modal-backdrop').forEach(modal => {
+            modal.addEventListener('click', e => { if(e.target === modal) modal.classList.remove('open'); });
+        });
+
+        // Search open
+        $('search-open-btn').addEventListener('click', () => {
+            openModal('search-modal');
+            setTimeout(() => $('search-query-input').focus(), 100);
+        });
+
+        // Keyboard shortcut: '/' opens search, 'Esc' closes modals
+        window.addEventListener('keydown', e => {
+            if(e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA'){
+                e.preventDefault();
+                openModal('search-modal');
+                setTimeout(() => $('search-query-input').focus(), 100);
+            }
+            if(e.key === 'Escape'){
+                document.querySelectorAll('.modal-backdrop.open').forEach(m => m.classList.remove('open'));
+            }
+        });
+
+        // Search logic
+        $('search-query-input').addEventListener('input', e => {
+            const q = e.target.value.trim().toLowerCase();
+            const resultsBox = $('search-results');
+            if(!q){
+                resultsBox.innerHTML = '<p style="color: var(--text-muted); font-size: 0.9rem; padding: 10px;">Type to search across everything...</p>';
+                return;
+            }
+            const matches = window.searchableIndex.filter(item => 
+                (item.title && item.title.toLowerCase().includes(q)) || 
+                (item.desc && item.desc.toLowerCase().includes(q)) ||
+                (item.tag && item.tag.toLowerCase().includes(q))
+            );
+            if(!matches.length){
+                resultsBox.innerHTML = '<p style="color: var(--text-muted); font-size: 0.9rem; padding: 10px;">No matching results found.</p>';
+                return;
+            }
+            resultsBox.innerHTML = matches.map(m => `
+                <a href="${esc(m.link || '#')}" class="search-item" onclick="closeModal('search-modal')">
+                    <span class="search-item-title">${esc(m.title)}</span>
+                    <span class="search-item-meta">${esc(m.type)} ${m.desc ? '· ' + esc(m.desc.slice(0, 65)) + '...' : ''}</span>
+                </a>
+            `).join('');
+        });
+
+        // Active nav highlighter on scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = 'home';
+            sections.forEach(s => {
+                const top = s.offsetTop - 120;
+                if(window.scrollY >= top) current = s.getAttribute('id');
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === '#' + current) link.classList.add('active');
+            });
+        });
+
+        // Supabase DB query
+        async function get(table, query){
+            let q = supabaseClient.from(table).select('*');
+            if(query) q = query(q);
+            return q;
+        }
+
+        // 1. Home / Hero
+        async function loadHome(){
+            const {data, error} = await get('home_content', q => q.eq('status','active').order('updated_at',{ascending:false}).limit(1).maybeSingle());
+            if(error || !data) return;
+            if(data.small_title) $('hero-eyebrow').textContent = data.small_title.toUpperCase();
+            if(data.name) {
+                $('hero-name').textContent = data.name;
+                $('brand-name').textContent = data.name;
+                $('footer-name').textContent = data.name;
+                document.title = data.name + ' | Engineering & Research Portfolio';
+            }
+            if(data.hero_text) $('hero-description').textContent = data.hero_text;
+            window.searchableIndex.push({title: data.name || 'Najdia Islam', type: 'Profile', desc: data.hero_text, link: '#home'});
+        }
+
+        // 2. About & Photo
+        async function loadAbout(){
+            const {data, error} = await get('about_content', q => q.eq('status','active').order('updated_at',{ascending:false}).limit(1).maybeSingle());
+            if(error || !data) return;
+            if(data.heading) $('about-heading').textContent = data.heading;
+            if(data.paragraph1) $('about-p1').textContent = data.paragraph1;
+            if(data.paragraph2) $('about-p2').textContent = data.paragraph2;
+            if(data.paragraph3) $('about-p3').textContent = data.paragraph3;
+            if(data.department) $('about-department').textContent = data.department;
+            if(data.university) $('about-university').textContent = data.university;
+            if(data.interests) $('about-interests').textContent = data.interests;
+            if(data.tagline) $('identity-subtext').textContent = data.tagline;
+            if(data.photo) $('hero-photo').src = cleanImg(data.photo);
+            window.searchableIndex.push({title: 'About Najdia', type: 'Biography', desc: data.paragraph1, link: '#identity'});
+        }
+
+        // 3. Currently Bar
+        async function loadCurrently(){
+            const {data, error} = await get('currently', q => q.order('updated_at',{ascending:false}).limit(1).maybeSingle());
+            if(error || !data) return;
+            if(data.learning) $('currently-learning').textContent = data.learning;
+            if(data.building) $('currently-building').textContent = data.building;
+            if(data.thinking) $('currently-thinking').textContent = data.thinking;
+            if(data.researching) $('currently-researching').textContent = data.researching;
+        }
+
+        // 4. Education
+        async function loadEducation(){
+            const {data, error} = await get('education', q => q.eq('visibility','published').order('created_at',{ascending:false}));
+            if(error || !list(data).length) return;
+            $('education-container').innerHTML = data.map(e => `
+                <div style="margin-bottom: 16px;">
+                    <h4 style="font-size: 1.05rem; font-weight: 600; color: var(--text-primary);">${esc(e.degree||'')}</h4>
+                    <p style="font-size: 0.92rem; color: var(--text-secondary);">${esc(e.university||'')}</p>
+                    <span style="font-size: 0.8rem; color: var(--accent-gold); font-weight: 600;">Session: ${esc(e.session||'')}</span>
+                </div>
+            `).join('');
+            data.forEach(e => window.searchableIndex.push({title: e.degree, type: 'Education', desc: e.university, link: '#identity'}));
+        }
+
+        // 5. Skills
+        async function loadSkills(){
+            const {data, error} = await get('skills', q => q.eq('visibility','published').order('percentage',{ascending:false}));
+            if(error || !list(data).length) return;
+            $('skills-container').innerHTML = data.map(s => {
+                const pct = Math.max(0, Math.min(100, Number(s.percentage)||0));
+                return `
+                    <div class="skill-row">
+                        <div class="skill-info">
+                            <span>${esc(s.name)}</span>
+                            <span>${pct}%</span>
+                        </div>
+                        <div class="skill-bar-wrap">
+                            <div class="skill-bar-fill" style="width: ${pct}%;"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            data.forEach(s => window.searchableIndex.push({title: s.name, type: 'Skill', desc: `${s.percentage}% proficiency`, link: '#identity'}));
+        }
+
+        // 6. Projects
+        function renderProjects(projects){
+            const cont = $('projects-container');
+            if(!projects.length){
+                cont.innerHTML = '<p style="color: var(--text-muted); font-size: 0.95rem; grid-column: 1/-1;">No projects in this category yet.</p>';
+                return;
+            }
+            cont.innerHTML = projects.map(p => {
+                const img = (Array.isArray(p.images) && p.images[0]) ? cleanImg(p.images[0]) : '';
+                const isCompleted = p.status === 'completed';
+                const statusLabel = isCompleted ? 'Completed' : (p.status === 'in_progress' ? 'In Progress' : 'Idea');
+                const techs = list(p.technologies);
+                return `
+                    <div class="project-card" onclick="openProjectDetails('${p.id}')">
+                        <div class="project-thumb">
+                            ${img ? `<img src="${esc(img)}" alt="${esc(p.title)}" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="project-thumb-fallback" style="display:none;">🔧</div>` : `<div class="project-thumb-fallback">🔧</div>`}
+                        </div>
+                        <div class="project-body">
+                            <span class="project-status-tag ${isCompleted ? 'completed' : ''}">${esc(statusLabel)}</span>
+                            <h4 class="project-card-title">${esc(p.title)}</h4>
+                            <p class="project-card-desc">${esc(p.description || '')}</p>
+                            ${techs.length ? `<div class="project-tech-tags">${techs.map(t => `<span class="tech-tag">${esc(t)}</span>`).join('')}</div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        window.filterProjects = filter => {
+            document.querySelectorAll('#project-filters button').forEach(b => b.classList.remove('active'));
+            if(window.event && window.event.target) window.event.target.classList.add('active');
+            if(filter === 'all') renderProjects(window.allProjects);
+            else if(filter === 'completed') renderProjects(window.allProjects.filter(p => p.status === 'completed'));
+            else if(filter === 'in_progress') renderProjects(window.allProjects.filter(p => p.status !== 'completed'));
+        };
+
+        window.openProjectDetails = id => {
+            const p = window.allProjects.find(x => String(x.id) === String(id));
+            if(!p) return;
+            const img = (Array.isArray(p.images) && p.images[0]) ? cleanImg(p.images[0]) : '';
+            const techs = list(p.technologies);
+            $('project-modal-content').innerHTML = `
+                ${img ? `<img src="${esc(img)}" alt="${esc(p.title)}" style="width: 100%; max-height: 280px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 20px;">` : ''}
+                <span class="project-status-tag ${p.status === 'completed' ? 'completed' : ''}">${esc(p.status === 'completed' ? 'Completed' : 'In Progress')}</span>
+                <h2 style="font-family: var(--font-serif); font-size: 1.8rem; margin: 4px 0 14px;">${esc(p.title)}</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px;">${esc(p.description || '')}</p>
+                ${techs.length ? `<div style="margin-bottom: 18px;"><strong>Technologies Used:</strong><div class="project-tech-tags" style="margin-top: 8px;">${techs.map(t=>`<span class="tech-tag">${esc(t)}</span>`).join('')}</div></div>` : ''}
+                ${p.challenges ? `<div style="margin-bottom: 14px;"><strong>Challenges & Solutions:</strong><p style="color: var(--text-secondary); margin-top: 4px;">${esc(p.challenges)}</p></div>` : ''}
+                ${p.outcome ? `<div style="margin-bottom: 14px;"><strong>Key Outcomes:</strong><p style="color: var(--text-secondary); margin-top: 4px;">${esc(p.outcome)}</p></div>` : ''}
+            `;
+            openModal('project-modal');
+        };
+
+        async function loadProjects(){
+            const {data, error} = await get('projects', q => q.eq('visibility','published').neq('status','archived').order('created_at',{ascending:false}));
+            if(error) return;
+            window.allProjects = list(data);
+            renderProjects(window.allProjects);
+            window.allProjects.forEach(p => window.searchableIndex.push({title: p.title, type: 'Project', desc: p.description, link: '#journey'}));
+        }
+
+        // 7. Learning Cards
+        const iconFor = title => {
+            const t = String(title||'').toLowerCase();
+            if(t.includes('python')) return '🐍';
+            if(t.includes('machine') || t.includes('ai')) return '🤖';
+            if(t.includes('matlab')) return '📊';
+            if(t.includes('cad') || t.includes('circuit')) return '📐';
+            if(t.includes('comsol')) return '⚡';
+            if(t.includes('web')) return '🌐';
+            return '📘';
+        };
+
+        async function loadLearning(){
+            const {data, error} = await get('learning', q => q.eq('visibility','published').order('created_at',{ascending:false}));
+            if(error || !list(data).length) return;
+            $('learning-container').innerHTML = data.map(l => `
+                <div class="learning-card">
+                    <div class="learning-icon">${iconFor(l.title)}</div>
+                    <div class="learning-details">
+                        <h4>${esc(l.title)}</h4>
+                        <p>${esc(l.note||'')}</p>
+                        <span class="learning-status-pill">${esc(l.status||'Learning')}</span>
+                    </div>
+                </div>
+            `).join('');
+            data.forEach(l => window.searchableIndex.push({title: l.title, type: 'Learning', desc: l.note, link: '#journey'}));
+        }
+
+        // 8. Certificates
+        window.openCert = (img, title, desc) => {
+            $('cert-modal-img').src = cleanImg(img);
+            $('cert-modal-title').textContent = title || '';
+            $('cert-modal-desc').textContent = desc || '';
+            openModal('cert-modal');
+        };
+
+        async function loadCertificates(){
+            const {data, error} = await get('certificates', q => q.eq('status','active').order('year',{ascending:false}));
+            if(error || !list(data).length) return;
+            $('certificates-container').innerHTML = data.map(c => `
+                <div class="cert-card" onclick="openCert('${esc(cleanImg(c.image||''))}', '${esc(c.title)}', '${esc(c.description||'')}')">
+                    <div class="cert-preview">
+                        ${c.image ? `<img src="${esc(cleanImg(c.image))}" alt="${esc(c.title)}" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><span style="display:none; font-size: 2rem;">🎓</span>` : '<span style="font-size: 2rem;">🎓</span>'}
+                    </div>
+                    <div class="cert-info">
+                        <h4>${esc(c.title)}</h4>
+                        <p>${esc(c.description||'')}</p>
+                        <span class="cert-year">${esc(c.year||'')}</span>
+                    </div>
+                </div>
+            `).join('');
+            data.forEach(c => window.searchableIndex.push({title: c.title, type: 'Certificate', desc: c.description, link: '#journey'}));
+        }
+
+        // 9. Research & Goals
+        async function loadResearchAndGoals(){
+            const [resRes, resGoals] = await Promise.all([
+                get('research', q => q.eq('visibility','published').eq('status','active').order('created_at',{ascending:false})),
+                get('goals', q => q.eq('visibility','published').neq('status','archived').order('created_at',{ascending:false}))
+            ]);
+            if(resRes.data && resRes.data.length){
+                $('research-container').innerHTML = resRes.data.map(r => `
+                    <li>
+                        <strong>${esc(r.interest)}</strong>
+                        ${r.question ? ` — <span style="font-size: 0.92rem;">${esc(r.question)}</span>` : ''}
+                    </li>
+                `).join('');
+                resRes.data.forEach(r => window.searchableIndex.push({title: r.interest, type: 'Research', desc: r.question, link: '#future'}));
+                // Also update currently researching if available
+                const topTwo = resRes.data.slice(0, 2).map(r => r.interest).join(', ');
+                if(topTwo && !$('currently-researching').textContent) $('currently-researching').textContent = topTwo;
+            }
+            if(resGoals.data && resGoals.data.length){
+                $('goals-container').innerHTML = resGoals.data.map(g => `
+                    <li>
+                        <strong>${esc(g.title)}</strong>
+                        ${g.description ? ` — <span>${esc(g.description)}</span>` : ''}
+                    </li>
+                `).join('');
+                resGoals.data.forEach(g => window.searchableIndex.push({title: g.title, type: 'Goal', desc: g.description, link: '#future'}));
+            }
+        }
+
+        // 10. Journal / Posts
+        async function loadPosts(){
+            const {data, error} = await get('posts', q => q.eq('status','published').order('date',{ascending:false}));
+            const cont = $('posts-container');
+            if(error || !list(data).length){
+                $('journal').style.display = 'none';
+                return;
+            }
+            $('journal').style.display = '';
+            cont.innerHTML = data.map(p => `
+                <div class="clean-card" style="cursor: pointer;" onclick="alert('${esc(p.title)}\\n\\n${esc(p.body || p.summary || '')}')">
+                    <span style="font-size: 0.78rem; color: var(--accent-gold); font-weight: 600; text-transform: uppercase;">${esc(p.date || 'Article')}</span>
+                    <h3 style="margin-top: 6px;">${esc(p.title)}</h3>
+                    <p>${esc(p.summary || (p.body ? p.body.slice(0, 160) + '...' : ''))}</p>
+                    <span style="font-size: 0.88rem; font-weight: 500; color: var(--text-primary); margin-top: 14px; display: inline-block;">Read Reflection →</span>
+                </div>
+            `).join('');
+            data.forEach(p => window.searchableIndex.push({title: p.title, type: 'Journal', desc: p.summary, link: '#journal'}));
+        }
+
+        // 11. Contact
+        async function loadContact(){
+            const {data, error} = await get('contact', q => q.eq('visibility','published').eq('status','active').order('sort_order',{ascending:true}));
+            if(error || !list(data).length) return;
+            $('contact-container').innerHTML = data.map(c => `
+                <a href="${esc(safeUrl(c.link_url))}" ${/^https?:\/\//i.test(c.link_url||'') ? 'target="_blank" rel="noopener"' : ''} class="contact-card">
+                    <span class="contact-icon">${esc(c.icon||'🔗')}</span>
+                    <span class="contact-title">${esc(c.title)}</span>
+                    <span class="contact-sub">${esc(c.description||'')}</span>
+                    <span class="contact-action">${esc(c.link_text||'Open')} →</span>
+                </a>
+            `).join('');
+        }
+
+        // Initialize All Loaders
+        async function init(){
+            if(!window.supabaseClient) return;
+            await Promise.all([
+                loadHome(),
+                loadAbout(),
+                loadCurrently(),
+                loadEducation(),
+                loadSkills(),
+                loadProjects(),
+                loadLearning(),
+                loadCertificates(),
+                loadResearchAndGoals(),
+                loadPosts(),
+                loadContact()
+            ]);
+        }
+
+        if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+        else init();
     })();
     </script>
-
 </body>
-
 </html>
